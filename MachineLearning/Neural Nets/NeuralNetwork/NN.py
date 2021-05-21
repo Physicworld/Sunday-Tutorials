@@ -109,7 +109,7 @@ def main():
     plt.savefig('XOR_Fitted.jpg')
     # plt.show()
 
-    CIRCLES
+    # CIRCLES
 
     brain_circles = NeuralNetwork(top = [2, 4, 8, 1], act_fun = sigmoid)
 
