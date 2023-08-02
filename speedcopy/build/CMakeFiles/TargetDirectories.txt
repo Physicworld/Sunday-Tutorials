@@ -1,0 +1,3 @@
+/home/sundaythequant/Documents/Sunday-Tutorials/SpeedUpPython/build/CMakeFiles/vector_sum.dir
+/home/sundaythequant/Documents/Sunday-Tutorials/SpeedUpPython/build/CMakeFiles/edit_cache.dir
+/home/sundaythequant/Documents/Sunday-Tutorials/SpeedUpPython/build/CMakeFiles/rebuild_cache.dir
