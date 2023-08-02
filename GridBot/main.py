@@ -1,5 +1,12 @@
 from grid_bot import GridBot
 
+
+# -------------------------------------------------------------------------------------------------
+# Configuración y ejecución del bot
+# Aquí es donde se configura y se ejecuta el bot. Los parámetros se definen aquí y luego se pasan
+# a la instancia del bot antes de ejecutarlo.
+# -------------------------------------------------------------------------------------------------
+
 def main():
     KEY = "3DM7tTuySNUyaHXcQq"
     SECRET = "YyNse5prCs7CwDARrE4b8HwgKuhnWMAyRHWe"
