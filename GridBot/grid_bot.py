@@ -44,6 +44,7 @@ class GridBot:
 
         for order in open_orders:
             if order.price < min_price or order.price > max_price:
+                print("Canceling order: ", order.id)
                 self.order_manager.cancel_order(order.id)
 
     def process_order(self, order):
@@ -76,7 +77,7 @@ class GridBot:
             for order in orders:
                 print()
                 self.process_order(order)
-                
+
             self.cancel_orders_out_of_range(mid_price)
 
             time.sleep(60)

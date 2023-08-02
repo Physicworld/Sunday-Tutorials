@@ -1,4 +1,5 @@
 import ccxt
+from pprint import pprint
 
 # -------------------------------------------------------------------------------------------------
 # Clase Order
@@ -6,7 +7,7 @@ import ccxt
 # -------------------------------------------------------------------------------------------------
 class Order:
     def __init__(self, id, datetime, symbol, price, side, amount, status = "sending"):
-        self.id = id
+        self.id = int(id)
         self.datetime = datetime
         self.symbol = symbol
         self.price = price
@@ -32,7 +33,7 @@ class OrderManager:
         orders = []
         for order_dict in orders_dict:
             orders.append(Order(
-                id=order_dict['clientOrderId'],
+                id=order_dict['id'],
                 datetime=order_dict['datetime'],
                 symbol=order_dict['symbol'],
                 price=order_dict['price'],
@@ -46,7 +47,7 @@ class OrderManager:
     def place_order(self, price, side, amount):
         order_dict = self.exchange.create_order(self.symbol, 'limit', side, amount, price)
         order = Order(
-            id=order_dict['clientOrderId'],
+            id=order_dict['id'],
             datetime=order_dict['datetime'],
             symbol=order_dict['symbol'],
             price=order_dict['price'],
