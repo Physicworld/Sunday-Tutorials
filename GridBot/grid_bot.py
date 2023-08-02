@@ -76,6 +76,8 @@ class GridBot:
             for order in orders:
                 print()
                 self.process_order(order)
+                
+            self.cancel_orders_out_of_range(mid_price)
 
             time.sleep(60)
 
