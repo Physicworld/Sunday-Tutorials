@@ -1,3 +1,8 @@
+Antes de continuar con el tutorial te recomiendo que te inscribas a mi curso de ciencia de datos con python, para poder seguir creando contenido gratuito.
+
+https://www.udemy.com/course/ciencia-de-datos-con-python-r/?referralCode=B9A5A600EEECE5E538C1
+
+
 ### **Guía de Instalación de Ollama en Ubuntu/Mac/Linux**
 
 #### **1. Actualizar los Sistemas de Paquetes**
