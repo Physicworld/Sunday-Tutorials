@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="$USER_HOME$/miniconda3" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="$USER_HOME$/miniconda3" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Sunday-Tutorials" project-jdk-type="Python SDK" />
 </project>
