@@ -1,3 +1,8 @@
+# --------- INSTALL OLLAMA -------------------
+# curl -fsSL https://ollama.ai/install.sh | sh
+# ollama serve
+# ollama pull gemma3:4b
+
 import asyncio
 import json
 import re
@@ -109,19 +114,10 @@ INSTRUCCIONES:
             print(f"📋 Argumentos: {tool_call.arguments}")
 
             result = await self.mcp_client.call_tool(tool_call.name, tool_call.arguments)
+            result = result.structured_content['result']
+            result = str(result) if type(result) is not str else result
+            return result
 
-            # Extraer contenido del resultado
-            if hasattr(result, 'content') and result.content:
-                if isinstance(result.content, list) and len(result.content) > 0:
-                    content = result.content[0]
-                    if hasattr(content, 'text'):
-                        return content.text
-                    else:
-                        return str(content)
-                else:
-                    return str(result.content)
-            else:
-                return str(result)
 
         except Exception as e:
             error_msg = f"Error ejecutando {tool_call.name}: {str(e)}"
@@ -194,12 +190,8 @@ INSTRUCCIONES:
                 await self.mcp_client.__aexit__(None, None, None)
 
 
-# Ejemplo de uso
 async def main():
-    # Opción 1: Conectar a servidor MCP via HTTP
-    # agente = MiniAgente(mcp_server_url="http://localhost:8000")
-
-    # Opción 2: Conectar a servidor MCP via STDIO
+    # Conectar a servidor MCP via STDIO
     agente = Agent(mcp_command=["python", "mcp_server.py"])
 
     await agente.run_interactive()
