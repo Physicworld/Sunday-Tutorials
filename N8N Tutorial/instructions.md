@@ -2,9 +2,9 @@ Antes de seguir el tutorial te invito a formar parte de mi curso de ciencia de d
 
 https://www.udemy.com/course/ciencia-de-datos-con-python-r/?referralCode=B9A5A600EEECE5E538C1
 
-Tambien te invito a que formes parte de los miembros de mi canal de youtube, dando click en el boton unirme desde la pagina de inicio de mi canal.
+También te invito a que formes parte de los miembros de mi canal de YouTube, haciendo clic en el botón unirme desde la página de inicio de mi canal.
 
-Ahora si, vamos a comenzar.
+Ahora sí, vamos a comenzar.
 
 
 
