@@ -1,0 +1,219 @@
+1
+00:00:00,820 --> 00:00:04,700
+Hola qué tal y bienvenidos a un nuevo vídeo del curso de patrones de diseño
+
+2
+00:00:04,700 --> 00:00:08,580
+compitón. En esta ocasión vamos a programar e implementar el patrón de
+
+3
+00:00:08,580 --> 00:00:13,780
+diseño estrategia. El patrón de diseño estrategia se utiliza para definir una
+
+4
+00:00:13,780 --> 00:00:18,620
+familia de algoritmos y encapsular cada uno de ellos y también hacer los
+
+5
+00:00:18,620 --> 00:00:22,160
+intercambiables. Estrategia permite que el algoritmo varíe
+
+6
+00:00:22,160 --> 00:00:26,140
+independientemente de los clientes que lo utilizan. Este patrón es útil
+
+7
+00:00:26,140 --> 00:00:29,980
+cuando se tienen múltiples formas de hacer una tarea y se desea elegir la
+
+8
+00:00:29,980 --> 00:00:35,780
+la estrategia más adecuada en tiempo de ejecución. Para implementar este ejemplo, vamos a suponer que
+
+9
+00:00:35,780 --> 00:00:40,740
+estamos implementando un procesamiento de pago y que hay diferentes formas de cobrar una comisión.
+
+10
+00:00:40,740 --> 00:00:45,540
+Puede ser una comisión fija, por ejemplo, una comisión fija de 5 dólares por transacción,
+
+11
+00:00:45,540 --> 00:00:50,860
+o bien puede ser una comisión por porcentajes, es decir, por ejemplo, si quieres cobrar un
+
+12
+00:00:50,860 --> 00:00:57,340
+2% de comisión por la transacción. Estas dos son formas diferentes de aplicar un mismo
+
+13
+00:00:57,340 --> 00:01:03,180
+algoritmo, pero es una familia de algoritmos que cambia en tiempo de ejecución, a esto es lo que
+
+14
+00:01:03,180 --> 00:01:09,620
+referimos a las estrategias. Para poder implementar este patrón necesitamos primero un archivo
+
+15
+00:01:09,620 --> 00:01:16,540
+strategy y un segundo archivo context. El primero es donde vamos a definir las interfaces de las
+
+16
+00:01:16,540 --> 00:01:23,940
+implementaciones concretas del patrón strategy y su clase abstracta y el contexto es la clase
+
+17
+00:01:23,940 --> 00:01:29,620
+que se encarga de hacer el procesamiento de las estrategias entonces para comenzar con este
+
+18
+00:01:29,620 --> 00:01:39,140
+ejemplo vamos a irnos a nuestro fichero de estrategia y vamos a vamos a implementar una clase abstracta y
+
+19
+00:01:39,140 --> 00:01:53,780
+luego las clases concretas entonces prom ya sabes que tenemos que importar abc e implementamos
+
+20
+00:01:53,780 --> 00:01:59,420
+también importamos abstract method. Una vez que ya lo tenemos vamos a definir una clase que se
+
+21
+00:01:59,420 --> 00:02:13,900
+llame Commission Yawm Commission Strategy, este hereda de ABC y vamos a generar un abstract method
+
+22
+00:02:13,900 --> 00:02:23,640
+que se va a llamar calculate commission y ahora sí implementamos las clases concretas de nuestra
+
+23
+00:02:23,640 --> 00:02:30,540
+clase comisión entonces una de ellas va a ser pixel comision que es que siempre por
+
+24
+00:02:30,540 --> 00:02:36,100
+ese si lo cobramos una cantidad fija por la comisión de la de la transacción o
+
+25
+00:02:36,100 --> 00:02:40,060
+lo que sea que se está haciendo y por otra parte podemos cobrar también por
+
+26
+00:02:40,060 --> 00:02:45,500
+ejemplo un porcentaje de la comisión por ejemplo un 5 por ciento
+
+27
+00:02:45,500 --> 00:02:50,620
+después pues vamos a implementar el contexto el contexto es la clase que
+
+28
+00:02:50,620 --> 00:02:57,220
+se encarga de precisamente decernos cuántos se va a cobrar por la transacción en cuestión
+
+29
+00:02:57,220 --> 00:03:06,100
+dado el usuario. Vamos a definir una clase que se llame Payment Processor y su constructor
+
+30
+00:03:06,100 --> 00:03:15,080
+va a tener como entrada pues una estrategia. La guardamos como atributo y luego decimos
+
+31
+00:03:15,080 --> 00:03:22,080
+Process Payment y vamos a retornar Strategy Calculate Commission. Y de esta manera ya
+
+32
+00:03:22,080 --> 00:03:28,520
+tenemos el patrón estrategia implementado y lo tenemos que implementar ahora en el código cliente,
+
+33
+00:03:28,520 --> 00:03:36,480
+entonces vamos a importar las estrategias y nuestro contexto, entonces from strategy vamos a
+
+34
+00:03:36,480 --> 00:03:47,540
+importar fixate commission y percentage commission y del contexto vamos a importar el payment
+
+35
+00:03:47,540 --> 00:03:54,960
+proceso, es nuestro contexto. Ahora sí, vamos a utilizar nuestro main y vamos a definir ambas
+
+36
+00:03:54,960 --> 00:04:01,540
+estrategias y vamos a ver cuál es el resultado. Entonces, para empezar, vamos a inicializar el
+
+37
+00:04:01,540 --> 00:04:08,300
+contexto. Vamos a inicializar un payment processor, por ejemplo, con una fixed commission y vamos a
+
+38
+00:04:08,300 --> 00:04:13,260
+decir que vamos a procesar un pago de 100. Y por otro lado, vamos a darle el percentage commission
+
+39
+00:04:13,260 --> 00:04:19,660
+y vamos a procesar también un pago de 100 y vamos a ver el resultado ejecutamos nuestro código main
+
+40
+00:04:19,660 --> 00:04:29,500
+y como puedes ver en un caso se pagan 5 dólares y en el otro se pagan 5.0 pero aquí algo que está
+
+41
+00:04:29,500 --> 00:04:40,190
+mal vamos a nuestro presentation comision y 100 por 0.5 ajá pues sí el 5 por ciento de 100 es 5
+
+42
+00:04:40,190 --> 00:04:45,910
+entonces está bien pensé que algo estaba mal aquí pero es el mismo resultado pero si te
+
+43
+00:04:45,910 --> 00:04:52,570
+fijas uno es entero y otro es float porque en el fixed commission lo hemos definido literalmente como
+
+44
+00:04:52,570 --> 00:04:58,310
+un 5 entero y acá es una multiplicación por un float entonces aquí también pues hay que
+
+45
+00:04:58,310 --> 00:05:06,030
+tener cuidado con el tipado de los retornos pero si te fijas utilicé diferentes estrategias a través
+
+46
+00:05:06,030 --> 00:05:11,230
+del payment processor y yo no tuve que modificar nada del payment processor para poder llevar a cabo
+
+47
+00:05:11,230 --> 00:05:20,670
+este algoritmo. Entonces, ¿en qué sentido este patrón de diseño es open-closed? En el sentido de
+
+48
+00:05:20,670 --> 00:05:26,350
+que tú puedes seguir agregando diferentes formas de cobrar a una comisión a través de una transacción
+
+49
+00:05:26,350 --> 00:05:31,390
+y no tendrás que modificar nada de tu contexto. Tu contexto al momento de inicializarse con su
+
+50
+00:05:31,390 --> 00:05:39,070
+constructor de estrategia va a directamente aplicar la comisión dada a la estrategia. Entonces,
+
+51
+00:05:39,070 --> 00:05:45,690
+en el código cliente pues esto ya es no no no entras en detalles del contexto ni de la estrategia
+
+52
+00:05:45,690 --> 00:05:51,930
+simplemente usas el constructor del payment processor y luego invocas el método process payment y
+
+53
+00:05:51,930 --> 00:05:58,250
+se gestiona todo automáticamente y bueno aquí se termina este vídeo de el patrón de diseño
+
+54
+00:05:58,250 --> 00:06:04,330
+strategy espero que te esté gustando el curso y que te ha gustado también este vídeo dale like
+
+55
+00:06:04,330 --> 00:06:09,090
+suscríbete, compártelo y recuerda que siempre, siempre vas a aprender un vídeo a la vez.

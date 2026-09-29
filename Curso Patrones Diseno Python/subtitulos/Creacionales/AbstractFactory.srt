@@ -1,0 +1,331 @@
+1
+00:00:01,010 --> 00:00:06,210
+Bienvenidos a un nuevo video del curso de Patrón de diseño con Python. En esta ocasión vamos a
+
+2
+00:00:06,210 --> 00:00:12,050
+estudiar el patrón de diseño abstract factory. En videos anteriores ya hemos estudiado el patrón
+
+3
+00:00:12,050 --> 00:00:18,130
+de diseño factory method y este patrón se le parece mucho al que vamos a implementar ahora. La
+
+4
+00:00:18,130 --> 00:00:23,250
+única diferencia es que en factoring method habíamos implementado un único producto,
+
+5
+00:00:23,250 --> 00:00:30,010
+es decir un vehículo. En abstract factory nos permite extender este patrón de diseño a
+
+6
+00:00:30,010 --> 00:00:33,850
+a múltiples productos y múltiples subproductos de estas clases.
+
+7
+00:00:34,610 --> 00:00:38,290
+Entonces, la definición es la misma,
+
+8
+00:00:38,290 --> 00:00:41,210
+pues que nos permite crear familias de objetos relacionados
+
+9
+00:00:41,210 --> 00:00:43,210
+sin especificar sus clases concretas.
+
+10
+00:00:43,210 --> 00:00:45,410
+Este patrón es especialmente útil
+
+11
+00:00:45,410 --> 00:00:46,770
+cuando tu código necesita trabajar
+
+12
+00:00:46,770 --> 00:00:48,410
+diferentes variantes de productos.
+
+13
+00:00:49,450 --> 00:00:52,210
+Entonces, vamos a comenzar con lo mismo.
+
+14
+00:00:52,210 --> 00:00:55,010
+Vamos a generar un ejemplo,
+
+15
+00:00:55,010 --> 00:00:59,410
+imaginando que estamos diseñando una interfaz gráfica
+
+16
+00:00:59,410 --> 00:01:06,890
+de usuario en la que creamos botones y creamos textbox y estos a su vez tienen ciertos métodos,
+
+17
+00:01:06,890 --> 00:01:13,770
+por ejemplo, para cuando tenemos una interfaz gráfica oscura o una interfaz gráfica clara,
+
+18
+00:01:13,770 --> 00:01:21,290
+es decir, si tenemos una dark o light user interface. Entonces, vamos a organizar el proyecto
+
+19
+00:01:21,290 --> 00:01:25,850
+en tres archivos, lo podemos subdividir incluso en más archivos para seguir más
+
+20
+00:01:25,850 --> 00:01:31,530
+menos el mismo patrón que factory method, pero vamos a hacerlo en 3. En primer lugar abstract
+
+21
+00:01:31,530 --> 00:01:40,010
+factory es donde, para decirlo, definimos la clase base y definimos los productos abstractos de esta
+
+22
+00:01:40,010 --> 00:01:45,770
+clase. Entonces al igual que lo hicimos con factory method vamos a importar abc y vamos a importar
+
+23
+00:01:45,770 --> 00:01:55,520
+abstract method. Entonces from abc import abc y abstract method. Entonces vamos a generar una
+
+24
+00:01:55,520 --> 00:02:07,280
+clase que se llame ui abstract factory y esta va a ir a dar de abc y vamos a declarar ciertos
+
+25
+00:02:07,280 --> 00:02:12,080
+métodos de hecho aquí ya copilot no nos está recomendando en el primer lugar el primer está
+
+26
+00:02:12,080 --> 00:02:18,200
+bien vamos a darle abstract métodos vamos a crear un botón y en el otro caso en lugar de hacer
+
+27
+00:02:18,200 --> 00:02:26,440
+textfield, vamos a hacer un textbox. Aquí ya generamos, por decirlo, la clase base y vamos a
+
+28
+00:02:26,440 --> 00:02:33,000
+generar ahora los productos abstractos. A diferencia del factor y métod, en este caso,
+
+29
+00:02:33,000 --> 00:02:37,960
+cada producto va a abstraer de ABC, va a ser una clase abstracta. Entonces,
+
+30
+00:02:37,960 --> 00:02:47,080
+classButtonABC va a tener un método abstracto que se va a llamar pintar, es decir, para que
+
+31
+00:02:47,080 --> 00:02:55,360
+se renderice en nuestro archivo y por otra parte textbox igualmente va a tener el mismo método va
+
+32
+00:02:55,360 --> 00:03:02,760
+a tener el método pues pintar para que se renderice en nuestra interfaz gráfica ahora en concrete
+
+33
+00:03:02,760 --> 00:03:08,080
+factory en este archivo será donde vamos a definir los subproductos de las clases vamos a
+
+34
+00:03:08,080 --> 00:03:14,240
+definir los productos concretos de cada clase entonces para esto vamos a importar las clases
+
+35
+00:03:14,240 --> 00:03:20,040
+abstractas que definimos en abstract factory. Entonces, from abstract factory vamos a importar
+
+36
+00:03:20,040 --> 00:03:25,720
+en primer lugar ui abstract factory, vamos a importar button y vamos a importar textbox.
+
+37
+00:03:25,720 --> 00:03:33,320
+En este caso entonces vamos a definir los productos concretos de la clase botón. Entonces,
+
+38
+00:03:33,320 --> 00:03:44,400
+es class darkButton by darkButton y su método pint pues simplemente va a imprimir que es
+
+39
+00:03:44,400 --> 00:03:51,520
+un botón oscuro. Por otra parte también vamos a implementar lo mismo para el textbox, vamos
+
+40
+00:03:51,520 --> 00:03:57,960
+a implementar dark textbox y va a tener sus métodos. Entonces de esta manera hemos implementado
+
+41
+00:03:57,960 --> 00:04:03,740
+los productos para decirlo oscuros para cada uno de las clases que implementamos. Ahora vamos a
+
+42
+00:04:03,740 --> 00:04:09,400
+implementar el likebutton y el likebutton pues simplemente nos da imprimir que es un botón claro
+
+43
+00:04:09,400 --> 00:04:15,000
+y lo mismo para textbutton entonces text para el textbox perdón entonces para el textbox vamos a
+
+44
+00:04:15,000 --> 00:04:21,280
+hacer lo mismo liketextbox. Una vez que implementamos esto pues vamos a crear también fábricas
+
+45
+00:04:21,280 --> 00:04:26,840
+concretas para la interfaz de usuario entonces por ejemplo vamos a venir acá y vamos a decir
+
+46
+00:04:26,840 --> 00:04:32,800
+de class, darkquie factory, va a abstraerse de ui factory y esto va a tener ciertas características,
+
+47
+00:04:32,800 --> 00:04:38,760
+si tú te fijas vamos a retornar objetos oscuros y textbox oscuros para el darkquie,
+
+48
+00:04:38,760 --> 00:04:46,200
+entonces retornamos esto y para light, para el user y interface que es claro vamos a hacer
+
+49
+00:04:46,200 --> 00:04:52,760
+lo mismo, si tú te fijas en cada caso estamos retornando sus productos de una clase concreta,
+
+50
+00:04:52,760 --> 00:05:00,200
+entonces de esta manera nos permite pues inicializar un constructor u otro si estamos usando por ejemplo
+
+51
+00:05:00,200 --> 00:05:04,800
+en una página web pues podemos implementar este patrón de diseño para poder cambiar
+
+52
+00:05:04,800 --> 00:05:10,040
+entre un modo y otro y que se carguen los objetos de un modo y otro de forma exitosa.
+
+53
+00:05:10,040 --> 00:05:16,640
+Entonces ahora en el código cliente que es pues el cómo utilizamos ahora el apps
+
+54
+00:05:16,640 --> 00:05:23,520
+re-factory, ahora que lo implementamos pues tenemos que importar todas las funciones, entonces
+
+55
+00:05:23,520 --> 00:05:31,920
+from concrete factory vamos a importar, si te fijas simplemente importamos o la interfaz oscura o la
+
+56
+00:05:31,920 --> 00:05:37,400
+interfaz clara, entonces definimos nuestro main y aquí pues vamos a generar un botón, un textbox
+
+57
+00:05:37,400 --> 00:05:49,560
+y vamos a decir que nos impriman. Entonces, button es igual a factory, es igual a factory. Bueno,
+
+58
+00:05:49,560 --> 00:05:53,800
+por antes tenemos que definir una fábrica. Entonces vamos a crear una función que se
+
+59
+00:05:53,800 --> 00:05:59,680
+llame client code, al cual le vamos a pasar una fábrica. Entonces, factory y a esto le
+
+60
+00:05:59,680 --> 00:06:05,880
+vamos a poner button, factory createButton y textbox createTextbox y vamos a imprimir en
+
+61
+00:06:05,880 --> 00:06:14,680
+cada caso lo que lo que nos retorna, entonces vamos a crear tanto una fábrica oscura o sea
+
+62
+00:06:14,680 --> 00:06:20,880
+una interfaz oscura y una interfaz clara, entonces vamos a llamar a client code y vamos a pasarle
+
+63
+00:06:20,880 --> 00:06:27,400
+el darkwee factory y vamos a pasarle el light factory, entonces aquí ya Copeland me lo
+
+64
+00:06:27,400 --> 00:06:34,480
+recomienda, lo ejecutamos y como puedes ver bueno aquí lo voy a poner un print para
+
+65
+00:06:34,480 --> 00:06:43,280
+puede diferenciar ambos casos, lo volvemos a correr y como puedes ver aquí me dice, primero le
+
+66
+00:06:43,280 --> 00:06:51,720
+pasé el darkui y entonces imprime un botón oscuro y un textbox oscuro y le digo un lightui y me
+
+67
+00:06:51,720 --> 00:06:59,620
+imprime un botón claro y un textbox claro. De esta manera tú puedes abstraer y intercambiar en una
+
+68
+00:06:59,620 --> 00:07:02,900
+interfaz oscura y en interfaz clara, por ejemplo,
+
+69
+00:07:02,900 --> 00:07:04,860
+en una página web, en una aplicación,
+
+70
+00:07:04,860 --> 00:07:07,420
+en una aplicación escritoria, en cualquier cosa que esté
+
+71
+00:07:07,420 --> 00:07:08,660
+implementando.
+
+72
+00:07:08,660 --> 00:07:13,140
+Entonces, esto te permite hacer un código fácil de entender,
+
+73
+00:07:13,140 --> 00:07:15,820
+fácil de mantener y fácil de, pues,
+
+74
+00:07:15,820 --> 00:07:17,700
+instanciar al momento de usar.
+
+75
+00:07:17,700 --> 00:07:21,060
+En lugar de jacotear un switch y decir, bueno,
+
+76
+00:07:21,060 --> 00:07:24,100
+si selecciono tal caso, pues, mandame todo esto.
+
+77
+00:07:24,100 --> 00:07:26,380
+Y si selecciono tal caso, mandame todo esto.
+
+78
+00:07:26,380 --> 00:07:33,220
+Si te fijas, inicializo todas las propiedades de una interfaz oscura o una interfaz clara,
+
+79
+00:07:33,220 --> 00:07:37,620
+se inicializan todas sus propiedades y tiene cada uno definido su propio objeto.
+
+80
+00:07:37,620 --> 00:07:43,340
+De tal manera que si genero un nuevo botón, este botón va a tener propiedades de diseño
+
+81
+00:07:43,340 --> 00:07:45,860
+para una interfaz oscura o clara.
+
+82
+00:07:45,860 --> 00:07:49,620
+Espero que te esté gustando el curso, dale al like, suscríbete, recomiendo el curso
+
+83
+00:07:49,620 --> 00:07:52,380
+y recuerda que siempre, siempre vas a aprender un bit a la vez.

@@ -1,0 +1,83 @@
+Hola qué tal y bienvenidos a un nuevo video del curso de patrones de diseño con Python.
+En esta ocasión vamos a implementar el patrón de diseño State.
+Este patrón de diseño se utiliza para permitir que un objeto altere su comportamiento
+cuando su estado de interno cambia.
+El objeto parecerá o dará la ilusión de que ha cambiado su clase,
+pero este de patrón es útil en situaciones donde el comportamiento de un objeto
+depende de su estado actual y puede cambiar en tiempo de ejecución.
+Para implementar este patrón necesitamos tres ficheros.
+Uno, donde definamos una clase abstracta del estado y los estados concretos.
+Luego un contexto, donde vamos a definir la clase que mantiene una instancia de state
+y que refleja el estado actual.
+Y por último, el main donde vamos a tener nuestro código cliente.
+Para implementar este código o este patrón de diseño,
+vamos a tomar de ejemplo el botón que utilizamos en los reproductores de música.
+Por ejemplo, cuando tú presionas el botón de play, una vez inicias a reproducir un video,
+por ejemplo, pero cuando lo presionas de nuevo, éste se pausa y cuando lo presionas de nuevo,
+éste inicia. Éste es un claro ejemplo del patrón de design and state. Estamos utilizando un mismo
+botón que cambia su estado y que puede hacer múltiples acciones al presionarte diferentes veces,
+pero siempre es en función de su estado actual, es decir, si su estado actual es play,
+cuando lo vuelvas a presionar no quiere decir que el vídeo va a volver a reproducirse sino que va a
+detenerse y si lo vuelves a presionar va a volver a reproducirse entonces vamos primero a nuestro
+archivo state donde vamos a definir la clase abstracta y las clases concretas entonces ya sabes
+que tenemos que importar ABC y vamos a definir una clase que se llame player, player state. Esta
+va a heredar de ABC y vamos a definir un abstract method que se llame press play. Esta es nuestra
+clase abstracta y ahora vamos a definir las clases concretas. Las clases concretas en general
+pueden ser 3, por ejemplo, puede ser playing state, paused state y stopped state, es decir,
+iniciar detener o el stop, la diferencia de la pausa es como detener y reiniciar la reproducción,
+son 3 estados diferentes. Entonces, por ejemplo, vamos a definir primero la clase
+playing state. Esta hereda de nuestra clase abstracta y vamos a definir, por ejemplo,
+press play. Si te fijas, reciben siempre un player. ¿Por qué? Porque el player es el estado actual que
+queremos cambiar. Entonces, vamos a definir press play y vamos a poner, vamos a imprimir,
+por ejemplo, pausing. Después de que el archivo, después de que el botón se está
+reproduciendo lo que sigue después de que lo apretas es detenerlo por ejemplo entonces con
+esto cambiamos el estado interno de player, entonces player.state es igual a pauset state
+por otra parte pues hay que definir también por ahora pauset state entonces def pero es play
+self y le pasas también un player y aquí le pones print playing de esta manera de esta
+manera también pues cambias el estado interno y cada vez que tú mandes llamar press play y que
+el estado actual sea play in state al momento de que lo presiones va a cambiar al estado pausa
+state. Y puedes generar otro estado, otro state que sea de stop, por ejemplo. Pero pues en este
+caso vamos a añadirlo también porque aquí también demostramos la metodología abierta
+cerrada de este patrón de diseño porque puede seguir agregando tantos estados como tú quieras.
+Vamos por ejemplo a definir stop state y pues en todo caso creo que este es el estado
+inicial de player, ¿no? De alguna manera. Entonces, si queramos un contexto, pues un
+contexto puede ser music player o video player o cualquier cosa que se vaya a
+reproducir. En ese caso tú también puedes implementar tantos contextos como desees,
+pero este stop state pues va a ser como el tipo de estado inicial de nuestro
+contexto. Desde que hemos definido nuestra clase abstracta y las clases
+concretas, vamos a nuestro contexto y vamos a implementar los contextos. En este
+caso, nuestro contexto va a ser un music player, un reproductor de música.
+Definimos su estado inicial y su estado inicial va a ser el estado stop, stop state
+y hay que importarlo, ¿no? Entonces from state, import, stop state.
+y al momento de que des, también este va a tener su play button por así decirlo, vas a pasarle
+a sí mismo el estado y lo que va a hacer es que el estado que estamos utilizando va a recibir
+este player, es decir el self que estás utilizando aquí es recibido acá y al momento de que tú
+ejecutas o accedes a su state lo cambias, a pauset state, es decir cambias el estado interno de
+music player. Entonces ya que tenemos esto vamos a nuestro código cliente porque ya
+tenemos implementadas estas clases y lo que vamos a hacer va a ser importar, from state import
+todos los estados ¿no? playing state, pauset state, stop state y vamos a importar nuestros
+contextos vamos a importar music player y pues vamos a definir nuestro main que es donde
+va a estar nuestro código cliente y pues aquí está ¿no? vamos a ver qué pasa después de
+presionar múltiples ocasiones el botón de play entonces corremos nuestro código y vamos
+a ver que vamos a observar qué sucede. Entonces como puedes ver cuando inicializamos el contexto
+player su estado inicial es stop. Entonces al momento de que tú mandas llamar el método press play lo
+mandas a... al momento de que tú presionas press play de player lo que pasa es que tú
+estás mandando a los estados de state, el estado actual es stop entonces venimos al
+constructor de stop y ¿qué pasa después de que presionas stop? cambias el estado interno a playing
+state ahora estamos acá entonces en la segunda ocasión cuando lo presionas vas aquí y ahora
+tu estado interno ya no es stop ahora es playing entonces cuando estás en playing ¿qué pasa?
+cambias el estado interno a paused state y ahora en la última iteración en la última vez
+que presionas el botón, esto estado es paused, entonces vas al contexto al momento que presionas
+press play, vas a tu estado, entonces en tu estado pause state, cuando presionas press play,
+vas a estar pause state a plain state. Entonces estás utilizando un mismo objeto, un contexto
+en el que estás cambiando su comportamiento, pero si te fijas parece que estás cambiando de clase
+cada vez que presionas ese press play. Estás cambiando de clase de forma, en cada ocasión,
+o sea, da como esa ilusión, que en el fondo lo estás haciendo porque pues a fin de cuentas
+estás igualando a un nuevo constructor, pero estás utilizando el mismo objeto, es decir,
+el objeto es MusicPlayer y MusicPlayer está cambiando su estado interno por otros estados
+que son diferentes clases. Entonces de esta manera ves el poder de este patrón de diseño porque es
+abierto tanto en sus states como en sus contextos porque puedes implementar más contextos. Este es
+un MusicPlayer, puedes implementar un VideoPlayer por ejemplo y en el Main tú solamente estás
+utilizando un objeto para poder manipular los estados internos del objeto music player.
+Entonces aquí se termina este vídeo, espero que te haya gustado, dale like,
+compártelo, suscríbete y recuerda que siempre siempre vas a aprender un beat a la vez.

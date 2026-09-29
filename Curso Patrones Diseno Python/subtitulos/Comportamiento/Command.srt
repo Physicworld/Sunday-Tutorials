@@ -1,0 +1,331 @@
+1
+00:00:00,820 --> 00:00:05,160
+Hola qué tal y bienvenidos a un nuevo vídeo del curso de patrones de diseño con Python.
+
+2
+00:00:05,160 --> 00:00:11,600
+En esta ocasión vamos a implementar el patrón de diseño comand. El patrón de diseño comand se
+
+3
+00:00:11,600 --> 00:00:16,480
+utiliza para encapsular la solicitud como un objeto, permitiendo de esta manera para
+
+4
+00:00:16,480 --> 00:00:21,440
+metrizar clientes con colas, solicitudes y operaciones. Facilita la implementación de
+
+5
+00:00:21,440 --> 00:00:27,120
+operaciones como deshacer, rehacer y también permite llevar un registro de las operaciones.
+
+6
+00:00:27,120 --> 00:00:32,800
+es especialmente útil en interfaces gráficas o en sistemas que ocupen tareas en colas,
+
+7
+00:00:32,800 --> 00:00:36,960
+donde las acciones del usuario se traducen en comandos específicos.
+
+8
+00:00:36,960 --> 00:00:45,040
+Y para implementar el patrón de diseño command necesitamos por lo general tres archivos de Python,
+
+9
+00:00:45,040 --> 00:00:51,880
+más el código cliente. El primero define la interfaz command y sus implementaciones concretas,
+
+10
+00:00:51,880 --> 00:00:58,160
+luego la clase invoker que maneja y ejecuta comandos y por último el receiver. Define
+
+11
+00:00:58,160 --> 00:01:03,040
+las clases que realizarán las acciones concretas cuando se ejecute un comando. Como por ejemplo,
+
+12
+00:01:03,040 --> 00:01:11,000
+un receiver podría ser un editor de texto, como bien puede ser este editor de código o este ID
+
+13
+00:01:11,000 --> 00:01:20,840
+que es PyCharm, el invoker puede ser pues un botón que dispara una acción y el command pues es como
+
+14
+00:01:20,840 --> 00:01:26,320
+tal la acción que se va a hacer, en este caso puede ser guardar, guardar como, imprimir y
+
+15
+00:01:26,320 --> 00:01:32,200
+y demás, son diferentes comandos por así decirlo, de ahí viene el nombre command y bueno para
+
+16
+00:01:32,200 --> 00:01:37,000
+comenzar a implementar este patrón de diseño vamos a nuestro archivo command y dentro del
+
+17
+00:01:37,000 --> 00:01:43,960
+command vamos a definir una clase abstracta command con un método abstracto que se llame execute o
+
+18
+00:01:43,960 --> 00:01:51,760
+ejecutar, entonces aquí tenemos a definir las clases definidas como copy command y past command,
+
+19
+00:01:51,760 --> 00:02:00,800
+entonces vamos a hacer lo siguiente, from abc import abc y vamos a implementar abstract method
+
+20
+00:02:00,800 --> 00:02:12,120
+entonces class command abc tenemos un método abstract que se llama execute entonces vamos
+
+21
+00:02:12,120 --> 00:02:18,560
+a implementar los comandos concretos en este caso vamos a generar un comando con un concreto que
+
+22
+00:02:18,560 --> 00:02:27,200
+se llame copy. Entonces, class, copy command y esa es la implementación. En este caso se
+
+23
+00:02:27,200 --> 00:02:32,520
+inicializa con un receiver. En este caso puede ser, por ejemplo, el editor de texto y el execute,
+
+24
+00:02:32,520 --> 00:02:39,040
+el editor de texto va a decidir cómo copia esa acción. O sea, la acción copiar se define
+
+25
+00:02:39,040 --> 00:02:49,900
+dentro de nuestro receiver. Y, por ejemplo, también el pastMethod que es copiar, pegar. En este caso,
+
+26
+00:02:49,900 --> 00:02:59,000
+past es pegar y aquí definimos la acción, como tal, cuando ejecutamos este comando. Ahora en nuestra
+
+27
+00:02:59,000 --> 00:03:06,280
+clase receiver es donde vamos a definir los diferentes tipos de recibidores o receptores que
+
+28
+00:03:06,280 --> 00:03:12,860
+puede haber, en este caso vamos a definir un text editor por ejemplo, entonces class text editor
+
+29
+00:03:14,220 --> 00:03:26,910
+vamos a definir el comando copy y vamos a imprimir text editor copiando texto, vamos a
+
+30
+00:03:26,910 --> 00:03:41,680
+ponerlo en inglés text copied y también el método paste, es decir definimos el método copiar
+
+31
+00:03:41,680 --> 00:03:50,770
+pegar de nuestro recibidor y si te fijas cada cada método que definimos de nuestro de cada
+
+32
+00:03:50,770 --> 00:03:58,930
+recibidor corresponde a una clase de copy command o sea por ejemplo corresponde un comando en concreto
+
+33
+00:03:58,930 --> 00:04:04,890
+porque es una acción que va a tomar y ahora ya que tenemos nuestro recibidor el comando
+
+34
+00:04:04,890 --> 00:04:10,810
+pues nos falta implementar el invoker el invoker es el elemento al que se le hace click o se
+
+35
+00:04:10,810 --> 00:04:16,610
+ejecuta para poder llevar a cabo esta acción o este comando, en este caso por ejemplo podemos
+
+36
+00:04:16,610 --> 00:04:30,200
+implementar una clase botón, entonces por ejemplo classButtonDevInit puede tener una lista de comandos
+
+37
+00:04:30,200 --> 00:04:35,960
+porque como recordamos puede ser una cola de comandos como tal pero en este caso vamos a
+
+38
+00:04:35,960 --> 00:04:41,880
+definir uno solo, entonces self command va a ser igual a command y command se va a pasar como
+
+39
+00:04:41,880 --> 00:04:46,080
+constructor. En este caso un botón puede
+
+40
+00:04:46,080 --> 00:04:48,680
+realizar más de un comando.
+
+41
+00:04:48,680 --> 00:04:51,280
+Entonces, cuando definimos el
+
+42
+00:04:51,280 --> 00:04:53,480
+diccionario, podemos guardar las
+
+43
+00:04:53,480 --> 00:04:55,400
+diferentes acciones que puede hacer, por
+
+44
+00:04:55,400 --> 00:04:57,760
+ejemplo, este botón. Pero en este caso
+
+45
+00:04:57,760 --> 00:04:59,560
+vamos a definir solamente un botón para
+
+46
+00:04:59,560 --> 00:05:01,320
+un comando. En este caso lo podríamos
+
+47
+00:05:01,320 --> 00:05:03,160
+incluso definir como button copy,
+
+48
+00:05:03,160 --> 00:05:05,680
+exactamente, o button paste para cada
+
+49
+00:05:05,680 --> 00:05:07,280
+uno. En este caso vamos a definir
+
+50
+00:05:07,280 --> 00:05:09,800
+simplemente este botón, porque lo
+
+51
+00:05:09,800 --> 00:05:16,800
+generaliza el comando como tal son las subclases de querida de comando, o sea las clases abstractas
+
+52
+00:05:16,800 --> 00:05:24,840
+o las clases hijas de la clase abstracta. Estas son las que por así decirlo definen la acción.
+
+53
+00:05:24,840 --> 00:05:30,560
+Ahora solamente necesitamos un invoker porque pues el botón es el que va a disparar esta
+
+54
+00:05:30,560 --> 00:05:37,960
+acción. Entonces podemos definir una función que se me por ejemplo presiona y al momento de que
+
+55
+00:05:37,960 --> 00:05:43,960
+se presiona el comando que hemos definido se ejecuta y si te fijas el comando se pasa al
+
+56
+00:05:43,960 --> 00:05:50,280
+momento de construir nuestro invoker ahora ya que tenemos esta receta es decir el comando
+
+57
+00:05:50,280 --> 00:05:57,800
+la clase comanda abstracta sus clases hijas nuestro recibidor y nuestro invoker tenemos
+
+58
+00:05:57,800 --> 00:06:03,800
+todo listo para llevar este código a código cliente entonces nuestro código cliente
+
+59
+00:06:03,800 --> 00:06:10,960
+tendremos que importar las clases de los comandos concretos de nuestros recibidores y de nuestros
+
+60
+00:06:10,960 --> 00:06:19,280
+invocadores, entonces from command vamos a importar copy command y vamos a importar también
+
+61
+00:06:19,280 --> 00:06:26,280
+paste command, vamos a importar nuestro invoker y vamos a importar también nuestro receiver,
+
+62
+00:06:26,280 --> 00:06:40,820
+entonces generamos nuestro main, entonces editor es igual a text editor y pues el copy, copyButton
+
+63
+00:06:42,100 --> 00:06:48,400
+va a ser igual a button y le vas a pasar el comando que quieres que haga ese botón,
+
+64
+00:06:48,400 --> 00:06:55,200
+como te dije lo que abstrae la acción del botón es literal el comando que hemos definido
+
+65
+00:06:55,200 --> 00:07:03,100
+en un comando concreto. Entonces le pasamos también al comando como al constructor el recibidor
+
+66
+00:07:03,100 --> 00:07:08,980
+quién va a hacer esta acción. En este caso es nuestro editor, el text editor. Lo mismo hacemos
+
+67
+00:07:08,980 --> 00:07:16,780
+con pastebutton y damos la acción que va a desencadenar la ejecución del comando. En este
+
+68
+00:07:16,780 --> 00:07:23,940
+caso que es copybutton.press y pastebutton.press. Ya que hemos hecho esto ejecutamos nuestro
+
+69
+00:07:23,940 --> 00:07:29,540
+código, ejecutamos el main, corremos el main y como puedes ver aquí está funcionando nuestro
+
+70
+00:07:29,540 --> 00:07:36,380
+patón de diseño, command. En este caso con el command que es copy y el command que es pasted.
+
+71
+00:07:36,380 --> 00:07:43,760
+En este caso pues aquí vemos la generalización de código. Si te digas lo que nos permite hacer
+
+72
+00:07:43,760 --> 00:07:49,840
+esto y es muy común en el software dofimática, todos esos botones, todos los botones que
+
+73
+00:07:49,840 --> 00:07:55,760
+vemos aquí en nuestros programas y demás, muy seguramente tienen un patrón de diseño
+
+74
+00:07:55,760 --> 00:08:01,160
+de alguna manera relacionado con command, porque esto permite generalizar las acciones
+
+75
+00:08:01,160 --> 00:08:05,840
+que aún algo puede llevar a cabo. Y realmente todos estos botones, lo único que se abstrae
+
+76
+00:08:05,840 --> 00:08:14,560
+es esta parte, o sea, lo que ejecute el comando, porque realmente el logo, o sea,
+
+77
+00:08:14,560 --> 00:08:18,720
+el icono y todo eso, pues son personalizables. O sea, aquí dentro de botón tú puedes
+
+78
+00:08:18,720 --> 00:08:25,560
+también tener un pad que te lleve una imagen que haga que el botón se muestre con este icono de play por
+
+79
+00:08:25,560 --> 00:08:31,520
+ejemplo. Entonces todos los programas al momento que se instalan tienen una libreta con los sources o
+
+80
+00:08:31,520 --> 00:08:38,920
+con las imágenes de todos los iconos y pues se guardan de esta forma y hay formas de generalizar
+
+81
+00:08:38,920 --> 00:08:43,660
+todo esto pero este es uno de los patrones más usados a la hora de crear e interfaces de
+
+82
+00:08:43,660 --> 00:08:47,360
+usuario. Entonces espero que te ha gustado este vídeo, espero que te esté gustando el
+
+83
+00:08:47,360 --> 00:08:54,560
+dale like, suscríbete, compártelo y recuerda que siempre, siempre vas a aprender un bit a la vez.

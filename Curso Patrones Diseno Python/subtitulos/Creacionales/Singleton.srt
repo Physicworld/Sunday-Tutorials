@@ -1,0 +1,275 @@
+1
+00:00:01,170 --> 00:00:07,130
+muy bien en este vídeo vamos a pasar a explicar el método singleton vamos a generar la clase y
+
+2
+00:00:07,130 --> 00:00:13,570
+además vamos a generar un ejemplo práctico con una base de datos entonces hay muchas formas de
+
+3
+00:00:13,570 --> 00:00:17,770
+implementar este patrón en python pero a continuación te voy a mostrar la forma sencilla de hacerlo
+
+4
+00:00:17,770 --> 00:00:24,610
+utilizando el método new para empezar tenemos que declarar la clase singleton entonces singleton
+
+5
+00:00:24,610 --> 00:00:31,970
+y es importante saber que Singleton va a gestionar múltiples instancias de diferentes
+
+6
+00:00:31,970 --> 00:00:39,690
+subclases, entonces vamos a generar dentro de Singleton un diccionario que se llame Instances,
+
+7
+00:00:39,690 --> 00:00:47,410
+entonces vamos a utilizar el método especial en Python que se llama el crano de una instancia de
+
+8
+00:00:47,410 --> 00:00:53,490
+una clase y vamos a sobrescribirla para la implementación de Singleton, entonces esto
+
+9
+00:00:53,490 --> 00:00:57,370
+lo usaremos para controlar la creación de instancias y ésta será una referencia
+
+10
+00:00:57,370 --> 00:01:03,330
+a la clase de la que se debe llamar una instancia, entonces vamos a generar el
+
+11
+00:01:03,330 --> 00:01:09,570
+método new, aquí ya Copilot me leyó esta línea y bueno vamos a gestionar esta
+
+12
+00:01:09,570 --> 00:01:17,050
+parte. Si la clase en cuestión que queremos instanciar no está en las
+
+13
+00:01:17,050 --> 00:01:23,670
+instancias que hemos creado, entonces tenemos que crearla y guardarla en el
+
+14
+00:01:23,670 --> 00:01:32,790
+diccionario de instancias. Entonces vamos a generar por clave, usar el objeto como clave y vamos a llamar
+
+15
+00:01:32,790 --> 00:01:42,790
+el método NewCLS. Esto lo que hará será crear una nueva instancia de este objeto pero si ya existe
+
+16
+00:01:42,790 --> 00:01:49,950
+pues no la va a crear. Entonces finalmente si no existe pues retornamos la instancia que queremos
+
+17
+00:01:49,950 --> 00:01:56,870
+obtener, entonces de esta manera pues generamos una sola instancia de cada
+
+18
+00:01:56,870 --> 00:02:01,710
+subclase y se maneja a través de esta interfase que es de singleton, entonces
+
+19
+00:02:01,710 --> 00:02:06,110
+vamos a hacer una prueba de nuestra clase para ver si funciona, entonces vamos a
+
+20
+00:02:06,110 --> 00:02:11,750
+declarar dos objetos singleton, entonces objeto 1 es igual a singleton y objetos
+
+21
+00:02:11,750 --> 00:02:15,950
+es igual a singleton, entonces lo que nos va a interesar es comprobar si son
+
+22
+00:02:15,950 --> 00:02:21,230
+el mismo objeto entonces con esto lo hacemos objeto uno es objeto dos y como
+
+23
+00:02:21,230 --> 00:02:25,630
+puedes ver aquí nos dice true entonces aquí comprobamos que nuestra implementación
+
+24
+00:02:25,630 --> 00:02:31,270
+de singleton funciona ahora cuáles son las aplicaciones de singleton imaginemos una
+
+25
+00:02:31,270 --> 00:02:34,790
+aplicación que necesita una única una única conexión a una base de datos
+
+26
+00:02:34,790 --> 00:02:38,910
+entonces podríamos utilizar el patrón singleton para asegurarnos de que solo
+
+27
+00:02:38,910 --> 00:02:42,430
+haya una conexión de datos en todo el proyecto entonces para esto vamos a
+
+28
+00:02:42,430 --> 00:02:47,430
+utilizar la librería SQLite 3 que ya viene incluida en Python, entonces vamos a darle
+
+29
+00:02:47,430 --> 00:02:56,190
+import SQLite 3 y lo que vamos a hacer será crear una clase que se llame database connection.
+
+30
+00:02:56,190 --> 00:03:07,960
+Entonces esta database connection va a heredar de singleton y vamos a generar una conexión,
+
+31
+00:03:07,960 --> 00:03:14,960
+entonces connection es igual a non, todo este código es bien conocido, devconnect le pasamos el self
+
+32
+00:03:14,960 --> 00:03:27,040
+y lo que vamos a hacer aquí if self.connection is non, pues vamos a generar una nueva conexión a esta base de datos
+
+33
+00:03:27,040 --> 00:03:36,040
+entonces stealth.connection va a ser igual a sqlite3.connect y el nombre de nuestra base de datos
+
+34
+00:03:36,040 --> 00:03:41,040
+En este caso la base de esto se va a llamar users.dp
+
+35
+00:03:42,040 --> 00:03:50,040
+Entonces vamos a generar una función que se llama execute query, una función que se llama commit y otra que se llama close
+
+36
+00:03:50,040 --> 00:03:52,040
+Entonces vamos a generar esto ¿no?
+
+37
+00:03:52,040 --> 00:03:56,040
+Entonces dev execute query
+
+38
+00:03:58,040 --> 00:04:01,040
+Y este execute query lo que va a hacer es ejecutar una consulta SQL
+
+39
+00:04:01,040 --> 00:04:03,040
+Vamos a generar nuestro cursor
+
+40
+00:04:03,040 --> 00:04:18,040
+self.connection.cursor. Y aquí vamos a poner cursor.execute.execute query. Vamos a pasarle aquí una
+
+41
+00:04:18,040 --> 00:04:30,160
+consulta que es el query y vamos a simplemente ejecutar. self.connection.com. Entonces ya que
+
+42
+00:04:30,160 --> 00:04:35,760
+ejecutor, ya que el ejecutor hacemos el commit y pues se va a generar nuestra base de datos.
+
+43
+00:04:35,760 --> 00:04:39,960
+Después de esto podemos también generar una función que se llama mi close,
+
+44
+00:04:39,960 --> 00:04:49,760
+le pasamos el self y simplemente self.connection.close. Ahora vamos a ver cómo funciona
+
+45
+00:04:49,760 --> 00:04:55,080
+nuestra implementación de singleton con esta aplicación en específico de una base de datos.
+
+46
+00:04:55,080 --> 00:05:06,660
+entonces vamos a hacer esto de b1 va a ser igual a una instancia de database connection y vamos a
+
+47
+00:05:06,660 --> 00:05:11,740
+ejecutar una query con esta de b1 desde b1 va a ser igual a execute query y vamos a ponerle
+
+48
+00:05:11,740 --> 00:05:21,040
+create table if no exist y la tabla se llama users y lo que vamos a hacer es ponerle una
+
+49
+00:05:21,040 --> 00:05:33,960
+ID y este ID va a ser el integer, integer primary key, integer primary key y el nombre del
+
+50
+00:05:33,960 --> 00:05:44,330
+Australia pues va a ser simplemente texto. Ahora, vamos a generar una segunda conexión
+
+51
+00:05:44,330 --> 00:05:51,210
+a la base de datos, una dv2 que lo que va a hacer es insertar en nuestra base de datos.
+
+52
+00:05:51,210 --> 00:06:09,050
+dv2.executequery, vamos a poner aquí insert, insert into users, name values y pues el nombre
+
+53
+00:06:09,050 --> 00:06:16,250
+de los usuarios, puede ser por ejemplo Alice. Entonces ya tenemos tanto la instancia 1 como
+
+54
+00:06:16,250 --> 00:06:27,370
+la instancia 2, entonces vamos a imprimir aquí print de b1 y b2, entonces si nuestro
+
+55
+00:06:27,370 --> 00:06:32,650
+patón singleton funciona, esto debe de ser cierto, entonces después de todo cerramos
+
+56
+00:06:32,650 --> 00:06:39,010
+la conexión, puedes hacerlo tanto con db1 como con db2 y estás hablando del mismo
+
+57
+00:06:39,010 --> 00:07:14,150
+objeto exactamente. Entonces, aquí nos dice que no tiene un atributo cursor. Ok, aquí
+
+58
+00:07:14,150 --> 00:07:20,470
+me equivoqué, no es con E, es init. Este es el método init. Al momento de que construyes
+
+59
+00:07:20,470 --> 00:07:25,190
+el objeto, inicializas la conexión y entonces ya la puedes usar en los demás atributos,
+
+60
+00:07:25,190 --> 00:07:29,270
+en los demás métodos, en los demás métodos como un atributo. Entonces lo corremos de
+
+61
+00:07:29,270 --> 00:07:37,350
+nuevo y como puedes ver en el primer true nos dice que objeto uno es igual a objeto dos y que la base
+
+62
+00:07:37,350 --> 00:07:42,310
+de datos uno es igual a la base de datos dos y aquí nos ha generado nuestra base de datos entonces
+
+63
+00:07:42,310 --> 00:07:48,350
+vamos a generar una conexión a la base de datos y vamos a hacer una consulta entonces vamos a decirle
+
+64
+00:07:48,350 --> 00:07:56,670
+select all from users y aquí está el registro que hemos generado en nuestra en nuestro
+
+65
+00:07:56,670 --> 00:08:01,990
+programa. Entonces el registro que generamos fue para el usuario Alice. Entonces aquí se
+
+66
+00:08:01,990 --> 00:08:07,450
+termina este vídeo del curso, espero que hayas aprendido mucho en este vídeo, has aprendido
+
+67
+00:08:07,450 --> 00:08:13,750
+cómo implementar el patrón Singleton y has aprendido un ejemplo de práctica para que
+
+68
+00:08:13,750 --> 00:08:20,150
+puedas entender cómo implementar este patrón de diseño en tus proyectos personales. Te
+
+69
+00:08:20,150 --> 00:08:21,030
+veo en el siguiente vídeo.

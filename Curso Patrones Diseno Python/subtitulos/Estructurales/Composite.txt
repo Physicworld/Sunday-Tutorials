@@ -1,0 +1,68 @@
+A continuación, vamos a implementar el patrón de diseño Composite.
+Este patrón de diseño se utiliza para tratar un grupo de objetos de manera similar a un objeto individual.
+Sin embargo, este patrón es particularmente útil cuando se trabaja con estructuras de datos jerárquicas,
+permitiendo a los clientes tratar objetos individuales y composiciones de objetos de manera uniforme.
+El patrón Composite permite componer objetos en estructuras de árboles para representar
+jerarquías y facilita a los clientes el manejo de objetos.
+La implementación define una interfaz común para clases individuales y sus composiciones,
+como por ejemplo una clase Live puede representar un objeto individual y las clases Composite
+representan grupos de objetos Live.
+Los clientes interactúan con la interfaz común, lo que les permite tratar a los
+objetos individuales y compuestos de la misma manera. Para poder implementar este archivo,
+vamos a utilizar cuatro archivos de Python, el archivo component live, composite y el archivo
+cliente main. Para empezar tenemos que empezar declarando la interfaz común que va a ser una
+interfaz abstracta y el ejemplo que vamos a utilizar para este patrón de diseño es utilizar
+archivos de sistema para anotar su jerarquía. Entonces vamos a implementar esto, ya sabemos que
+para implementar una clase abstracta tenemos que importar de ABC, tanto ABC como abstract method,
+entonces fromABC importABC y abstract method. Vamos a generar una clase que se llame fileSystemComponent
+y este va a heredar de ABC. Entonces este va a tener un método abstracto que se va a llamar simplemente
+mostrar detalles, show details. Entonces abstract método lo definimos como show details y lo dejamos
+sin declarar porque esto lo vamos a implementar en cada uno de las de las componentes y de nuestros
+objetos individuales entonces ya que declaramos nuestra clase, nuestra clase
+común vamos ahora a leaf, leaf va a implementar los objetos
+individuales y estos son objetos que por ejemplo no tienen hijos en nuestro
+árbol de jerarquías entonces desde leaf vamos a vamos a importar nuestra
+clase component pero vamos a por ejemplo importar file system component porque
+estamos hablando de archivos. Y bueno, lo que está hasta debajo de nuestro archivo, de
+nuestro sistema de archivos, pues es un archivo como tal. Entonces, lo inicializamos y lo
+único que tenemos que inicializar pues es un nombre, porque pues puede ser un archivo,
+por ejemplo, archivo1.txt. Guardamos ese nombre como atributo y vamos a generar una función
+que se llame showDetails y esta es la función que vamos a implementar que
+habíamos declarado en nuestra class abstracta de fileSystemComponent entonces
+aquí nos va a mostrar el archivo y ahora lo que queremos mostrar es por ejemplo
+el Composite, el Composite es el grupo de archivos que gestiona por
+ejemplo los hijos que son las hojas de nuestro árbol en este caso los
+archivos. Lo que gestiona los archivos pues son los directorios, entonces un
+directorio está compuesto de archivos, entonces from component vamos a importar
+nuestra clase base que es file system component, definimos un directorio y este
+directorio va a tener de igual manera un hombre y una lista de hijos, es decir
+vamos a poder guardar dentro de este directorio pues algunos archivos.
+Entonces, este va a tener algunos métodos como por ejemplo, add child que nos va a permitir
+añadir un hijo a nuestro directorio, en este caso simplemente le voy a poner add y pues
+self.children que es una lista ya bien definida, le agregamos el hijo que le vamos a pasar
+y también definir un método remove si lo deseas, en este caso voy a implementar
+el objeto, el método abstracto para, ahora para directorios, y lo que va a hacer un directorio básicamente es
+mostrar su nombre y iterar a través de sus hijos, mostrando sus detalles.
+Y de esta forma, tenemos ya implementado de alguna manera el patrón composite.
+¿Por qué? Porque tenemos los objetos individuales que son gestionados a través de objetos compuestos de estos
+y está en estructura de árbol.
+Digo, es un caso muy simple, pero es un ejemplo muy claro, ¿no?
+Como los archivos de nuestros sistemas operativos, tanto Windows, Unix,
+no sé, cualquiera que escojas,
+están ordenados de esta manera jerárquica.
+Accedes a un directorio y, por ejemplo,
+puede ser que un director esté compuesto de más directorios
+y hasta el final de los directorios, pues al final tienes un archivo individual.
+En este caso, una hoja de árbol, o sea, un live, una hoja terminal se le dice.
+Ahora, ¿cómo manipulamos esto desde el código cliente? Pues muy sencillo.
+Tenemos que importar from live, import file y from composi, vamos a importar al directorio.
+Entonces, vamos a declarar nuestro main y vamos a crear archivos.
+como por ejemplo archivo 1, va a ser igual a file1.txt, .csb, .doc, cualquier archivo que te imagines
+vamos a crear dos archivos, va a ser file2.txt, vamos a generar un directorio
+y a este directorio le vamos a añadir tanto el archivo 1 como el archivo 2
+y finalmente vamos a mostrar los detalles del directorio
+entonces directory directory 1 punto show details entonces vamos a correr nuestro nuestro archivo
+main lo corremos y como puedes ver aquí ya nos da el archivo directorio como sus hijos en este caso
+los archivos que definimos como file 1 y file 2 pues aquí se termina este video del curso espero
+que te esté usando al curso dale like, suscríbete, compártelo y recuerda que siempre, siempre
+vas a aprender un vida a la vez.

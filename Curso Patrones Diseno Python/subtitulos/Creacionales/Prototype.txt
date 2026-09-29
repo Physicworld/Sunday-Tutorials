@@ -1,0 +1,62 @@
+En este video del curso vamos a implementar el Patrón Prototype.
+El Patrón Prototype es un patrón de creación que se utiliza para crear objetos basados en una plantilla de un objeto existente a través de la clonación.
+Este patrón es particularmente útil cuando la creación de un objeto es más costosa que clonar un objeto existente.
+De esta manera tienes una alta eficiencia en la creación de objetos y ocultas las complejidades de crear un objeto nuevo.
+Para poder llevar a cabo este patrón de diseño, tienes que tener tres ficheros.
+En este caso voy a implementarlo en dos, pero te voy a explicar qué haces en cada uno.
+En primer lugar, como siempre, el archivo Prototype, donde tienes tu clase base.
+Entonces es una interfaz que definir los métodos para clonarse a sí misma cada clase.
+Después tienes el Concrete Prototype.
+De hecho lo vamos a crear de una vez para no tenerlo separado, no tenerlo juntos.
+va a implementar el prototipo que puede ser clonado, es decir, cada caso de clonación para cada objeto
+y por último tienes el código cliente o el main donde probamos el código y vemos cómo funciona.
+Entonces, en primer lugar, vamos a crear la clase base en el archivo prototype. Entonces,
+en prototype definimos una clase que se llame prototype y esta clase va a tener un método que
+se llame clone. Entonces vamos a definir un método clone y lo vamos a dejar sin definir,
+simplemente va a ser un pass y la clase base de la cual otras clases van a heredar estos métodos.
+Entonces vamos a crear un archivo que se llame concrete prototype, pero tú puedes guardar
+todos los... la forma de clonar a clases en un mismo archivo o puedes crear un archivo de clonación
+para cada clase. Esto depende de ti y de cómo estén implementando esto en el lugar donde tú
+estás trabajando. Entonces aquí por ejemplo vamos a crear una clase que clone una configuración de
+sistema por ejemplo. Entonces vamos a importar la librería copy y vamos a generar una clase que
+se llame system config y va a heredar de prototype, vamos a importar la ahorita, entonces vamos
+a decir aquí from prototype import prototype, entonces heredamos de la clase base prototype
+y dentro vamos a definir un constructor que va a recibir una configuración, vamos a poner
+la configuration, entonces vamos a ponerle aquí self configuration, va a ser igual a
+configuración y vamos a definir el método clon entonces de clon en este caso pues va a ser un
+diccionario y pues vamos a simplemente retornar la copia profunda de este objeto al nuevo objeto
+que estamos creando entonces de esta manera ya tenemos por ejemplo la interfaz para hacerlo
+los clones de esta de esta clase y en nuestro código cliente simplemente tendremos que importar
+el archivo system config entonces from concrete prototype import system config de hecho esto
+lo puedes hacer un poco más como lo puedes poner por ejemplo clone o un hombre más específico para
+que sepas de qué va esta clase puedes ponerle incluso system config prototype para que sepas
+que es un tipo de construcción de copia o que facilite la acción de objetos y dentro del main
+pues vamos a generar una configuración inicial, entonces por ejemplo original config va a ser igual
+a system config prototype y a esta configuración tú le vas a pasar pues la configuración en este
+caso voy a generar un diccionario que se llama config y este diccionario pues va a tener ciertos
+atributos, entonces entre esos atributos puede tener el sistema operativo, entonces por ejemplo puede
+ser Linux o Windows o lo que tú quieras y otro otro atributo puede ser por ejemplo la versión. Recuerden
+que estos también pueden ser estructuras de datos bien definidas con enus, para donde puedes tener
+control de ese open close del principio solid. En este caso simplemente lo estoy haciendo así
+para representar el funcionamiento del patrón de diseño, entonces en este caso le pasamos la
+configuración, en este caso el config y lo que vamos a hacer ahora es vamos a clonar este objeto,
+es decir en lugar de crear otro objeto suponiendo que tenemos otro objeto igual en lugar de crear
+otro objeto pasando el archivo de configuración vamos a copiarlo, entonces clonet config va
+va a ser igual a original config.clone, entonces esto lo que hace es pues ocultar la complejidad
+de crear un nuevo objeto, es decir sin repetirlo o por ejemplo definir un nuevo diccionario
+y lo clonamos simplemente, entonces de esta manera imprimimos la configuración inicial
+y la configuración clonada, entonces el resultado pues va a ser el mismo, entonces
+vamos a ejecutar este código y pues vamos a correrlo, vamos a ejecutar este main y como
+puedes ver pues aquí aparece tanto el original config como el clon config, de esta manera tú
+puedes ahorrarte pues a lo mejor crear intentar crear un archivo nuevo desde cero, un nuevo
+objeto desde cero y pues en lugar de eso mejor clonas uno que ya es existente que a lo mejor
+tiene las mismas configuraciones y no lo creas, sino que lo clonas.
+Entonces, al momento en que tú utilizas el Deep Copy,
+el objeto que clones automáticamente va a tener su propio lugar reservado de memoria.
+Entonces, no vas a tener conflictos de un archivo está...
+si modificas un objeto, va a modificar lo otro y demás.
+Sino que, al momento en que tú haces un Deep Copy,
+te retorna el clón del objeto y el nuevo objeto tú lo puedes manipular a tu gusto
+sin necesidad de alterar la configuración inicial del archivo desde el cual clonaste.
+Entonces, espero que te haya gustado este vídeo del curso, te veo en el siguiente
+y dale like, suscríbete y recuerda que siempre, siempre vas a aprender un vídeo a la vez.

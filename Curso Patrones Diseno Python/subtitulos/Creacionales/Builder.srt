@@ -1,0 +1,451 @@
+1
+00:00:00,690 --> 00:00:05,210
+Hola qué tal y bienvenidos a un nuevo vídeo del curso de patrones de diseño con Python.
+
+2
+00:00:05,210 --> 00:00:11,610
+En esta ocasión vamos a hacer una implementación del patrón Builder. Este patrón es un patrón
+
+3
+00:00:11,610 --> 00:00:17,310
+creacional el cual nos permite crear objetos y a manera de que los damos creando nos permite
+
+4
+00:00:17,310 --> 00:00:22,550
+irnos componiendo de diferentes partes para poder tener el objeto final como deseamos que esté
+
+5
+00:00:22,550 --> 00:00:29,490
+creado. Para llevar a cabo este patrón de diseño voy a hacer una analogía con una pizza.
+
+6
+00:00:29,490 --> 00:00:36,410
+Cuando tú querás una pizza de diferentes ingredientes, tienes la opción de usar una cierta salsa,
+
+7
+00:00:36,410 --> 00:00:41,870
+si ponerle cierto ingrediente, hornearla, seleccionar el tipo de masa y demás.
+
+8
+00:00:41,870 --> 00:00:47,810
+Por lo cual este ejemplo se presta mucho a poder utilizarlo de ejemplo para implementar
+
+9
+00:00:47,810 --> 00:00:49,850
+el patrón de diseño Builder.
+
+10
+00:00:49,850 --> 00:00:53,670
+Entonces para llevar a cabo este patrón de diseño necesitamos esta carpeta que
+
+11
+00:00:53,670 --> 00:00:54,670
+está aquí.
+
+12
+00:00:54,670 --> 00:00:59,050
+Y pues por lo general el patrón Builder se divide en tres partes.
+
+13
+00:00:59,050 --> 00:01:06,210
+la primera parte que es el pizza pie es donde se define el objeto o la base class de tu objeto,
+
+14
+00:01:06,210 --> 00:01:12,370
+luego está el pizza builder donde se definen las clases de cada tipo de objeto que se puede crear,
+
+15
+00:01:12,370 --> 00:01:18,450
+en este caso cada clase puede ser el tipo de pizza, por ejemplo una clase puede ser el tipo
+
+16
+00:01:18,450 --> 00:01:24,210
+de pizza margarita y esta pizza que se llama margarita tendrá ciertos ingredientes y por
+
+17
+00:01:24,210 --> 00:01:30,090
+general de forma opcional se genera un nuevo fichero que es el que se llama cook.py que es el
+
+18
+00:01:30,090 --> 00:01:36,570
+director. Este patrón director será el encargado de hacer esta parte creacional, de regresarte los
+
+19
+00:01:36,570 --> 00:01:41,490
+objetos y de que puedas utilizarlos como si fuera una interfaz. Esta última parte es opcional,
+
+20
+00:01:41,490 --> 00:01:45,930
+no siempre se incluye en el patrón builder pero también es una buena práctica cuando el
+
+21
+00:01:45,930 --> 00:01:52,210
+proyecto es muy grande y demás. Cabe recalcar que cada cosa que vamos a poner aquí pues por
+
+22
+00:01:52,210 --> 00:01:57,170
+por ejemplo los ingredientes de la pizza, el tipo de pizza y todo, puede ser declarado como en OMS,
+
+23
+00:01:57,170 --> 00:02:03,450
+entonces si tú querás en OMS de los ingredientes y demás pues hace que tu diseño siga un patrón
+
+24
+00:02:03,450 --> 00:02:08,490
+abierto cerrado, como siguiendo los principios sólidos, pero pues vamos a hacer esto con,
+
+25
+00:02:08,490 --> 00:02:13,050
+vamos a pasarle los tipos, los ingredientes y todo de forma directa para mostrar cómo
+
+26
+00:02:13,050 --> 00:02:17,850
+funciona el patrón builder. Entonces para comenzar en nuestra clase base que es pizza,
+
+27
+00:02:17,850 --> 00:02:25,890
+vamos a declarar pues es la clase, entonces vamos a poner clas, pizza y vamos a definir su
+
+28
+00:02:25,890 --> 00:02:31,770
+constructor, entonces de init y vamos a, y una pizza pues puede tener diferentes tipos de,
+
+29
+00:02:33,770 --> 00:02:38,730
+de componentes, de hecho aquí Copilot me atinó y me leyó la mente porque realmente voy a
+
+30
+00:02:38,730 --> 00:02:44,050
+utilizar estos atributos, por una parte el Dow que es la masa, South que es la salsa y el
+
+31
+00:02:44,050 --> 00:02:48,530
+topping que es lo que le vas a poner a tu salsa, ¿no? A tu pizza, puede ser el ingrediente, si lo vas a
+
+32
+00:02:48,530 --> 00:02:57,010
+poner carne, jamón, lo que sea, ¿no? Entonces vamos a definir los componentes, en este caso el tipo de
+
+33
+00:02:57,010 --> 00:03:06,010
+masa, el tipo de salsa y el topping. Entonces esta es tu clase base pizza y además para hacer un
+
+34
+00:03:06,010 --> 00:03:12,330
+poquito más bonito esto, vamos a también definir tu representación. Entonces vamos a definir
+
+35
+00:03:12,330 --> 00:03:20,610
+la función retron, string perdón y vamos a retornar una cadena formateada con el tipo de masa,
+
+36
+00:03:20,610 --> 00:03:25,810
+el tipo de salsa y el tipo de topping. Esto es lo único que vas a aclarar en tu clase base,
+
+37
+00:03:25,810 --> 00:03:32,410
+que en este caso nuestra clase base es pizza y luego vamos a seguir con el pizza builder. Entonces
+
+38
+00:03:32,410 --> 00:03:38,690
+en pizza builder vamos a importar nuestro objeto base que es pizza, entonces decimos
+
+39
+00:03:38,690 --> 00:03:46,690
+form pizza import pizza entonces vamos a definir una clase que se llama pizza builder entonces aquí
+
+40
+00:03:46,690 --> 00:03:55,170
+vamos a definir los setters por así decirlo de nuestro objeto entonces pero los vamos a
+
+41
+00:03:55,170 --> 00:04:02,170
+dejar sin definir no se le vamos a poner un pass porque luego cada constructor de cada tipo de pizza
+
+42
+00:04:02,170 --> 00:04:12,730
+va a encargarse de definir estos atributos. Entonces vamos a poner DEV, SET, SET DOG que es
+
+43
+00:04:12,730 --> 00:04:24,270
+definir masa y vamos a ponerle SELF, SELF DOG y vamos a ponerle aquí un PASS. ¿Por qué le pongo PASS?
+
+44
+00:04:24,270 --> 00:04:31,930
+Porque esto se va a definir en cada tipo de pizza, es decir tú vas a tener este pizza
+
+45
+00:04:31,930 --> 00:04:38,050
+builder va a ser... las subclases van a heredar de pizza builder estos métodos y tú vas a poder
+
+46
+00:04:38,050 --> 00:04:46,090
+setear de forma independiente todos estos atributos, entonces de igual manera vamos a definir el método setSaus
+
+47
+00:04:47,810 --> 00:04:55,170
+vamos a pasarle la salsa igual no lo definimos y por último definimos el método setTopping,
+
+48
+00:04:55,170 --> 00:05:00,130
+entonces también lo pasamos y aquí es donde vamos a definir cada tipo de pizza,
+
+49
+00:05:00,130 --> 00:05:05,490
+en este caso vamos a definir un tipo de pizza, por ejemplo, margarita, entonces, clas,
+
+50
+00:05:09,210 --> 00:05:17,690
+margarita, builder, es decir, pizza margarita, el constructor de la pizza margarita, entonces
+
+51
+00:05:17,690 --> 00:05:23,530
+esta va a heredar de pizza builder y vamos a definir ahora sí su constructor y sus atributos,
+
+52
+00:05:23,530 --> 00:05:32,710
+entonces aquí ya copilot me lo recomienda y como debe de ser, nada más que los atributos no llevan
+
+53
+00:05:32,710 --> 00:05:41,030
+guion bajo vamos a escribirlo de forma correcta, entonces vamos a definir su constructor self y
+
+54
+00:05:41,030 --> 00:05:48,430
+pues cada tipo de pizza o cada receta va a guardar dentro y si un objeto pizza, entonces self.pizza
+
+55
+00:05:48,430 --> 00:05:55,510
+es igual a pizza. Entonces vamos a poner de secdote y self.pizza vamos a exceder al
+
+56
+00:05:55,510 --> 00:06:03,190
+atributo dode y lo seteamos. Entonces nada más que lo que cabe recalcar aquí es que como van
+
+57
+00:06:03,190 --> 00:06:11,350
+a ser tipos bien definidos, no vas a pasarle como tal el atributo dode, no vas a definirlo. En
+
+58
+00:06:11,350 --> 00:06:18,790
+este caso puedes hacer uso de algún enum para tomar el tipo de masa y de masa, entonces aquí
+
+59
+00:06:18,790 --> 00:06:25,030
+no le vamos a pasar el tipo de masa, sino que vamos a ponerla aquí por ejemplo regular, esto puede ser
+
+60
+00:06:27,270 --> 00:06:37,270
+puedes usar un enum, entonces ponemos ese comentario pero por ejemplo la pizza
+
+61
+00:06:37,270 --> 00:06:44,190
+margarita va a tener un tipo de masa regular, ahora vas a aceitear el tipo de salsa, el tipo de salsa pues
+
+62
+00:06:44,190 --> 00:06:52,830
+va a ser de tomate y pues vas a aceitear los toppings, entonces los toppings pues es por ejemplo el queso,
+
+63
+00:06:52,830 --> 00:07:00,350
+vamos a decir que esta pizza tiene un topping de queso mozzarella, entonces este es un patrón de
+
+64
+00:07:00,350 --> 00:07:06,990
+diseño que ya tiene predefinido el patrón Margarita y dentro de cada clase se gestiona
+
+65
+00:07:06,990 --> 00:07:12,110
+cómo se inicializan los atributos de la clase pero eso tú lo puedes generalizar a cualquier
+
+66
+00:07:12,110 --> 00:07:17,770
+problema o sea si quieres por ejemplo construir una casa pues no sé la casa puede tener dos
+
+67
+00:07:17,770 --> 00:07:22,610
+baños tres cuartos y un estacionamiento puedes construir diferentes tipos de casa
+
+68
+00:07:22,610 --> 00:07:29,350
+definiendo sus clases heredando de una clase base entonces ya que tenemos esto vamos a
+
+69
+00:07:29,350 --> 00:07:35,750
+definir ahora la clase directora, que esta es opcional pero igual la vamos a definir porque pues es parte
+
+70
+00:07:35,750 --> 00:07:44,830
+del patrón builder, entonces from pizza builder vamos a importar margarita builder, entonces vamos
+
+71
+00:07:44,830 --> 00:07:54,790
+a definir la clase cock que es nuestra clase directora y vamos a ponerle un método estático que
+
+72
+00:07:54,790 --> 00:08:05,410
+se llame MakePizza. Entonces, vamos a pasarle Self y el Builder. En este caso, el Builder
+
+73
+00:08:05,410 --> 00:08:09,970
+pues es el constructor que ya hemos definido en la clase, ¿no? O sea, en este caso, en
+
+74
+00:08:09,970 --> 00:08:14,870
+este caso los Builders va a ser el tipo de pizza, ¿no? O sea, por ejemplo, tú puedes
+
+75
+00:08:14,870 --> 00:08:20,870
+generar otra clase que se llame CheeseBuilder y va a ser una pizza, por ejemplo, de extra
+
+76
+00:08:20,870 --> 00:08:27,990
+eso y ya tienes tus patrones de diseño definidos y a la clase directora simplemente vas a tener
+
+77
+00:08:27,990 --> 00:08:32,790
+que pasarle el builder, ahorita vas a ver en el código cliente como es que mandamos llamar
+
+78
+00:08:32,790 --> 00:08:41,510
+estas funciones, entonces dentro de makepizza generalizamos los setters de la clase y se
+
+79
+00:08:41,510 --> 00:08:48,310
+definen los atributos y de esta forma retornamos la pizza, si usted lo fijas al final retornamos
+
+80
+00:08:48,310 --> 00:08:55,310
+retornamos el objeto pizza. Entonces, ésta es la clase directora y ahora en el código
+
+81
+00:08:55,310 --> 00:09:03,730
+cliente ¿cómo instanceríamos esto? Entonces, import cook, importamos la clase directora
+
+82
+00:09:03,730 --> 00:09:10,410
+e importamos los builders que queremos inicializar. En este caso, si te fijas, por ejemplo, Copilot
+
+83
+00:09:10,410 --> 00:09:15,690
+nos dice que también implementemos creamy bacon builder. Es una pizza que no definimos,
+
+84
+00:09:15,690 --> 00:09:21,410
+nos autocompleta porque Copilot reconoce que estamos implementando un patrón de diseño builder,
+
+85
+00:09:21,410 --> 00:09:27,490
+entonces nos recomienda que importemos otros builders, pero pues no los tenemos. Entonces ahora sí,
+
+86
+00:09:27,490 --> 00:09:35,410
+instanciamos la clase de directoria y instanciamos también los constructores de los diferentes
+
+87
+00:09:35,410 --> 00:09:41,050
+builders y después pues simplemente podemos mandar llamar la clase directora y recibir
+
+88
+00:09:41,050 --> 00:09:48,730
+objetos de tipo pizza, entonces pizza va a ser igual a cook.makepizza y le dices qué tipo de pizza
+
+89
+00:09:48,730 --> 00:09:53,290
+quieres y tú tuvieras muchos tipos de pizza pues aquí tú lo seguías instanciando y te
+
+90
+00:09:53,290 --> 00:10:00,010
+irían retornando ese tipo de objeto a tu variable pizza. Desde esta manera con este mismo patrón
+
+91
+00:10:00,010 --> 00:10:07,490
+tú podrías por ejemplo generar un programa que genere recetas y para un restaurante y que además
+
+92
+00:10:07,490 --> 00:10:10,490
+puedes implementar, por ejemplo, un gestor de tareas en el que...
+
+93
+00:10:10,490 --> 00:10:14,490
+un gestor de órdenes en el que habías diciéndole al restaurante
+
+94
+00:10:14,490 --> 00:10:19,490
+qué tipo de comida sigue, ¿no? O sea, todo esto pues es...
+
+95
+00:10:19,490 --> 00:10:22,490
+lo puedes implementar en un programa literal de sistema de...
+
+96
+00:10:22,490 --> 00:10:25,490
+de pagos como tipo Uber Eats, Rapid y demás, ¿no?
+
+97
+00:10:25,490 --> 00:10:29,490
+Entonces, una vez que ya generamos nuestro objeto pizza
+
+98
+00:10:29,490 --> 00:10:32,490
+pues lo imprimimos y se va a imprimir pues de alguna manera
+
+99
+00:10:32,490 --> 00:10:35,490
+también su representación. Entonces, vamos a correr
+
+100
+00:10:35,490 --> 00:10:44,370
+el main, vamos a ponerle run main y si te fijas aquí nos dice que el tipo de pizza que estamos
+
+101
+00:10:44,370 --> 00:10:51,770
+generando es un tipo de pizza regular con salsa de tomate y con topping que es mozzarella, es decir
+
+102
+00:10:51,770 --> 00:11:00,650
+generamos una pizza de margarita pero tu aquí puedes definir todos los tipos de pizza que quieras
+
+103
+00:11:00,650 --> 00:11:08,770
+con diferentes combinaciones y entonces la carta de un restaurante de pizzas se convierte en un patrón
+
+104
+00:11:08,770 --> 00:11:15,530
+diseño builder con muchos builders donde tú puedes definir específicamente la receta de, por ejemplo,
+
+105
+00:11:15,530 --> 00:11:21,890
+una pizza. Pero esto lo puedes extender a muchísimos más casos. Digo, esto es un ejemplo
+
+106
+00:11:21,890 --> 00:11:26,690
+para que tú puedas imaginar cómo implementar esto en problemas de la vida real, en un problema
+
+107
+00:11:26,690 --> 00:11:31,250
+tuyo en empresa y demás y la ventaja que tienen los patrones de diseño es que son
+
+108
+00:11:31,250 --> 00:11:36,130
+abiertos cerrados y siguen el principio sólido por ejemplo si yo quisiera ahora
+
+109
+00:11:36,130 --> 00:11:40,330
+generar otro tipo de pizza lo único que tengo que hacer es definir la clase una
+
+110
+00:11:40,330 --> 00:11:45,490
+clase nueva pero no tengo que modificar ni la clase base ni la clase de margarita
+
+111
+00:11:45,490 --> 00:11:49,330
+builder es decir el código va a ser fácilmente mantenible y fácilmente
+
+112
+00:11:49,330 --> 00:11:53,170
+escalable. Entonces espero que te haya gustado este vídeo te veo en el
+
+113
+00:11:53,170 --> 00:11:57,930
+siguiente vídeo del curso y suscríbete, dale like, recomiendalo y te veo en la siguiente.

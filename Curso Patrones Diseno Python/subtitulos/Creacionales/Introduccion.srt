@@ -1,0 +1,539 @@
+1
+00:00:00,980 --> 00:00:04,380
+Hola qué tal y bienvenidos a un nuevo curso en Quantacademy.
+
+2
+00:00:04,380 --> 00:00:08,220
+En esta ocasión, venimos presentando el curso de patrones de diseño con Python.
+
+3
+00:00:08,220 --> 00:00:13,460
+Cuando aprendemos a programar, por lo general, intentamos crear soluciones a nuestros problemas
+
+4
+00:00:13,460 --> 00:00:20,740
+desde nuestro conocimiento y como normalmente implementamos todas nuestras funciones.
+
+5
+00:00:20,740 --> 00:00:25,740
+Sin embargo, conforme vamos avanzando en el mundo la programación, nos damos cuenta
+
+6
+00:00:25,740 --> 00:00:30,380
+que todos los problemas que hay y todas las cosas que hemos programado a Lingela se ha resuelto.
+
+7
+00:00:30,380 --> 00:00:38,980
+Entonces, de forma interactiva, bajo este proceso de perfección, creación y volver a intentar
+
+8
+00:00:38,980 --> 00:00:44,720
+cosas y volver a programar la misma función, se generaron soluciones generales a problemas
+
+9
+00:00:44,720 --> 00:00:51,620
+generales. Entonces, estos son los patrones de diseño. Los patrones de diseño muchas
+
+10
+00:00:51,620 --> 00:00:58,100
+veces en el mundo laboral es lo que separa a las personas que son, por decirlo, juniors de los que
+
+11
+00:00:58,100 --> 00:01:03,580
+son seniors. Entonces si dominas los patrones de diseño podrás implementar soluciones robustas
+
+12
+00:01:03,580 --> 00:01:10,850
+a cualquier problema que te propongas en programación. Como dije, los patrones de diseño son
+
+13
+00:01:10,850 --> 00:01:16,450
+plantillas rehusables para problemas de software, son plantillas reutilizables de código,
+
+14
+00:01:16,450 --> 00:01:24,930
+son clases o clases con métodos e incluso funciones que te permiten dar soluciones a problemas que ya
+
+15
+00:01:24,930 --> 00:01:31,130
+existieron y que alguien los resolvió de una forma muy efectiva y eficiente. Hay tres tipos de
+
+16
+00:01:31,130 --> 00:01:37,490
+categorías de patrones de diseño. La primera categoría es la categoría de los creacionales.
+
+17
+00:01:37,490 --> 00:01:45,130
+Esta te permite crear de forma sencilla y implementar diferentes formas de creación de
+
+18
+00:01:45,130 --> 00:01:51,770
+objetos, pero se simplifica porque poniendo tu ejemplo, el primer patrón que vamos a estudiar es el
+
+19
+00:01:51,770 --> 00:01:57,850
+singleton. Este patrón singleton es de mucho ayuda, por ejemplo, cuando estableces una conexión con una
+
+20
+00:01:57,850 --> 00:02:04,730
+base de datos, porque el conectarte una base de datos es costoso en cuanto a recursos y si querás
+
+21
+00:02:04,730 --> 00:02:09,810
+múltiples instancias puede generar inestabilidad en tu programa. Sin embargo, por ejemplo,
+
+22
+00:02:09,810 --> 00:02:17,930
+cuando implementas el patrón de diseño singleton te permite generar solamente una instancia de la
+
+23
+00:02:17,930 --> 00:02:24,330
+base de datos y demás. Vamos a ir paso a paso en cada patrón y en cada método o categoría de
+
+24
+00:02:24,330 --> 00:02:29,810
+los patrónes de diseño. Luego están los estructurales que mejoran la composición y relación
+
+25
+00:02:29,810 --> 00:02:34,410
+entre los objetos y finalmente los de comportamiento que te ayudan a optimizar la
+
+26
+00:02:34,410 --> 00:02:38,010
+comunicación entre los objetos y las responsabilidades que a cada uno le competen.
+
+27
+00:02:38,010 --> 00:02:46,410
+Los beneficios de aprender patrones de diseño es que son soluciones probadas y mejora la comunicación
+
+28
+00:02:46,410 --> 00:02:50,730
+entre los desarrolladores porque si tú ya sabes patrones de diseño y tu colega también sabe
+
+29
+00:02:50,730 --> 00:02:56,250
+patrones de diseño pues es más sencillo que le digas a tu colega pues vamos a implementarlo
+
+30
+00:02:56,250 --> 00:02:59,930
+en Singleton para dar soluciones a este problema por ejemplo y él te va a entender
+
+31
+00:02:59,930 --> 00:03:06,440
+por qué ambos han estudiado patrones de diseño. Este es el outline del curso y los patrones
+
+32
+00:03:06,440 --> 00:03:11,560
+que vamos a ver. Este curso tiene un enfoque práctico por lo que vamos a estudiar tanto
+
+33
+00:03:11,560 --> 00:03:17,680
+de patrón de diseño y vamos a generar un ejemplo práctico de cada patrón de diseño.
+
+34
+00:03:17,680 --> 00:03:23,160
+Entonces, por la parte de los patrones creacionales, tenemos el singleton, que es un objeto para
+
+35
+00:03:23,160 --> 00:03:27,480
+una clase que solamente te permite crear un objeto para una clase. Está el factor
+
+36
+00:03:27,480 --> 00:03:31,720
+y método que es muy utilizado al momento de crear interfaces en nuestros códigos
+
+37
+00:03:31,720 --> 00:03:35,240
+y te permite crear objetos sin exponer la lógica de su creación.
+
+38
+00:03:36,240 --> 00:03:40,280
+Está el builder que te permite crear un objeto complejo paso a paso,
+
+39
+00:03:40,280 --> 00:03:43,320
+como si se trataba de una composición de cosas, como si fue una receta,
+
+40
+00:03:43,320 --> 00:03:45,440
+te permite crear objetos de esa manera.
+
+41
+00:03:45,440 --> 00:03:47,880
+El prototype, copiar objetos existentes,
+
+42
+00:03:47,880 --> 00:03:51,160
+la abstract factory te permite crear familias de objetos relacionados.
+
+43
+00:03:51,600 --> 00:03:54,000
+Y estos son los patrones creacionales más usados.
+
+44
+00:03:54,280 --> 00:03:57,560
+Allá fuera en la industria puede ser que haya muchísimos más patrones creacionales,
+
+45
+00:03:57,560 --> 00:04:01,160
+pero estos son los más usados y los que deberías de aprender a usar.
+
+46
+00:04:01,720 --> 00:04:07,200
+Luego están los patrones estructurales, por ejemplo el adapter, ese te permite crear una
+
+47
+00:04:07,200 --> 00:04:12,280
+interfaz unificada entre interfaces incompatibles como por ejemplo, si tienes una librería que te
+
+48
+00:04:12,280 --> 00:04:17,760
+regresa documento ccb y para tu programa te necesitas documento, esa información en formato
+
+49
+00:04:17,760 --> 00:04:23,920
+xml, el adaptador se encargará de modificar esa información para que tu código no se rompa
+
+50
+00:04:23,920 --> 00:04:29,440
+puedes seguir utilizando lo que viene de fuera de tu interfaz o de tu código.
+
+51
+00:04:31,000 --> 00:04:36,760
+El decorador te permite añadir responsabilidades a objetos de forma dinámica. Puedes añadir nuevas
+
+52
+00:04:36,760 --> 00:04:42,760
+funciones y pueden hacer nuevas cosas en cada objeto que tú definas con algún decorador.
+
+53
+00:04:42,760 --> 00:04:52,280
+Lo veremos a detalle cuando lleguemos a ese patrón de diseño. El patrón de señor
+
+54
+00:04:52,280 --> 00:04:59,000
+facade, es una interfaz simplificada de un sistema complejo, igual vamos a verlo detalle pero vamos
+
+55
+00:04:59,000 --> 00:05:05,040
+a dar la presentación aquí, el composite te permite componer objetos en estructuras de árbol,
+
+56
+00:05:05,040 --> 00:05:10,680
+hay formas de poder relacionar los árboles utilizando una estructura de árbol como tal,
+
+57
+00:05:10,680 --> 00:05:17,040
+el flyweight te permite minimizar el uso de memoria o costos computacionales implementando
+
+58
+00:05:17,040 --> 00:05:23,920
+está este método de forma pues correcta, o sea, te permite mantener más objetos dentro de la
+
+59
+00:05:23,920 --> 00:05:31,840
+cantidad disponible de memoria porque de alguna manera compartes memoria común entre diferentes
+
+60
+00:05:31,840 --> 00:05:39,200
+objetos en lugar de crear memoria para cada objeto, pues por ejemplo un ejemplo claro es por
+
+61
+00:05:39,200 --> 00:05:43,440
+ejemplo la conexión a la base de datos puede estar compartida entre diferentes objetos y
+
+62
+00:05:43,440 --> 00:05:51,640
+y no cada objeto debe de tener su propia conexión de la base altos, por ejemplo, está el bridge
+
+63
+00:05:51,640 --> 00:05:57,940
+que lo que hace es que permite separar la extracción de implementación, es decir, te permite dividir
+
+64
+00:05:57,940 --> 00:06:03,440
+una clase grande o un grupo de clases estrechamente relacionadas en dos génergías separadas,
+
+65
+00:06:03,440 --> 00:06:07,560
+o sea, por una parte tiene la extracción y por otra la implementación, y te permite
+
+66
+00:06:07,560 --> 00:06:11,160
+desarrollar independientemente una de la obra.
+
+67
+00:06:11,160 --> 00:06:16,200
+tenemos lo que son los patronos de comportamiento que son muy útiles al momento de generar un
+
+68
+00:06:16,200 --> 00:06:22,400
+programa ya incluso en videojuegos. Incluso también por ejemplo en train algorithmico se utiliza
+
+69
+00:06:22,400 --> 00:06:27,600
+mucho el patrón de comportamiento observer. El patrón de comportamiento observer es un objeto
+
+70
+00:06:27,600 --> 00:06:33,880
+que te permite suscribir y notificar cambios a varios objetos, es decir, tú este patrón
+
+71
+00:06:33,880 --> 00:06:39,400
+observer puede estar conectado por ejemplo a una API o a un web socket y cada vez que
+
+72
+00:06:39,400 --> 00:06:44,520
+un cambio o una notificación te permite enviar esa notificación a otros objetos en el programa,
+
+73
+00:06:44,520 --> 00:06:51,440
+como por ejemplo si vemos un objeto de tren algrímico es que un objeto observer está observando el
+
+74
+00:06:51,440 --> 00:06:56,800
+web socket que te manda los precios de bitcoin, entonces cuando hay un cambio en el precio de
+
+75
+00:06:56,800 --> 00:07:01,720
+bitcoin este observer notifica a otros objetos como pueden ser los objetos de estrategia y
+
+76
+00:07:01,720 --> 00:07:07,880
+los objetos de estrategia de trading sabrán qué hacer con ese cambio de precio, luego por
+
+77
+00:07:07,880 --> 00:07:13,560
+por ejemplo, tenemos el command, el command te permite encapsular una solicitud como un
+
+78
+00:07:13,560 --> 00:07:17,640
+objeto. Es decir, convierte una solicitud en un objeto independiente que contiene toda
+
+79
+00:07:17,640 --> 00:07:22,660
+la información sobre la solicitud, esta transformación te permite parametrizar los métodos con diferentes
+
+80
+00:07:22,660 --> 00:07:27,800
+solicitudes, retrasar o poner en cola la ejecución de una solicitud y soportar operaciones que
+
+81
+00:07:27,800 --> 00:07:32,080
+no se pueden realizar. Eso es muy útil a la hora de poder implementar por ejemplo
+
+82
+00:07:32,080 --> 00:07:37,400
+interfaces gráficas con botones de guardar, nuevo, cortar, pegar, imprimir, todo ese
+
+83
+00:07:37,400 --> 00:07:42,080
+tipo de cosas se implementan con el comando comment, como tal por eso se llama comment.
+
+84
+00:07:43,200 --> 00:07:51,320
+Luego por ejemplo tenemos el patrón de diseño strategy y este patrón te permite la selección
+
+85
+00:07:51,320 --> 00:07:56,240
+de un algoritmo en tiempo de ejecución, es decir te permite definir una familia de algoritmos y
+
+86
+00:07:56,240 --> 00:08:02,000
+colocar cada uno de ellos en una clase separada y hacer sus objetos intercambiables, es decir un
+
+87
+00:08:02,000 --> 00:08:07,000
+objeto puede tener diferentes estrategias que puede decidir tomar o usar dadas
+
+88
+00:08:07,000 --> 00:08:14,280
+ciertas condiciones del programa. Luego tenemos el patrón state. El patrón state tiene, por ejemplo,
+
+89
+00:08:14,280 --> 00:08:20,640
+cambios de comportamiento de un objeto cuando su estado interno cambia y te permite alterar su
+
+90
+00:08:20,640 --> 00:08:27,480
+comportamiento y esto parece, da la sensación de que el objeto cambia su clase. A lo mejor no
+
+91
+00:08:27,480 --> 00:08:31,960
+está entendido de las aplicaciones que te estoy dando, pero poco a poco vamos a llegar a cada uno
+
+92
+00:08:31,960 --> 00:08:36,480
+de los patrones de diseño y te los voy a explicar y vas a entender cómo funcionan y si los
+
+93
+00:08:36,480 --> 00:08:42,920
+aplicas de forma correcta, vas a poder usarlos de forma eficaz y tu nivel de programación va a
+
+94
+00:08:42,920 --> 00:08:49,800
+hacer va a elevarse, va a ser mayor. Y por último patrón diseñado que vamos a ver es el chain
+
+95
+00:08:49,800 --> 00:08:57,040
+de responsabilidad. Este te permite pasar solicitudes a lo largo de una cadena de manejadores. Si
+
+96
+00:08:57,040 --> 00:09:02,520
+alguna vez has visto en los códigos que utilizan por ejemplo handlers, estos handlers por lo
+
+97
+00:09:02,520 --> 00:09:12,360
+general pertenecen a una cadena de responsabilidad, es decir, por ejemplo si eres un cliente de un
+
+98
+00:09:12,360 --> 00:09:21,720
+banco y por ejemplo el asesor solamente te puede dar préstamos de mil dólares, solamente tiene permiso
+
+99
+00:09:21,720 --> 00:09:26,640
+para darte préstamos de mil dólares, pero por ejemplo tú necesitas 10 mil dólares, bueno pues
+
+100
+00:09:26,640 --> 00:09:33,440
+entonces el siguiente que te puede dar ese préstamo es el gerente y ya si necesitas más dinero pues a lo
+
+101
+00:09:33,440 --> 00:09:42,480
+mejor será un director. Entonces la cosa es que se van pasando a la responsabilidad dado lo que
+
+102
+00:09:42,480 --> 00:09:47,280
+pueden hacer con lo que tienen en el objeto o sea la información que tienen en el objeto. Entonces
+
+103
+00:09:47,280 --> 00:09:53,600
+te permite la cadena de responsabilidades pasar solicitudes a lo largo de esta y al recibir una
+
+104
+00:09:53,600 --> 00:09:58,360
+solicitud, cada manejador decide si la procesa o si la pasa el siguiente manejador de la cadena.
+
+105
+00:10:00,200 --> 00:10:06,280
+Todos estos patrones son herramientas para tu casa de herramientas, vaya a la redundancia y
+
+106
+00:10:06,280 --> 00:10:09,320
+tiene esos procesos contra. ¿Cuáles son los controles de los patrones de diseño?
+
+107
+00:10:09,320 --> 00:10:13,120
+Su único contra es que los utilices cuando no son necesarios. Es decir,
+
+108
+00:10:13,120 --> 00:10:18,960
+una vez que los aprendes te vas a dar cuenta que la mayoría de problemas de programación
+
+109
+00:10:18,960 --> 00:10:24,140
+se pueden resolver con esto, pero por ejemplo si estás en un startup pues a la
+
+110
+00:10:24,140 --> 00:10:27,980
+mejor quizá no querrás implementar patrones de diseño porque las
+
+111
+00:10:27,980 --> 00:10:32,140
+startups crecen en cuanto a requerimientos, implementaciones de
+
+112
+00:10:32,140 --> 00:10:35,580
+código y demás. Entonces puede ser que tu diseño es un código de una manera y
+
+113
+00:10:35,580 --> 00:10:39,060
+que el día de mañana te pide otra cosa y tengas que cambiar todo y pues
+
+114
+00:10:39,060 --> 00:10:44,900
+mucho de tu trabajo ya no va a valer. Entonces por lo general las empresas
+
+115
+00:10:44,900 --> 00:10:51,660
+después contratan programadores que saben todo esto para poder arreglar todo lo que pasó en la
+
+116
+00:10:51,660 --> 00:10:55,620
+startup cuando estaba levantando el proyecto porque seguramente todos los códigos spaghetti,
+
+117
+00:10:55,620 --> 00:11:00,140
+pero entonces ahí es donde entran las personas que realmente saben programación. Las personas
+
+118
+00:11:00,140 --> 00:11:04,020
+que fundan el código y demás por lo general no siguen siempre las mejores prácticas de
+
+119
+00:11:04,020 --> 00:11:08,540
+programación y por lo general ese código no es tan robusto y cuando la empresa tiene un
+
+120
+00:11:08,540 --> 00:11:11,300
+un income, un revenue de su proyecto.
+
+121
+00:11:11,300 --> 00:11:15,460
+Entonces, tratan de refactorizar el código de su producto.
+
+122
+00:11:15,460 --> 00:11:17,900
+Y entonces, a partir de ahí, eso les permite crecer,
+
+123
+00:11:17,900 --> 00:11:22,500
+les permite, este, muchas veces hasta bajar costos de producción,
+
+124
+00:11:22,500 --> 00:11:24,840
+porque como viste algunos patrones de diseño,
+
+125
+00:11:24,840 --> 00:11:28,580
+te permiten ahorrar recursos de la computadora.
+
+126
+00:11:28,580 --> 00:11:32,300
+Entonces, para decirlo, si un producto necesitaba 64 gigabytes
+
+127
+00:11:32,300 --> 00:11:34,340
+de RAM, pues ahora aplicando patrones de diseño,
+
+128
+00:11:34,340 --> 00:11:35,660
+pues a puede que ocupe 32.
+
+129
+00:11:35,660 --> 00:11:37,860
+Entonces, ya cuesta menos tu servidor o cosas de ese
+
+130
+00:11:37,860 --> 00:11:45,500
+entonces todas estas cosas que vas a aprender en este curso van a van a hacer la explicación del
+
+131
+00:11:45,500 --> 00:11:52,100
+patrón de diseño, un ejemplo práctico y pues vamos a tratar de abarcar lo más posible de cada
+
+132
+00:11:52,100 --> 00:11:58,700
+patrón y pues ya queda tu imaginación, cómo puedes aplicar cada uno de esos patrones creacionales
+
+133
+00:11:58,700 --> 00:12:02,820
+y cómo lo aplicarás en tu trabajo, en tus proyectos personales o en lo que sé que se
+
+134
+00:12:02,820 --> 00:12:08,160
+trabajan. Entonces espero que te guste este curso y pues sin más vamos a entender el primer
+
+135
+00:12:08,160 --> 00:12:09,900
+patrón arqueacional que es el Siegelton.

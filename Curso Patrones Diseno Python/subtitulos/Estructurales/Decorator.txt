@@ -1,0 +1,74 @@
+Hola qué tal y bienvenidos a un nuevo video de este curso de patrones de diseño con Python.
+En esta ocasión vamos a programar el patrón estructural decorador. El patrón de diseño
+decorador en Python permite agregar funcionalidades adicionales a un objeto de forma dinámica,
+es decir, sin alterar la estructura de la clase existente. Este patrón de diseño es útil
+cuando queremos extender la funcionalidad de objetos individualmente y de manera transparente.
+Para poder implementar este patrón de diseño, por lo general se utilizan cuatro ficheros,
+pero hay múltiples estructuras que se pueden utilizar. En primer lugar,
+el fichero Component es la interfaz para los objetos que pueden tener responsabilidades
+añadidas dinámicamente. Concrete Component es una clase que implementa el componente,
+definiendo un objeto al que se pueden añadir responsabilidades adicionales.
+luego el archivo decorator mantiene una referencia al componente y define una interfaz acorde a la
+interfaz del componente y con create decorator añade responsabilidades al componente. Vamos
+a ver un ejemplo práctico para poder implementar este patrón de diseño. Vamos a suponer que
+tenemos un objeto de texto al cual le queremos añadir etiquetas html. En primer lugar vamos
+a tener un componente, el componente bien puede ser por ejemplo una clase que se llama texto,
+entonces vamos a crear este componente como una clase abstracta, entonces fromABC vamos a importar
+ABC y abstractMethod, vamos a generar una clase que se llama text, va a heredar de ABC y vamos a
+generar un método abstracto que se va a llamar render, luego en concreteComponent vamos a crear
+un componente concreto que se va a llamar plain text, esto es simplemente pues texto plano, traducido
+al español como tal, entonces este es simplemente un componente concreto del componente que es
+la clase base que estamos creando, entonces from component vamos a importar text, entonces vamos
+a generar la clase que se llama plain text y dentro vamos a tener un constructor que va a
+inicializar el texto y la función render va a retornar el texto. Aquí copilot ya sabe. Ya
+sabe lo que quiero hacer con esta función, entonces lo añadimos directamente. Posteriormente vamos a
+definir el decorador. Vamos a hacer front component import text y vamos a crear una clase que se
+se llame text decorator, esta clase lo que se va a encargar de hacer es de retornar el
+texto como tal, esta es la clase a la cual vamos a, vamos a utilizar para extender un
+componente, es decir vamos a mantener una referencia al componente y vamos a definir
+una interfaz para el componente, en este caso text, entonces vamos a crear una clase
+que se llame text decorator y va a heredar de text, vamos a tener un constructor de init
+y vamos a ponerle text component, guardamos un atributo con esto y vamos a generar la función
+render, entonces render va a retornar el render del componente, es decir, esta función
+render estuvo declarada en text, pero como un método abstracto y en el decorador
+se define. Entonces vamos a crear un decorador concreto a partir de text decorator
+en donde a esta función render vamos a añadirle la etiqueta de html.
+Entonces aquí en concrete decorator vamos a importar el text decorator.
+Entonces, from decorator vamos a importar text decorator y lo que vamos a hacer es generar una clase que se llame
+HTML decorator.
+Le pasamos el decorador del texto y vamos a definir render.
+Entonces, aquí Copilot ya me ayuda a completarlo.
+Entonces, por una parte, TextDecorator puede renderizar el texto por sí mismo, pero después
+tenemos esta función que es el decorador como tal, la que nos va a ayudar a poner las etiquetas
+de HTML y pues decorar nuestro texto con esto. Ahora sí, pues vamos a ver cómo se implementa
+esto en el código cliente. En el código cliente tenemos que importar el componente
+concreto y el decorador concreto. Entonces, from concrete component, vamos a importar plain
+text y vamos a importar el decorador. Es decir, no el text decorator, sino el html decorator.
+¿Cómo le puse? html decorator. No sé por qué me marca error ahí, pero porque está
+en concrete decorator.
+Exacto.
+Concrete decorator.
+Importamos HTML decorator desde concrete decorator,
+que es donde lo definimos.
+Ahora, en main, en el código cliente,
+es donde lo vamos a probar.
+En primer lugar,
+vamos a inicializar un objeto
+de texto plano de plaintext,
+y luego a plaintext le vamos a aplicar
+el decorador HTML
+para mostrar que hemos añadido
+una funcionalidad nueva a plaintext
+sin modificar la definición de plaintext.
+entonces plaintext es igual a plaintext y podemos decir por ejemplo hola mundo y
+luego lo que nos interesa es primero pues imprimir el texto sin decorar de esta
+manera imprimimos plaintext hacemos uso de render pero por otra parte le podemos
+aplicar el decorador a plaintext y podemos imprimir también el texto decorado
+entonces vamos a correr el main y como puedes ver, por ejemplo si estás utilizando, estás haciendo
+desarrollo web y lo que te interesa es por ejemplo pasar cierto texto y darle formato html, puedes
+utilizar el formato decorador, pero el objetivo del decorador no es solamente por ejemplo formatear
+texto sino realmente su objetivo es añadir funcionalidades extra a una clase que no las
+tiene definidas, es decir, extender sus funciones y de esta manera pues por ejemplo aquí le añadimos
+la función a plaintext de poder renderizarse en formato html. Ese es el objetivo de el patón
+de diseño decorador. Espero que te haya gustado este vídeo, te veo en el siguiente. Suscríbete,
+dale like, recomiendo este vídeo y recuerda que siempre vas a aprender un bit a la vez.

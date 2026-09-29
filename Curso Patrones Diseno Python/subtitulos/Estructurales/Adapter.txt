@@ -1,0 +1,132 @@
+Bienvenidos a este nuevo vídeo del curso donde empezaremos a programar el
+primer patrón de diseño estructural. El patrón adapter nos permite adaptar
+interfaces que tienen diferentes formatos para poder adaptarlas a nuestro
+código de forma sencilla sin tener que hacer mayores modificaciones. Los
+patrones de diseño que estudiamos en los vídeos interiores son patrones de
+diseño creacionales. Los patrones de diseño que veremos ahora son
+estructurales. La mayoría de ellos nos permiten manipular código externo o este código de terceros
+para adaptarlo de forma sencilla a nuestro software. Vamos a empezar entonces con el patrón de diseño
+adapter. El patrón de diseño adapter nos permite adaptar diferentes interfaces a nuestro código,
+por ejemplo, si tuviéramos que adaptar código que lee, por ejemplo, nuestro código necesita un
+formato JSON, pero tenemos los datos en un formato CSV o lo recibimos en un formato CSV, pues el
+patrón adapter nos permitirá adaptar estas estructuras para no modificar nuestro código y no tener
+que programar casos especiales en nuestros códigos. Para poder llevar a cabo este patrón de diseño
+estructural necesitamos tres archivos, bueno, en este caso dos y el código cliente. El primer
+código es el Handler. El Handler se va a encargar de gestionar los diferentes tipos de archivos y los
+Adapter se va a encargar de adaptar esas interfaces para que podamos usarlas sin aliscreción, por
+así decirlo, utilizar una interfaz como si fuera otra. En este caso vamos a empezar con nuestros
+datos de prueba. Tengo los mismos datos de prueba para ambos archivos. En un archivo JSON
+tengo, por ejemplo, estructuras, atributos de una persona como su nombre y su edad, por ejemplo,
+Alice y 30 años, Bob y 25 años, y este está en formato JSON. Y en formato CSV tengo los mismos
+datos y pues vamos a ver cómo podemos manipular estos datos para utilizar, por ejemplo, un adaptador
+que convierta nuestro CSV a JSON. Vamos a empezar con nuestro archivo de Atlas Handlers,
+vamos a definir un handler para los datos de tipo JSON
+y un handler para los datos de tipo CSV.
+Entonces en Data Handlers vamos a importar en primer lugar JSON
+y vamos a importar la librería CSV.
+Y luego vamos a declarar los handlers.
+Entonces vamos a declarar una clase que se llame JSON Data Handler
+y este JSON Data Handler va a tener una posición que se llame Load Data.
+de load data, todos los miembros de estas clases son estáticos, por lo que no necesitamos inicializar un constructor en este caso
+y vamos a decir with openfilepad y este filepad se lo tenemos que pasar a la función, entonces filepad está aquí
+withOpenFilePad de modo lectura, y inicializamos el modo lectura as file, lo que hacemos será
+retornar la lectura del archivo JSON. Y haremos algo similar con el data handler del csv.
+Entonces vamos a generar una clase que se llame csv data handler y vamos a también definir
+tu método loadData. Aquí ya GitHub Copilot me lo auto completa, pero voy a corregir
+algunas cosas. Va a tener load data y voy a pasar el filepad y lo voy a abrir en modo lectura
+pero lo voy a leer línea por línea, entonces new line va a ser igual a donde encuentre
+el archivo de cada línea y lo que va a hacer es retornar una lista de el csv.tiktriderfile.
+Desde lo que va a hacer esto, va a hacer retornar línea por línea una lista de las líneas
+de nuestro archivo csv. Entonces ya tenemos los data handlers, ya tenemos la forma de
+manipular archivos, al menos de leerlos, a partir de nuestros datos, que yo los tengo
+en una carpeta que se llama data, que son archivos de prueba. Esto es muy fácil de escribir,
+tú los puedes, no copiere pegar, pero puedes escribirlos por ti mismo y vas a tener el ejemplo
+listo para usarse. Después de que ya definimos los data handlers y sabemos que nuestro
+código va a crear un conflicto porque tenemos diferentes archivos de diferentes
+tipos, pues lo que necesitamos será crear un adaptador.
+En este caso, vamos a crear un adaptador de CSV a JSON
+y se va a quedar como tarea que tú implementes el mismo adaptador
+pero de JSON a CSV.
+Entonces, de esta manera, vamos a importar de data handlers,
+los handlers que acabamos de crear.
+Entonces, from data handlers,
+vamos a importar JSON data handler y CSV data handler.
+Entonces, en este caso, vamos a crear una clase
+que se llame CSV2JSONAdapter, y esta clase de lo que se va a encargar es que podamos manipular
+un archivo CSV como si fuera JSON, va a dar la ilusión y no vamos a tener que modificar
+muchas cosas de nuestros archivos. Entonces vamos a definir el constructor de esta clase.
+Entonces vamos a inicializar el constructor, le pasamos CEL y lo que vamos a pasar, lo
+Lo que vamos a pasarle es un csv handler y voy a especificar el tipo simplemente para hacer
+énfasis en esto. En este caso opilot ya lo reconoce, lugar del handler y lo que voy a hacer
+a continuación es instanciar el método loadData y va a retornar un diccionario. ¿Por qué?
+Porque va a tomar cada línea de nuestros csv data, lo va a transformar en un diccionario
+y va a dar la ilusión de que es un archivo JSON.
+Entonces, vamos a decirle devloadData,
+vamos a pasarle selfPilePath.
+Y lo que vamos a hacer será tener csvData,
+va a ser igual a self.csvHandler.
+Vamos a cargar el archivo con nuestros datos de configuración.
+Y bueno, aquí puedes crear una función que se llama convertoJSON,
+pero aquí voy a hacer lo que va a hacer,
+va a ser una lista de comprensión condicionarios.
+esto es más rápido, pero puedes incluso pasarlo a una función externa de la clase.
+Entonces, lo que voy a hacer va a ser generar un diccionario con las columnas por rowin.csbdeta.
+Entonces, esto lo que voy a ocasionar es que cuando tengo un archivo CSV y yo necesito
+en myinterface utilizar JSON, lo que voy a hacer es crear un CSV toJSONAdapter
+y lo que va a hacer es pasarle a este adapter el filepad de mi archivo CSV y lo que va a hacer
+es que me va a regresar los datos como si se tratara de los datos que utilizo en mi código,
+en mi interfaz. Si te fijas de esta manera, yo ya no tuve que adaptar mi código para que
+sea compatible con archivos JSON, sino que estoy forzando un adaptador que transforma
+de alguna manera los datos para que yo no tenga que modificar mi código interno entonces ya que
+generamos nuestro adapter ahora sí podemos probar nuestro nuestro código en el código cliente es
+decir en nuestra aplicación en este caso supongamos que es en un main y lo que vamos a hacer es
+simplemente importar el adaptador e importar los handlers entonces from adapters import tcb
+tu JSONAdapter y lo que vamos a hacer es también importar los handlers, el JSONDataHandler y el
+CSVDataHandler. Vamos a generar una función que lo que va a hacer es cargar los datos e imprimirlo
+simplemente. Entonces, Dev, LoadAndDisplayData. Vamos a pasarle por una parte del DataHandler
+y vamos a pasarle por otra parte el FilePad. Lo que vamos a hacer es utilizar el DataHandler,
+este interfaz para poder cargar los datos e imprimirlos.
+En el caso de nuestra aplicación,
+será para quizá hacer una gráfica,
+sacar un análisis o hacer cualquier otra cosa que necesites.
+Entonces, imprimimos los datos
+y vamos ahora a utilizar a generar nuestro main de nuestra función.
+Entonces, en primer lugar,
+vamos a cargar nuestro JSON handler.
+Y lo que vamos a hacer será generar simplemente un objeto
+de este JSON handler
+y generar el path. Bueno, se lo tenemos que pasar de alguna manera. Entonces, yo tengo mis archivos en data,
+tengo data y es sample data, sample data. Es este archivo que está aquí. Entonces lo va a poner aquí sample data
+JSON. Y lo que voy a hacer pues será simplemente a cargar esta función. O sea, de esta manera es como si mi aplicación
+está utilizando directamente el archivo JSON porque pues mi aplicación utiliza el JSON,
+pero ahora imaginemos que nos pasaron los datos ahora en un CSV y nuestra aplicación necesita
+el JSON. Si podríamos ajustar nuestra aplicación, pues conllevaría mucho trabajo poder reescribir
+ciertas funciones, entonces es más fácil escribir un adaptador para que podamos tratar los
+CSV como si fuera en JSON. Entonces vamos a generar un CSV handler con el adapter.
+Entonces CSV handler, inicializamos el constructor del data handler, del CSV data
+handler como siempre lo haríamos y cargamos los datos del filepad, nada
+más que ahora, en lugar de pasarle al loadData, el CSVHandler lo que vamos a hacer es pasarle
+el adaptador que creamos que pasa de CSVAjation. Entonces, lo que va a hacer esto es que vamos
+a cargar los datos y vamos a pasarle el CSVAdapter y vamos a pasarle también el filePath.
+En este caso ya tenemos la clase definida y creo que no es necesario que definamos el
+CSV data handler, igual lo tenemos ahí pero no es necesario que lo hagamos porque en
+realidad no se utiliza, nos sacamos el pad, a la CSV JSON le pasamos el pad y lo que utilizamos
+es esto, esta línea se puede comentar pero la puedes dejar como referencia, pero no
+te quedas, si lo utilizamos, lo utilizamos aquí porque para JSON adapter necesitamos
+necesitamos pasarle el data handler,
+porque el data handler es el encargado de leer los datos.
+Entonces, sí lo utilizamos.
+Corremos el programa, lo vamos a correr.
+Y como puedes ver, ambos datos vienen uno si viene de un JSON,
+y el otro no viene de un JSON, viene de un CSV.
+Pero si te fijas, está formateado como sifron diccionario,
+es decir, como naturalmente se carga un archivo JSON.
+Entonces, como puedes ver, esto en producción
+significa que no tuviste que refactorizar código de tu aplicación original,
+sino que este adaptador se encargo de poder adaptar los datos a tu aplicación
+y ya no vas a tener que hacer ninguna modificación extra a tu código,
+sino que ya está el adaptador se encarga de hacer ese trabajo sucio.
+Entonces, hasta aquí se termina el video del curso.
+Espero que te esté gustando.
+Suscríbete, dale like, recomiendalo y recuerda que siempre vas a aprender
+un vita a la vez.

@@ -1,0 +1,83 @@
+Bienvenidos a un nuevo video del curso de Patrón de diseño con Python. En esta ocasión vamos a
+estudiar el patrón de diseño abstract factory. En videos anteriores ya hemos estudiado el patrón
+de diseño factory method y este patrón se le parece mucho al que vamos a implementar ahora. La
+única diferencia es que en factoring method habíamos implementado un único producto,
+es decir un vehículo. En abstract factory nos permite extender este patrón de diseño a
+a múltiples productos y múltiples subproductos de estas clases.
+Entonces, la definición es la misma,
+pues que nos permite crear familias de objetos relacionados
+sin especificar sus clases concretas.
+Este patrón es especialmente útil
+cuando tu código necesita trabajar
+diferentes variantes de productos.
+Entonces, vamos a comenzar con lo mismo.
+Vamos a generar un ejemplo,
+imaginando que estamos diseñando una interfaz gráfica
+de usuario en la que creamos botones y creamos textbox y estos a su vez tienen ciertos métodos,
+por ejemplo, para cuando tenemos una interfaz gráfica oscura o una interfaz gráfica clara,
+es decir, si tenemos una dark o light user interface. Entonces, vamos a organizar el proyecto
+en tres archivos, lo podemos subdividir incluso en más archivos para seguir más
+menos el mismo patrón que factory method, pero vamos a hacerlo en 3. En primer lugar abstract
+factory es donde, para decirlo, definimos la clase base y definimos los productos abstractos de esta
+clase. Entonces al igual que lo hicimos con factory method vamos a importar abc y vamos a importar
+abstract method. Entonces from abc import abc y abstract method. Entonces vamos a generar una
+clase que se llame ui abstract factory y esta va a ir a dar de abc y vamos a declarar ciertos
+métodos de hecho aquí ya copilot no nos está recomendando en el primer lugar el primer está
+bien vamos a darle abstract métodos vamos a crear un botón y en el otro caso en lugar de hacer
+textfield, vamos a hacer un textbox. Aquí ya generamos, por decirlo, la clase base y vamos a
+generar ahora los productos abstractos. A diferencia del factor y métod, en este caso,
+cada producto va a abstraer de ABC, va a ser una clase abstracta. Entonces,
+classButtonABC va a tener un método abstracto que se va a llamar pintar, es decir, para que
+se renderice en nuestro archivo y por otra parte textbox igualmente va a tener el mismo método va
+a tener el método pues pintar para que se renderice en nuestra interfaz gráfica ahora en concrete
+factory en este archivo será donde vamos a definir los subproductos de las clases vamos a
+definir los productos concretos de cada clase entonces para esto vamos a importar las clases
+abstractas que definimos en abstract factory. Entonces, from abstract factory vamos a importar
+en primer lugar ui abstract factory, vamos a importar button y vamos a importar textbox.
+En este caso entonces vamos a definir los productos concretos de la clase botón. Entonces,
+es class darkButton by darkButton y su método pint pues simplemente va a imprimir que es
+un botón oscuro. Por otra parte también vamos a implementar lo mismo para el textbox, vamos
+a implementar dark textbox y va a tener sus métodos. Entonces de esta manera hemos implementado
+los productos para decirlo oscuros para cada uno de las clases que implementamos. Ahora vamos a
+implementar el likebutton y el likebutton pues simplemente nos da imprimir que es un botón claro
+y lo mismo para textbutton entonces text para el textbox perdón entonces para el textbox vamos a
+hacer lo mismo liketextbox. Una vez que implementamos esto pues vamos a crear también fábricas
+concretas para la interfaz de usuario entonces por ejemplo vamos a venir acá y vamos a decir
+de class, darkquie factory, va a abstraerse de ui factory y esto va a tener ciertas características,
+si tú te fijas vamos a retornar objetos oscuros y textbox oscuros para el darkquie,
+entonces retornamos esto y para light, para el user y interface que es claro vamos a hacer
+lo mismo, si tú te fijas en cada caso estamos retornando sus productos de una clase concreta,
+entonces de esta manera nos permite pues inicializar un constructor u otro si estamos usando por ejemplo
+en una página web pues podemos implementar este patrón de diseño para poder cambiar
+entre un modo y otro y que se carguen los objetos de un modo y otro de forma exitosa.
+Entonces ahora en el código cliente que es pues el cómo utilizamos ahora el apps
+re-factory, ahora que lo implementamos pues tenemos que importar todas las funciones, entonces
+from concrete factory vamos a importar, si te fijas simplemente importamos o la interfaz oscura o la
+interfaz clara, entonces definimos nuestro main y aquí pues vamos a generar un botón, un textbox
+y vamos a decir que nos impriman. Entonces, button es igual a factory, es igual a factory. Bueno,
+por antes tenemos que definir una fábrica. Entonces vamos a crear una función que se
+llame client code, al cual le vamos a pasar una fábrica. Entonces, factory y a esto le
+vamos a poner button, factory createButton y textbox createTextbox y vamos a imprimir en
+cada caso lo que lo que nos retorna, entonces vamos a crear tanto una fábrica oscura o sea
+una interfaz oscura y una interfaz clara, entonces vamos a llamar a client code y vamos a pasarle
+el darkwee factory y vamos a pasarle el light factory, entonces aquí ya Copeland me lo
+recomienda, lo ejecutamos y como puedes ver bueno aquí lo voy a poner un print para
+puede diferenciar ambos casos, lo volvemos a correr y como puedes ver aquí me dice, primero le
+pasé el darkui y entonces imprime un botón oscuro y un textbox oscuro y le digo un lightui y me
+imprime un botón claro y un textbox claro. De esta manera tú puedes abstraer y intercambiar en una
+interfaz oscura y en interfaz clara, por ejemplo,
+en una página web, en una aplicación,
+en una aplicación escritoria, en cualquier cosa que esté
+implementando.
+Entonces, esto te permite hacer un código fácil de entender,
+fácil de mantener y fácil de, pues,
+instanciar al momento de usar.
+En lugar de jacotear un switch y decir, bueno,
+si selecciono tal caso, pues, mandame todo esto.
+Y si selecciono tal caso, mandame todo esto.
+Si te fijas, inicializo todas las propiedades de una interfaz oscura o una interfaz clara,
+se inicializan todas sus propiedades y tiene cada uno definido su propio objeto.
+De tal manera que si genero un nuevo botón, este botón va a tener propiedades de diseño
+para una interfaz oscura o clara.
+Espero que te esté gustando el curso, dale al like, suscríbete, recomiendo el curso
+y recuerda que siempre, siempre vas a aprender un bit a la vez.

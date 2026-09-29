@@ -1,0 +1,84 @@
+Bienvenido a un nuevo video del curso de patrones de diseño con Python.
+En esta ocasión vamos a implementar el patrón de diseño Observer.
+Este en lo personal es mi patrón de diseño favorito
+y porque lo utilizo mucho en finanzas quantitativas.
+A continuación, vas a ver por qué.
+El patrón de diseño Observer en Python
+se utiliza para crear una relación de suscripción entre objetos
+de modo que cuando un objeto cambia su estado
+todos sus dependientes son notificados y actualizados automáticamente.
+Este patrón es útil en situaciones donde un objeto necesita ser monitoreado por uno o varios dependientes,
+como en interfaces gráficas de usuario, sistemas de notificación o en el manejo de eventos.
+A continuación, vamos a implementar el patrón de diseño.
+Este patrón de diseño tiene cierta abstracción, como por ejemplo,
+que consideramos que un sistema es un sujeto y que el observador es algo que se registra en el sujeto
+registro en el sujeto para ser constantemente observado y el observador es notificado de los
+cambios internos del sujeto. Vamos a imaginar, por ejemplo, que tenemos un sistema meteorológico.
+En este caso lo vamos a definir en el archivo de Python Subject. Aquí vamos a definir,
+por ejemplo, una estación del clima. Entonces vamos a definir class, water station,
+vamos a definir un constructor y dentro del constructor vamos a declarar una lista de
+observadores y aquí vamos a tener ciertos atributos como pueden ser la temperatura,
+la humedad o la presión. En este caso vamos a definir únicamente la temperatura. A continuación
+vamos a definir algunas funciones que nos van a servir para registrar los observadores dentro
+de nuestra clase Witter Station. Entonces vamos a poner Death Register Observer. Vamos a pasarle
+el observador que deseamos registrar y lo vamos a agregar a la lista de Python que hemos definido.
+Después también vamos a tener la opción de remover un observador y también vamos a tener
+la opción de notificar a los observadores. Entonces vamos a poner el notifyObservers y vamos
+a poner vamos a interar sobre los observadores y vamos a notificarle del cambio de la del
+cambio en la temperatura que hay en el sistema. Imaginemos que esto está conectado a una API
+en tiempo real y cada cambio que haya, todos los observadores van a ser notificados y cada
+observador puede ser muchas cosas distintas, o sea puede ser desde un displayer hasta que esta
+actualización dispare una predicción de un modelo de machine learning por ejemplo. Entonces en este
+caso también vamos a tener una función que se llama set temperature y notificamos la nueva
+temperatura, es decir, guardamos la nueva temperatura y notificamos a todos los observadores que
+están registrados en la estación del clima. En este caso, la implementación de nuestra clase
+sujeto ya estaría lista, pero imagina que esto lo podéis implementar para cualquier cosa. O sea,
+hasta esto puede ser un exchange station en donde obtenga los precios de diferentes activos o de
+diferentes stocks y pues los cambios de los precios o cuando tengas una nueva vela,
+pues son notificados, por ejemplo, a una estrategia. Entonces esta estrategia va a recalcularse y
+te va a dar un callback de decirte, bueno, pues es tiempo de comprar o vender, por ejemplo. En este
+caso pues vamos a implementarlo muy simple, el observador simplemente va a ser un display de
+la nueva temperatura. Entonces vamos con la implementación del Observer. El Observer pues
+puede ser realmente de muchas formas, le puedes llamar a la clase incluso Observer, en este
+caso, yo lo voy a poner Temperature Display porque es lo que voy a estar haciendo. Entonces Temperature
+Display, simplemente cuando se mande llamar la función Update, lo que va a hacer es pues imprimirme
+la temperatura actual. Lo voy a poner Current Temperature es grados Celsius. Entonces me voy a
+imprimir la temperatura, cada vez que yo notifique, cada vez que la API me notifique que hay un cambio
+en el objeto, que hay un cambio interno en la temperatura de mi estación, de mi estación del
+clima. Entonces esto ya estaría listo para empezar a usarse y pues vamos a ver cómo se implementa
+en el código cliente. En el código cliente necesitamos importar nuestro sujeto y también
+necesitamos implementar, importar nuestro patrón observador.
+En este caso, el display de la temperatura.
+Entonces, inicializamos nuestro,
+vamos a definir nuestro main, e inicializamos nuestro
+wearer station.
+Entonces, aquí, por lo visto, Copilot ya sabe lo que voy
+a hacer.
+En este caso, si te fijas el código que me está recomendando
+Copilot es inicializar mi sujeto, mi wearer station,
+inicializar un observador.
+Y después, registrar en la Weather Station este observador.
+Entonces tú puedes registrar aquí tantos observadores como
+tú quieras.
+Y un observador puede hacer diferentes cosas.
+Un observador puede mostrar la temperatura en terminal.
+Otro observador puede, como te dije anteriormente,
+disparar la predicción de un modelo de Machine Learning.
+Y otro observador puede, por ejemplo,
+enviar este cambio a un canal de Telegram, por ejemplo.
+cada observador puede hacer diferentes cosas o puedes implementar un solo observador que dentro de
+update tenga diferentes métodos que hacer después que le llegue una notificación hay muchas formas
+de hacer y de utilizar el patrón de diseño observador como te repito es de mis favoritos entonces
+es lo uso siempre cuando implemento sistemas de train en tiempo real entonces ya que registramos el
+patrón observado registramos el observador en nuestra estación del clima pues vamos a
+algunos experimentos de set temperature 20 30 y 40 no entonces vamos a correr este main al final
+pues puede remover el observer pero yo lo voy a dejar así y podemos correr nuestro código entonces
+como puedes ver yo no modifique mi observador lo único que fue fue modificar el estado interno
+de la temperatura en mi estación del clima y fue la estación del clima notificó a cada
+observador registrado de los cambios, el que en este caso solamente tengo un observador registrado
+y aquí tengo mi comportamiento del temperatura display, es decir, que me reportó la temperatura
+actual para cada cambio que hubo en el código. Pero recordemos que esto pues puede estar conectado
+un API a un web socket en tiempo real o hasta puede ser una notificación, una actualización
+tuya, que tú hagas al sistema y demás, entonces así es como funciona el patrón y diseño observer,
+espero que te haya gustado este vídeo del curso, dale like, suscríbete, compártelo y recuerda que
+siempre, siempre vas a aprender un bit a la vez.

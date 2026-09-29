@@ -1,0 +1,331 @@
+1
+00:00:01,420 --> 00:00:06,180
+Hola qué tal y bienvenidos a un nuevo video del curso de patrones de diseño con Python.
+
+2
+00:00:06,180 --> 00:00:10,220
+En esta ocasión vamos a implementar el patrón de diseño State.
+
+3
+00:00:10,220 --> 00:00:15,020
+Este patrón de diseño se utiliza para permitir que un objeto altere su comportamiento
+
+4
+00:00:15,020 --> 00:00:17,020
+cuando su estado de interno cambia.
+
+5
+00:00:17,020 --> 00:00:21,020
+El objeto parecerá o dará la ilusión de que ha cambiado su clase,
+
+6
+00:00:21,020 --> 00:00:25,020
+pero este de patrón es útil en situaciones donde el comportamiento de un objeto
+
+7
+00:00:25,020 --> 00:00:28,620
+depende de su estado actual y puede cambiar en tiempo de ejecución.
+
+8
+00:00:28,620 --> 00:00:31,620
+Para implementar este patrón necesitamos tres ficheros.
+
+9
+00:00:31,620 --> 00:00:37,620
+Uno, donde definamos una clase abstracta del estado y los estados concretos.
+
+10
+00:00:37,620 --> 00:00:43,620
+Luego un contexto, donde vamos a definir la clase que mantiene una instancia de state
+
+11
+00:00:43,620 --> 00:00:45,620
+y que refleja el estado actual.
+
+12
+00:00:45,620 --> 00:00:49,620
+Y por último, el main donde vamos a tener nuestro código cliente.
+
+13
+00:00:49,620 --> 00:00:52,620
+Para implementar este código o este patrón de diseño,
+
+14
+00:00:52,620 --> 00:00:57,620
+vamos a tomar de ejemplo el botón que utilizamos en los reproductores de música.
+
+15
+00:00:57,620 --> 00:01:05,420
+Por ejemplo, cuando tú presionas el botón de play, una vez inicias a reproducir un video,
+
+16
+00:01:05,420 --> 00:01:10,340
+por ejemplo, pero cuando lo presionas de nuevo, éste se pausa y cuando lo presionas de nuevo,
+
+17
+00:01:10,340 --> 00:01:15,500
+éste inicia. Éste es un claro ejemplo del patrón de design and state. Estamos utilizando un mismo
+
+18
+00:01:15,500 --> 00:01:21,100
+botón que cambia su estado y que puede hacer múltiples acciones al presionarte diferentes veces,
+
+19
+00:01:21,100 --> 00:01:25,940
+pero siempre es en función de su estado actual, es decir, si su estado actual es play,
+
+20
+00:01:25,940 --> 00:01:30,800
+cuando lo vuelvas a presionar no quiere decir que el vídeo va a volver a reproducirse sino que va a
+
+21
+00:01:30,800 --> 00:01:38,120
+detenerse y si lo vuelves a presionar va a volver a reproducirse entonces vamos primero a nuestro
+
+22
+00:01:38,120 --> 00:01:45,380
+archivo state donde vamos a definir la clase abstracta y las clases concretas entonces ya sabes
+
+23
+00:01:45,380 --> 00:01:59,670
+que tenemos que importar ABC y vamos a definir una clase que se llame player, player state. Esta
+
+24
+00:01:59,670 --> 00:02:17,710
+va a heredar de ABC y vamos a definir un abstract method que se llame press play. Esta es nuestra
+
+25
+00:02:17,710 --> 00:02:22,750
+clase abstracta y ahora vamos a definir las clases concretas. Las clases concretas en general
+
+26
+00:02:22,750 --> 00:02:30,510
+pueden ser 3, por ejemplo, puede ser playing state, paused state y stopped state, es decir,
+
+27
+00:02:30,510 --> 00:02:39,150
+iniciar detener o el stop, la diferencia de la pausa es como detener y reiniciar la reproducción,
+
+28
+00:02:39,150 --> 00:02:44,950
+son 3 estados diferentes. Entonces, por ejemplo, vamos a definir primero la clase
+
+29
+00:02:44,950 --> 00:02:58,020
+playing state. Esta hereda de nuestra clase abstracta y vamos a definir, por ejemplo,
+
+30
+00:02:58,020 --> 00:03:10,220
+press play. Si te fijas, reciben siempre un player. ¿Por qué? Porque el player es el estado actual que
+
+31
+00:03:10,220 --> 00:03:16,300
+queremos cambiar. Entonces, vamos a definir press play y vamos a poner, vamos a imprimir,
+
+32
+00:03:16,300 --> 00:03:21,060
+por ejemplo, pausing. Después de que el archivo, después de que el botón se está
+
+33
+00:03:21,060 --> 00:03:26,220
+reproduciendo lo que sigue después de que lo apretas es detenerlo por ejemplo entonces con
+
+34
+00:03:26,220 --> 00:03:33,620
+esto cambiamos el estado interno de player, entonces player.state es igual a pauset state
+
+35
+00:03:35,220 --> 00:03:42,740
+por otra parte pues hay que definir también por ahora pauset state entonces def pero es play
+
+36
+00:03:42,740 --> 00:03:59,010
+self y le pasas también un player y aquí le pones print playing de esta manera de esta
+
+37
+00:03:59,010 --> 00:04:06,330
+manera también pues cambias el estado interno y cada vez que tú mandes llamar press play y que
+
+38
+00:04:06,330 --> 00:04:14,290
+el estado actual sea play in state al momento de que lo presiones va a cambiar al estado pausa
+
+39
+00:04:14,290 --> 00:04:26,130
+state. Y puedes generar otro estado, otro state que sea de stop, por ejemplo. Pero pues en este
+
+40
+00:04:26,130 --> 00:04:32,090
+caso vamos a añadirlo también porque aquí también demostramos la metodología abierta
+
+41
+00:04:32,090 --> 00:04:36,370
+cerrada de este patrón de diseño porque puede seguir agregando tantos estados como tú quieras.
+
+42
+00:04:36,370 --> 00:04:44,580
+Vamos por ejemplo a definir stop state y pues en todo caso creo que este es el estado
+
+43
+00:04:44,580 --> 00:04:51,060
+inicial de player, ¿no? De alguna manera. Entonces, si queramos un contexto, pues un
+
+44
+00:04:51,060 --> 00:04:56,780
+contexto puede ser music player o video player o cualquier cosa que se vaya a
+
+45
+00:04:56,780 --> 00:05:01,180
+reproducir. En ese caso tú también puedes implementar tantos contextos como desees,
+
+46
+00:05:01,180 --> 00:05:07,700
+pero este stop state pues va a ser como el tipo de estado inicial de nuestro
+
+47
+00:05:07,700 --> 00:05:13,020
+contexto. Desde que hemos definido nuestra clase abstracta y las clases
+
+48
+00:05:13,020 --> 00:05:18,520
+concretas, vamos a nuestro contexto y vamos a implementar los contextos. En este
+
+49
+00:05:18,520 --> 00:05:24,020
+caso, nuestro contexto va a ser un music player, un reproductor de música.
+
+50
+00:05:24,020 --> 00:05:34,020
+Definimos su estado inicial y su estado inicial va a ser el estado stop, stop state
+
+51
+00:05:34,020 --> 00:05:41,020
+y hay que importarlo, ¿no? Entonces from state, import, stop state.
+
+52
+00:05:41,020 --> 00:05:50,880
+y al momento de que des, también este va a tener su play button por así decirlo, vas a pasarle
+
+53
+00:05:50,880 --> 00:06:00,000
+a sí mismo el estado y lo que va a hacer es que el estado que estamos utilizando va a recibir
+
+54
+00:06:00,000 --> 00:06:08,080
+este player, es decir el self que estás utilizando aquí es recibido acá y al momento de que tú
+
+55
+00:06:08,080 --> 00:06:18,700
+ejecutas o accedes a su state lo cambias, a pauset state, es decir cambias el estado interno de
+
+56
+00:06:18,700 --> 00:06:27,180
+music player. Entonces ya que tenemos esto vamos a nuestro código cliente porque ya
+
+57
+00:06:27,180 --> 00:06:33,380
+tenemos implementadas estas clases y lo que vamos a hacer va a ser importar, from state import
+
+58
+00:06:33,380 --> 00:06:44,300
+todos los estados ¿no? playing state, pauset state, stop state y vamos a importar nuestros
+
+59
+00:06:44,300 --> 00:06:50,540
+contextos vamos a importar music player y pues vamos a definir nuestro main que es donde
+
+60
+00:06:50,540 --> 00:06:55,140
+va a estar nuestro código cliente y pues aquí está ¿no? vamos a ver qué pasa después de
+
+61
+00:06:55,140 --> 00:07:03,860
+presionar múltiples ocasiones el botón de play entonces corremos nuestro código y vamos
+
+62
+00:07:03,860 --> 00:07:09,860
+a ver que vamos a observar qué sucede. Entonces como puedes ver cuando inicializamos el contexto
+
+63
+00:07:09,860 --> 00:07:17,300
+player su estado inicial es stop. Entonces al momento de que tú mandas llamar el método press play lo
+
+64
+00:07:17,300 --> 00:07:24,620
+mandas a... al momento de que tú presionas press play de player lo que pasa es que tú
+
+65
+00:07:24,620 --> 00:07:32,790
+estás mandando a los estados de state, el estado actual es stop entonces venimos al
+
+66
+00:07:32,790 --> 00:07:39,230
+constructor de stop y ¿qué pasa después de que presionas stop? cambias el estado interno a playing
+
+67
+00:07:39,230 --> 00:07:47,650
+state ahora estamos acá entonces en la segunda ocasión cuando lo presionas vas aquí y ahora
+
+68
+00:07:47,650 --> 00:07:54,610
+tu estado interno ya no es stop ahora es playing entonces cuando estás en playing ¿qué pasa?
+
+69
+00:07:54,610 --> 00:08:02,010
+cambias el estado interno a paused state y ahora en la última iteración en la última vez
+
+70
+00:08:02,010 --> 00:08:08,970
+que presionas el botón, esto estado es paused, entonces vas al contexto al momento que presionas
+
+71
+00:08:08,970 --> 00:08:16,290
+press play, vas a tu estado, entonces en tu estado pause state, cuando presionas press play,
+
+72
+00:08:16,290 --> 00:08:24,930
+vas a estar pause state a plain state. Entonces estás utilizando un mismo objeto, un contexto
+
+73
+00:08:24,930 --> 00:08:33,010
+en el que estás cambiando su comportamiento, pero si te fijas parece que estás cambiando de clase
+
+74
+00:08:33,010 --> 00:08:40,210
+cada vez que presionas ese press play. Estás cambiando de clase de forma, en cada ocasión,
+
+75
+00:08:40,210 --> 00:08:45,170
+o sea, da como esa ilusión, que en el fondo lo estás haciendo porque pues a fin de cuentas
+
+76
+00:08:45,170 --> 00:08:53,010
+estás igualando a un nuevo constructor, pero estás utilizando el mismo objeto, es decir,
+
+77
+00:08:53,010 --> 00:08:58,610
+el objeto es MusicPlayer y MusicPlayer está cambiando su estado interno por otros estados
+
+78
+00:08:58,610 --> 00:09:06,490
+que son diferentes clases. Entonces de esta manera ves el poder de este patrón de diseño porque es
+
+79
+00:09:06,490 --> 00:09:12,790
+abierto tanto en sus states como en sus contextos porque puedes implementar más contextos. Este es
+
+80
+00:09:12,790 --> 00:09:18,170
+un MusicPlayer, puedes implementar un VideoPlayer por ejemplo y en el Main tú solamente estás
+
+81
+00:09:18,170 --> 00:09:23,370
+utilizando un objeto para poder manipular los estados internos del objeto music player.
+
+82
+00:09:23,370 --> 00:09:28,630
+Entonces aquí se termina este vídeo, espero que te haya gustado, dale like,
+
+83
+00:09:28,630 --> 00:09:34,770
+compártelo, suscríbete y recuerda que siempre siempre vas a aprender un beat a la vez.

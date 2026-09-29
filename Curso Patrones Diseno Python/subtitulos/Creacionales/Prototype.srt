@@ -1,0 +1,247 @@
+1
+00:00:01,780 --> 00:00:05,780
+En este video del curso vamos a implementar el Patrón Prototype.
+
+2
+00:00:05,780 --> 00:00:14,780
+El Patrón Prototype es un patrón de creación que se utiliza para crear objetos basados en una plantilla de un objeto existente a través de la clonación.
+
+3
+00:00:14,780 --> 00:00:21,780
+Este patrón es particularmente útil cuando la creación de un objeto es más costosa que clonar un objeto existente.
+
+4
+00:00:21,780 --> 00:00:29,780
+De esta manera tienes una alta eficiencia en la creación de objetos y ocultas las complejidades de crear un objeto nuevo.
+
+5
+00:00:29,780 --> 00:00:35,780
+Para poder llevar a cabo este patrón de diseño, tienes que tener tres ficheros.
+
+6
+00:00:35,780 --> 00:00:39,780
+En este caso voy a implementarlo en dos, pero te voy a explicar qué haces en cada uno.
+
+7
+00:00:39,780 --> 00:00:44,780
+En primer lugar, como siempre, el archivo Prototype, donde tienes tu clase base.
+
+8
+00:00:44,780 --> 00:00:50,780
+Entonces es una interfaz que definir los métodos para clonarse a sí misma cada clase.
+
+9
+00:00:50,780 --> 00:00:53,780
+Después tienes el Concrete Prototype.
+
+10
+00:00:53,780 --> 00:00:57,780
+De hecho lo vamos a crear de una vez para no tenerlo separado, no tenerlo juntos.
+
+11
+00:00:57,780 --> 00:01:05,180
+va a implementar el prototipo que puede ser clonado, es decir, cada caso de clonación para cada objeto
+
+12
+00:01:05,180 --> 00:01:10,940
+y por último tienes el código cliente o el main donde probamos el código y vemos cómo funciona.
+
+13
+00:01:10,940 --> 00:01:18,700
+Entonces, en primer lugar, vamos a crear la clase base en el archivo prototype. Entonces,
+
+14
+00:01:18,700 --> 00:01:26,980
+en prototype definimos una clase que se llame prototype y esta clase va a tener un método que
+
+15
+00:01:26,980 --> 00:01:33,820
+se llame clone. Entonces vamos a definir un método clone y lo vamos a dejar sin definir,
+
+16
+00:01:33,820 --> 00:01:41,420
+simplemente va a ser un pass y la clase base de la cual otras clases van a heredar estos métodos.
+
+17
+00:01:41,420 --> 00:01:55,350
+Entonces vamos a crear un archivo que se llame concrete prototype, pero tú puedes guardar
+
+18
+00:01:55,350 --> 00:02:01,710
+todos los... la forma de clonar a clases en un mismo archivo o puedes crear un archivo de clonación
+
+19
+00:02:01,710 --> 00:02:07,270
+para cada clase. Esto depende de ti y de cómo estén implementando esto en el lugar donde tú
+
+20
+00:02:07,270 --> 00:02:16,590
+estás trabajando. Entonces aquí por ejemplo vamos a crear una clase que clone una configuración de
+
+21
+00:02:16,590 --> 00:02:22,550
+sistema por ejemplo. Entonces vamos a importar la librería copy y vamos a generar una clase que
+
+22
+00:02:22,550 --> 00:02:33,350
+se llame system config y va a heredar de prototype, vamos a importar la ahorita, entonces vamos
+
+23
+00:02:33,350 --> 00:02:41,230
+a decir aquí from prototype import prototype, entonces heredamos de la clase base prototype
+
+24
+00:02:41,230 --> 00:02:48,430
+y dentro vamos a definir un constructor que va a recibir una configuración, vamos a poner
+
+25
+00:02:48,430 --> 00:02:53,390
+la configuration, entonces vamos a ponerle aquí self configuration, va a ser igual a
+
+26
+00:02:53,390 --> 00:02:59,270
+configuración y vamos a definir el método clon entonces de clon en este caso pues va a ser un
+
+27
+00:02:59,270 --> 00:03:05,390
+diccionario y pues vamos a simplemente retornar la copia profunda de este objeto al nuevo objeto
+
+28
+00:03:05,390 --> 00:03:13,390
+que estamos creando entonces de esta manera ya tenemos por ejemplo la interfaz para hacerlo
+
+29
+00:03:13,390 --> 00:03:19,710
+los clones de esta de esta clase y en nuestro código cliente simplemente tendremos que importar
+
+30
+00:03:19,710 --> 00:03:28,230
+el archivo system config entonces from concrete prototype import system config de hecho esto
+
+31
+00:03:28,230 --> 00:03:38,230
+lo puedes hacer un poco más como lo puedes poner por ejemplo clone o un hombre más específico para
+
+32
+00:03:38,230 --> 00:03:44,550
+que sepas de qué va esta clase puedes ponerle incluso system config prototype para que sepas
+
+33
+00:03:44,550 --> 00:03:51,990
+que es un tipo de construcción de copia o que facilite la acción de objetos y dentro del main
+
+34
+00:03:51,990 --> 00:04:00,830
+pues vamos a generar una configuración inicial, entonces por ejemplo original config va a ser igual
+
+35
+00:04:00,830 --> 00:04:08,310
+a system config prototype y a esta configuración tú le vas a pasar pues la configuración en este
+
+36
+00:04:08,310 --> 00:04:13,150
+caso voy a generar un diccionario que se llama config y este diccionario pues va a tener ciertos
+
+37
+00:04:13,150 --> 00:04:18,830
+atributos, entonces entre esos atributos puede tener el sistema operativo, entonces por ejemplo puede
+
+38
+00:04:18,830 --> 00:04:27,350
+ser Linux o Windows o lo que tú quieras y otro otro atributo puede ser por ejemplo la versión. Recuerden
+
+39
+00:04:27,350 --> 00:04:34,790
+que estos también pueden ser estructuras de datos bien definidas con enus, para donde puedes tener
+
+40
+00:04:34,790 --> 00:04:39,070
+control de ese open close del principio solid. En este caso simplemente lo estoy haciendo así
+
+41
+00:04:39,070 --> 00:04:46,510
+para representar el funcionamiento del patrón de diseño, entonces en este caso le pasamos la
+
+42
+00:04:46,510 --> 00:04:54,630
+configuración, en este caso el config y lo que vamos a hacer ahora es vamos a clonar este objeto,
+
+43
+00:04:54,630 --> 00:05:01,170
+es decir en lugar de crear otro objeto suponiendo que tenemos otro objeto igual en lugar de crear
+
+44
+00:05:01,170 --> 00:05:08,270
+otro objeto pasando el archivo de configuración vamos a copiarlo, entonces clonet config va
+
+45
+00:05:08,270 --> 00:05:14,590
+va a ser igual a original config.clone, entonces esto lo que hace es pues ocultar la complejidad
+
+46
+00:05:14,590 --> 00:05:20,550
+de crear un nuevo objeto, es decir sin repetirlo o por ejemplo definir un nuevo diccionario
+
+47
+00:05:20,550 --> 00:05:28,350
+y lo clonamos simplemente, entonces de esta manera imprimimos la configuración inicial
+
+48
+00:05:28,350 --> 00:05:32,110
+y la configuración clonada, entonces el resultado pues va a ser el mismo, entonces
+
+49
+00:05:32,110 --> 00:05:45,020
+vamos a ejecutar este código y pues vamos a correrlo, vamos a ejecutar este main y como
+
+50
+00:05:45,020 --> 00:05:50,780
+puedes ver pues aquí aparece tanto el original config como el clon config, de esta manera tú
+
+51
+00:05:50,780 --> 00:05:58,700
+puedes ahorrarte pues a lo mejor crear intentar crear un archivo nuevo desde cero, un nuevo
+
+52
+00:05:58,700 --> 00:06:04,100
+objeto desde cero y pues en lugar de eso mejor clonas uno que ya es existente que a lo mejor
+
+53
+00:06:04,100 --> 00:06:07,180
+tiene las mismas configuraciones y no lo creas, sino que lo clonas.
+
+54
+00:06:07,980 --> 00:06:10,540
+Entonces, al momento en que tú utilizas el Deep Copy,
+
+55
+00:06:10,540 --> 00:06:17,060
+el objeto que clones automáticamente va a tener su propio lugar reservado de memoria.
+
+56
+00:06:17,060 --> 00:06:21,500
+Entonces, no vas a tener conflictos de un archivo está...
+
+57
+00:06:22,020 --> 00:06:24,820
+si modificas un objeto, va a modificar lo otro y demás.
+
+58
+00:06:24,820 --> 00:06:26,980
+Sino que, al momento en que tú haces un Deep Copy,
+
+59
+00:06:27,420 --> 00:06:32,660
+te retorna el clón del objeto y el nuevo objeto tú lo puedes manipular a tu gusto
+
+60
+00:06:32,660 --> 00:06:37,660
+sin necesidad de alterar la configuración inicial del archivo desde el cual clonaste.
+
+61
+00:06:37,660 --> 00:06:41,660
+Entonces, espero que te haya gustado este vídeo del curso, te veo en el siguiente
+
+62
+00:06:41,660 --> 00:06:46,660
+y dale like, suscríbete y recuerda que siempre, siempre vas a aprender un vídeo a la vez.

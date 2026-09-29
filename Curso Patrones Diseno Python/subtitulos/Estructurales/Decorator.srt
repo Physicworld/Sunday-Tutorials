@@ -1,0 +1,295 @@
+1
+00:00:01,100 --> 00:00:05,360
+Hola qué tal y bienvenidos a un nuevo video de este curso de patrones de diseño con Python.
+
+2
+00:00:05,360 --> 00:00:11,200
+En esta ocasión vamos a programar el patrón estructural decorador. El patrón de diseño
+
+3
+00:00:11,200 --> 00:00:16,640
+decorador en Python permite agregar funcionalidades adicionales a un objeto de forma dinámica,
+
+4
+00:00:16,640 --> 00:00:22,360
+es decir, sin alterar la estructura de la clase existente. Este patrón de diseño es útil
+
+5
+00:00:22,360 --> 00:00:27,440
+cuando queremos extender la funcionalidad de objetos individualmente y de manera transparente.
+
+6
+00:00:27,440 --> 00:00:32,720
+Para poder implementar este patrón de diseño, por lo general se utilizan cuatro ficheros,
+
+7
+00:00:32,720 --> 00:00:36,800
+pero hay múltiples estructuras que se pueden utilizar. En primer lugar,
+
+8
+00:00:36,800 --> 00:00:43,160
+el fichero Component es la interfaz para los objetos que pueden tener responsabilidades
+
+9
+00:00:43,160 --> 00:00:49,600
+añadidas dinámicamente. Concrete Component es una clase que implementa el componente,
+
+10
+00:00:49,600 --> 00:00:53,360
+definiendo un objeto al que se pueden añadir responsabilidades adicionales.
+
+11
+00:00:53,360 --> 00:01:00,900
+luego el archivo decorator mantiene una referencia al componente y define una interfaz acorde a la
+
+12
+00:01:00,900 --> 00:01:07,740
+interfaz del componente y con create decorator añade responsabilidades al componente. Vamos
+
+13
+00:01:07,740 --> 00:01:12,700
+a ver un ejemplo práctico para poder implementar este patrón de diseño. Vamos a suponer que
+
+14
+00:01:12,700 --> 00:01:20,260
+tenemos un objeto de texto al cual le queremos añadir etiquetas html. En primer lugar vamos
+
+15
+00:01:20,260 --> 00:01:26,540
+a tener un componente, el componente bien puede ser por ejemplo una clase que se llama texto,
+
+16
+00:01:26,540 --> 00:01:34,060
+entonces vamos a crear este componente como una clase abstracta, entonces fromABC vamos a importar
+
+17
+00:01:34,060 --> 00:01:43,140
+ABC y abstractMethod, vamos a generar una clase que se llama text, va a heredar de ABC y vamos a
+
+18
+00:01:43,140 --> 00:01:57,370
+generar un método abstracto que se va a llamar render, luego en concreteComponent vamos a crear
+
+19
+00:01:57,370 --> 00:02:03,270
+un componente concreto que se va a llamar plain text, esto es simplemente pues texto plano, traducido
+
+20
+00:02:03,270 --> 00:02:09,870
+al español como tal, entonces este es simplemente un componente concreto del componente que es
+
+21
+00:02:09,870 --> 00:02:20,110
+la clase base que estamos creando, entonces from component vamos a importar text, entonces vamos
+
+22
+00:02:20,110 --> 00:02:29,670
+a generar la clase que se llama plain text y dentro vamos a tener un constructor que va a
+
+23
+00:02:29,670 --> 00:02:35,910
+inicializar el texto y la función render va a retornar el texto. Aquí copilot ya sabe. Ya
+
+24
+00:02:35,910 --> 00:02:44,790
+sabe lo que quiero hacer con esta función, entonces lo añadimos directamente. Posteriormente vamos a
+
+25
+00:02:44,790 --> 00:02:56,070
+definir el decorador. Vamos a hacer front component import text y vamos a crear una clase que se
+
+26
+00:02:56,070 --> 00:03:02,110
+se llame text decorator, esta clase lo que se va a encargar de hacer es de retornar el
+
+27
+00:03:02,110 --> 00:03:10,830
+texto como tal, esta es la clase a la cual vamos a, vamos a utilizar para extender un
+
+28
+00:03:10,830 --> 00:03:15,390
+componente, es decir vamos a mantener una referencia al componente y vamos a definir
+
+29
+00:03:15,390 --> 00:03:23,910
+una interfaz para el componente, en este caso text, entonces vamos a crear una clase
+
+30
+00:03:23,910 --> 00:03:37,480
+que se llame text decorator y va a heredar de text, vamos a tener un constructor de init
+
+31
+00:03:37,480 --> 00:03:47,790
+y vamos a ponerle text component, guardamos un atributo con esto y vamos a generar la función
+
+32
+00:03:47,790 --> 00:03:57,750
+render, entonces render va a retornar el render del componente, es decir, esta función
+
+33
+00:03:57,750 --> 00:04:04,250
+render estuvo declarada en text, pero como un método abstracto y en el decorador
+
+34
+00:04:04,250 --> 00:04:11,970
+se define. Entonces vamos a crear un decorador concreto a partir de text decorator
+
+35
+00:04:11,970 --> 00:04:20,790
+en donde a esta función render vamos a añadirle la etiqueta de html.
+
+36
+00:04:20,790 --> 00:04:24,910
+Entonces aquí en concrete decorator vamos a importar el text decorator.
+
+37
+00:04:24,910 --> 00:04:33,910
+Entonces, from decorator vamos a importar text decorator y lo que vamos a hacer es generar una clase que se llame
+
+38
+00:04:34,910 --> 00:04:36,910
+HTML decorator.
+
+39
+00:04:37,910 --> 00:04:43,910
+Le pasamos el decorador del texto y vamos a definir render.
+
+40
+00:04:43,910 --> 00:04:46,910
+Entonces, aquí Copilot ya me ayuda a completarlo.
+
+41
+00:04:46,910 --> 00:04:55,310
+Entonces, por una parte, TextDecorator puede renderizar el texto por sí mismo, pero después
+
+42
+00:04:55,310 --> 00:05:01,070
+tenemos esta función que es el decorador como tal, la que nos va a ayudar a poner las etiquetas
+
+43
+00:05:01,070 --> 00:05:08,590
+de HTML y pues decorar nuestro texto con esto. Ahora sí, pues vamos a ver cómo se implementa
+
+44
+00:05:08,590 --> 00:05:13,950
+esto en el código cliente. En el código cliente tenemos que importar el componente
+
+45
+00:05:13,950 --> 00:05:21,990
+concreto y el decorador concreto. Entonces, from concrete component, vamos a importar plain
+
+46
+00:05:21,990 --> 00:05:33,820
+text y vamos a importar el decorador. Es decir, no el text decorator, sino el html decorator.
+
+47
+00:05:33,820 --> 00:05:48,000
+¿Cómo le puse? html decorator. No sé por qué me marca error ahí, pero porque está
+
+48
+00:05:48,000 --> 00:05:49,000
+en concrete decorator.
+
+49
+00:05:49,000 --> 00:05:50,000
+Exacto.
+
+50
+00:05:50,000 --> 00:05:52,000
+Concrete decorator.
+
+51
+00:05:52,000 --> 00:05:56,000
+Importamos HTML decorator desde concrete decorator,
+
+52
+00:05:56,000 --> 00:05:57,000
+que es donde lo definimos.
+
+53
+00:05:57,000 --> 00:05:59,000
+Ahora, en main, en el código cliente,
+
+54
+00:05:59,000 --> 00:06:01,000
+es donde lo vamos a probar.
+
+55
+00:06:01,000 --> 00:06:02,000
+En primer lugar,
+
+56
+00:06:02,000 --> 00:06:04,000
+vamos a inicializar un objeto
+
+57
+00:06:04,000 --> 00:06:06,000
+de texto plano de plaintext,
+
+58
+00:06:06,000 --> 00:06:08,000
+y luego a plaintext le vamos a aplicar
+
+59
+00:06:08,000 --> 00:06:10,000
+el decorador HTML
+
+60
+00:06:10,000 --> 00:06:12,000
+para mostrar que hemos añadido
+
+61
+00:06:12,000 --> 00:06:14,000
+una funcionalidad nueva a plaintext
+
+62
+00:06:14,000 --> 00:06:16,000
+sin modificar la definición de plaintext.
+
+63
+00:06:16,000 --> 00:06:24,160
+entonces plaintext es igual a plaintext y podemos decir por ejemplo hola mundo y
+
+64
+00:06:24,160 --> 00:06:31,320
+luego lo que nos interesa es primero pues imprimir el texto sin decorar de esta
+
+65
+00:06:31,320 --> 00:06:37,480
+manera imprimimos plaintext hacemos uso de render pero por otra parte le podemos
+
+66
+00:06:37,480 --> 00:06:43,360
+aplicar el decorador a plaintext y podemos imprimir también el texto decorado
+
+67
+00:06:43,360 --> 00:06:50,920
+entonces vamos a correr el main y como puedes ver, por ejemplo si estás utilizando, estás haciendo
+
+68
+00:06:50,920 --> 00:06:57,560
+desarrollo web y lo que te interesa es por ejemplo pasar cierto texto y darle formato html, puedes
+
+69
+00:06:57,560 --> 00:07:04,040
+utilizar el formato decorador, pero el objetivo del decorador no es solamente por ejemplo formatear
+
+70
+00:07:04,040 --> 00:07:10,080
+texto sino realmente su objetivo es añadir funcionalidades extra a una clase que no las
+
+71
+00:07:10,080 --> 00:07:18,080
+tiene definidas, es decir, extender sus funciones y de esta manera pues por ejemplo aquí le añadimos
+
+72
+00:07:18,080 --> 00:07:25,240
+la función a plaintext de poder renderizarse en formato html. Ese es el objetivo de el patón
+
+73
+00:07:25,240 --> 00:07:31,960
+de diseño decorador. Espero que te haya gustado este vídeo, te veo en el siguiente. Suscríbete,
+
+74
+00:07:31,960 --> 00:07:37,840
+dale like, recomiendo este vídeo y recuerda que siempre vas a aprender un bit a la vez.
