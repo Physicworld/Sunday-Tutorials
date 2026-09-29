@@ -1,0 +1,5 @@
+numpy
+matplotlib
+pybind11
+cmake
+tbb-devel
