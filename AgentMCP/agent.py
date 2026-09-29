@@ -5,11 +5,24 @@
 
 import asyncio
 import json
+import os
 import re
+import sys
+from pathlib import Path
+
 import requests
 from fastmcp import Client
+from fastmcp.client.transports import StdioTransport
 from dataclasses import dataclass
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any, Optional
+
+# Configuración (ver .env.example); los valores por defecto son los del tutorial
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "gemma3:4b")
+OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "120"))  # segundos
+
+# Ruta del servidor MCP relativa a este archivo: funciona desde cualquier cwd
+MCP_SERVER_PATH = str(Path(__file__).resolve().parent / "mcp_server.py")
 
 
 @dataclass
@@ -19,9 +32,11 @@ class ToolCall:
 
 
 class OllamaClient:
-    def __init__(self, base_url: str = "http://localhost:11434", model: str = "gemma3:4b"):
-        self.base_url = base_url
+    def __init__(self, base_url: str = OLLAMA_BASE_URL, model: str = OLLAMA_MODEL,
+                 timeout: float = OLLAMA_TIMEOUT):
+        self.base_url = base_url.rstrip("/")
         self.model = model
+        self.timeout = timeout
 
     def generate(self, prompt: str, system: str = None) -> str:
         payload = {
@@ -34,7 +49,7 @@ class OllamaClient:
             payload["system"] = system
 
         try:
-            response = requests.post(f"{self.base_url}/api/generate", json=payload)
+            response = requests.post(f"{self.base_url}/api/generate", json=payload, timeout=self.timeout)
             response.raise_for_status()
             return response.json()["response"]
         except Exception as e:
@@ -42,21 +57,20 @@ class OllamaClient:
 
 
 class Agent:
-    def __init__(self, mcp_command: List[str] = None):
+    def __init__(self):
         self.ollama = OllamaClient()
-        self.mcp_command = mcp_command
         self.available_tools = []
         self.conversation_history = []
 
     async def connect_to_mcp(self):
-        self.mcp_client = Client("mcp_server.py")
+        self.mcp_client = Client(StdioTransport(command=sys.executable, args=[MCP_SERVER_PATH]))
         await self.mcp_client.__aenter__()
         tools = await self.mcp_client.list_tools()
         self.available_tools = [
             {
                 "name": tool.name,
                 "description": tool.description,
-                "parameters": tool.inputSchema.get("properties", {}) if tool.inputSchema else {}
+                "parameters": tool.input_schema.get("properties", {}) if tool.input_schema else {}
             } for tool in tools
         ]
 
@@ -114,10 +128,15 @@ INSTRUCCIONES:
             print(f"📋 Argumentos: {tool_call.arguments}")
 
             result = await self.mcp_client.call_tool(tool_call.name, tool_call.arguments)
-            result = result.structured_content['result']
-            result = str(result) if type(result) is not str else result
-            return result
-
+            structured = result.structured_content
+            if structured and 'result' in structured:
+                output = structured['result']
+            else:
+                # Herramientas sin salida estructurada: usar el contenido de texto
+                output = "\n".join(
+                    getattr(block, "text", str(block)) for block in result.content
+                )
+            return output if isinstance(output, str) else str(output)
 
         except Exception as e:
             error_msg = f"Error ejecutando {tool_call.name}: {str(e)}"
@@ -192,7 +211,7 @@ INSTRUCCIONES:
 
 async def main():
     # Conectar a servidor MCP via STDIO
-    agente = Agent(mcp_command=["python", "mcp_server.py"])
+    agente = Agent()
 
     await agente.run_interactive()
 
