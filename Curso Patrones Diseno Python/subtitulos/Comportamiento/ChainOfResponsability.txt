@@ -1,0 +1,69 @@
+Bienvenidos a un nuevo video del curso de patrones de diseño con Python y el último de este.
+El último patrón de diseño que vamos a estudiar se llama Chainer Responsibility, cadena de responsabilidad.
+Este patrón de diseño permite pasar la solicitud a lo largo de una cadena de manejadores.
+Al recibir una solicitud, cada manejador decide si puede procesarla o no.
+Si en este caso no la puede procesar, pues decide si la pasa al siguiente manejador de la cadena.
+Este patrón es útil para poder manejar solicitudes y procesarlas de manera flexible.
+Entonces, para poder implementar este patrón de diseño,
+vamos a utilizar 3 ficheros de Python, se puede extender un poco más y dividirlo incluso en más ficheros,
+pero vamos a hacerlo en 3.
+Entonces, bueno, vamos a empezar con el handler.
+el handler es el que se encarga de definir los niveles de procesamiento, es decir, por ejemplo,
+si tú tienes una solicitud que solamente puede ser procesada por un handler de nivel 1 o nivel 2,
+aquí es donde lo tomamos a definir. Y pues como en la mayoría de los patrones de diseño,
+tenemos que generar una clase abstracta. Entonces vamos a implementar los handlers,
+entonces vamos a importar fromABC, vamos a darle importABC y abstractMethod, vamos a definir una
+clase que se llame supportHandler que va a ir a dar de ABC y vamos a definir su constructor. Entonces
+el constructor de un handler recibe en sus atributos el siguiente manejador y tiene una función que
+se llama Handle Request. Entonces de esta manera vamos a implementar el Handle Request para
+cada uno de los manejadores. Entonces por ejemplo, Class Level 1 Support Handler. Imaginemos que
+esto no sé, es un centro técnico de soporte al cliente, entonces hay personas que atienden,
+por ejemplo casos de nivel 1 y casos de nivel 2. Los niveles 1 son más sencillos de resolver por lo
+cual los principiantes tienen más posibilidad de resolverlos y los niveles 2 son más complejos.
+Entonces, los niveles 1, si tú ves aquí, si el nivel del request es igual igual a 1,
+decimos que el nivel 1 de soporte ha resuelto este conflicto. Sin embargo, si es de otro
+nivel distinto o mayor a 1, pues decide enviarlo al siguiente manejador. Entonces por ejemplo,
+vamos a implementar el level 2, entonces en este caso pues podemos agregar tantos manejadores como
+quisiéramos, en este caso yo solamente voy a agregar tanto el 1 como el 2. Entonces vamos
+a también definir este request como es esta figura del request y este request pues dentro
+tiene que tener como atributo el nivel, como tú imaginaras. Pero esto puedes extrapolar
+las muchas cosas. Como por ejemplo, en el banco las personas que otorgan los créditos,
+si son menores a cierto monto, pues quizá la persona que está en los mostradores puede
+autorizar ese tipo de créditos. Pero créditos más grandes como por ejemplo de un millón de
+dólares por ejemplo, pues solamente el gerente puede autorizarlos. Entonces de esta manera
+pues es como darle permiso a cada usuario y también pues lo puedes extrapolar a muchos muchos casos,
+entonces vamos a definir el request, entonces vamos a definir una clase request y en esta clase
+request pues simplemente en su constructor va a tener pues un nivel, entonces self level es igual a
+level, entonces de esta manera ya tenemos el patrón de diseño implementado, ya tenemos el request
+implementado y ahora sí podemos ir a código cliente a probar el código, entonces vamos a importar
+from handler import vamos a importar los dos tipos de nivel de de soporte y vamos a también importar
+nuestro request from request import request entonces vamos a definir nuestro main para poner nuestro
+código cliente y vamos a definir los manejadores entonces level 1 va a ser igual a level 1 support
+handler y la cadena que sigue del support handler es un caso que no vamos a definir todavía porque no
+hay como el caso 0 por así decirlo bueno en este caso el level 2 va a seguir de level 1
+pero para seguir con la lógica que hemos definido anteriormente con el ejemplo que
+di, vamos a definir primero el level 2, vamos a poner el level 1 y vamos a poner aquí non,
+es decir, si el soporte técnico es de nivel 1, si no puede resolverlo va a seguir al nivel 2
+y si el nivel 2 no puede resolverlo pues no hemos definido un manejador de nivel 3,
+por lo tanto recibe un non, entonces de esta manera cuando recibe el super handler el nivel 1
+sabe cómo manejarlo en caso de que el nivel sea distinto de 1, es decir va a pasar al siguiente
+manejador que es el manejador de nivel 2, entonces aquí tenemos el nivel 2 y el nivel 1, entonces
+vamos a generar un request por ejemplo de nivel 1, entonces level 1 va a decir handle request y
+vamos a decirle request, entonces al momento de que pasemos a handle 1 va a decir level 1 support
+has resolved the issue y caso contrario nos va a decir que el nivel 2 lo ha resuelto,
+entonces vamos a ejecutar nuestro código main y vamos a correr este código, es al revés,
+lo ponemos aquí y lo corremos, entonces como puedes ver el request era de nivel 1 y nos dijo
+que el nivel 1 fue capaz de resolver el issue, pero por ejemplo si fuera a nivel 2 lo podemos
+volver a correr y nos dice que el nivel 1 ha sido capaz de resolver el issue o sea el problema,
+pero si te fijas el problema se lo pasamos o sea el request se lo pasamos a nivel 1 y
+nivel 1 al momento de no poder gestionarlo automáticamente se lo ha pasado a nivel 2.
+Entonces nos dice que level 2 support has resolved the issue. Entonces aquí ya tenemos el patrón
+de diseño implementado, chain of responsibility y bueno aquí se termina el último patrón
+de diseño del curso y también se termina el curso. Espero que este curso te haya gustado,
+te haya servido a mejorar tu nivel de programación y te ven los demás cursos de la academia que
+pues tenemos ya gran variedad de cursos tenemos un curso de análisis de datos de machine learning,
+tren algoritmico, programación básica en python, este mismo curso de patrón y diseño ya está
+disponible y se irán agregando más cursos en lo que va el año, bueno ya este año ya casi va a
+terminar pero en el año que sigue vamos a seguir agregando más cursos, espero que te haya
+gustado, dale like, suscríbete, recomiendo este curso si te ha gustado,
+suscríbete y bueno pues recuerda que siempre, siempre vas a aprender un vídeo a la vez.

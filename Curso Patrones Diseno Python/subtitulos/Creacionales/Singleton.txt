@@ -1,0 +1,69 @@
+muy bien en este vídeo vamos a pasar a explicar el método singleton vamos a generar la clase y
+además vamos a generar un ejemplo práctico con una base de datos entonces hay muchas formas de
+implementar este patrón en python pero a continuación te voy a mostrar la forma sencilla de hacerlo
+utilizando el método new para empezar tenemos que declarar la clase singleton entonces singleton
+y es importante saber que Singleton va a gestionar múltiples instancias de diferentes
+subclases, entonces vamos a generar dentro de Singleton un diccionario que se llame Instances,
+entonces vamos a utilizar el método especial en Python que se llama el crano de una instancia de
+una clase y vamos a sobrescribirla para la implementación de Singleton, entonces esto
+lo usaremos para controlar la creación de instancias y ésta será una referencia
+a la clase de la que se debe llamar una instancia, entonces vamos a generar el
+método new, aquí ya Copilot me leyó esta línea y bueno vamos a gestionar esta
+parte. Si la clase en cuestión que queremos instanciar no está en las
+instancias que hemos creado, entonces tenemos que crearla y guardarla en el
+diccionario de instancias. Entonces vamos a generar por clave, usar el objeto como clave y vamos a llamar
+el método NewCLS. Esto lo que hará será crear una nueva instancia de este objeto pero si ya existe
+pues no la va a crear. Entonces finalmente si no existe pues retornamos la instancia que queremos
+obtener, entonces de esta manera pues generamos una sola instancia de cada
+subclase y se maneja a través de esta interfase que es de singleton, entonces
+vamos a hacer una prueba de nuestra clase para ver si funciona, entonces vamos a
+declarar dos objetos singleton, entonces objeto 1 es igual a singleton y objetos
+es igual a singleton, entonces lo que nos va a interesar es comprobar si son
+el mismo objeto entonces con esto lo hacemos objeto uno es objeto dos y como
+puedes ver aquí nos dice true entonces aquí comprobamos que nuestra implementación
+de singleton funciona ahora cuáles son las aplicaciones de singleton imaginemos una
+aplicación que necesita una única una única conexión a una base de datos
+entonces podríamos utilizar el patrón singleton para asegurarnos de que solo
+haya una conexión de datos en todo el proyecto entonces para esto vamos a
+utilizar la librería SQLite 3 que ya viene incluida en Python, entonces vamos a darle
+import SQLite 3 y lo que vamos a hacer será crear una clase que se llame database connection.
+Entonces esta database connection va a heredar de singleton y vamos a generar una conexión,
+entonces connection es igual a non, todo este código es bien conocido, devconnect le pasamos el self
+y lo que vamos a hacer aquí if self.connection is non, pues vamos a generar una nueva conexión a esta base de datos
+entonces stealth.connection va a ser igual a sqlite3.connect y el nombre de nuestra base de datos
+En este caso la base de esto se va a llamar users.dp
+Entonces vamos a generar una función que se llama execute query, una función que se llama commit y otra que se llama close
+Entonces vamos a generar esto ¿no?
+Entonces dev execute query
+Y este execute query lo que va a hacer es ejecutar una consulta SQL
+Vamos a generar nuestro cursor
+self.connection.cursor. Y aquí vamos a poner cursor.execute.execute query. Vamos a pasarle aquí una
+consulta que es el query y vamos a simplemente ejecutar. self.connection.com. Entonces ya que
+ejecutor, ya que el ejecutor hacemos el commit y pues se va a generar nuestra base de datos.
+Después de esto podemos también generar una función que se llama mi close,
+le pasamos el self y simplemente self.connection.close. Ahora vamos a ver cómo funciona
+nuestra implementación de singleton con esta aplicación en específico de una base de datos.
+entonces vamos a hacer esto de b1 va a ser igual a una instancia de database connection y vamos a
+ejecutar una query con esta de b1 desde b1 va a ser igual a execute query y vamos a ponerle
+create table if no exist y la tabla se llama users y lo que vamos a hacer es ponerle una
+ID y este ID va a ser el integer, integer primary key, integer primary key y el nombre del
+Australia pues va a ser simplemente texto. Ahora, vamos a generar una segunda conexión
+a la base de datos, una dv2 que lo que va a hacer es insertar en nuestra base de datos.
+dv2.executequery, vamos a poner aquí insert, insert into users, name values y pues el nombre
+de los usuarios, puede ser por ejemplo Alice. Entonces ya tenemos tanto la instancia 1 como
+la instancia 2, entonces vamos a imprimir aquí print de b1 y b2, entonces si nuestro
+patón singleton funciona, esto debe de ser cierto, entonces después de todo cerramos
+la conexión, puedes hacerlo tanto con db1 como con db2 y estás hablando del mismo
+objeto exactamente. Entonces, aquí nos dice que no tiene un atributo cursor. Ok, aquí
+me equivoqué, no es con E, es init. Este es el método init. Al momento de que construyes
+el objeto, inicializas la conexión y entonces ya la puedes usar en los demás atributos,
+en los demás métodos, en los demás métodos como un atributo. Entonces lo corremos de
+nuevo y como puedes ver en el primer true nos dice que objeto uno es igual a objeto dos y que la base
+de datos uno es igual a la base de datos dos y aquí nos ha generado nuestra base de datos entonces
+vamos a generar una conexión a la base de datos y vamos a hacer una consulta entonces vamos a decirle
+select all from users y aquí está el registro que hemos generado en nuestra en nuestro
+programa. Entonces el registro que generamos fue para el usuario Alice. Entonces aquí se
+termina este vídeo del curso, espero que hayas aprendido mucho en este vídeo, has aprendido
+cómo implementar el patrón Singleton y has aprendido un ejemplo de práctica para que
+puedas entender cómo implementar este patrón de diseño en tus proyectos personales. Te
+veo en el siguiente vídeo.

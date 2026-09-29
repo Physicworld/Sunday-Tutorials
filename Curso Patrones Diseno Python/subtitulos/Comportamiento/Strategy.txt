@@ -1,0 +1,55 @@
+Hola qué tal y bienvenidos a un nuevo vídeo del curso de patrones de diseño
+compitón. En esta ocasión vamos a programar e implementar el patrón de
+diseño estrategia. El patrón de diseño estrategia se utiliza para definir una
+familia de algoritmos y encapsular cada uno de ellos y también hacer los
+intercambiables. Estrategia permite que el algoritmo varíe
+independientemente de los clientes que lo utilizan. Este patrón es útil
+cuando se tienen múltiples formas de hacer una tarea y se desea elegir la
+la estrategia más adecuada en tiempo de ejecución. Para implementar este ejemplo, vamos a suponer que
+estamos implementando un procesamiento de pago y que hay diferentes formas de cobrar una comisión.
+Puede ser una comisión fija, por ejemplo, una comisión fija de 5 dólares por transacción,
+o bien puede ser una comisión por porcentajes, es decir, por ejemplo, si quieres cobrar un
+2% de comisión por la transacción. Estas dos son formas diferentes de aplicar un mismo
+algoritmo, pero es una familia de algoritmos que cambia en tiempo de ejecución, a esto es lo que
+referimos a las estrategias. Para poder implementar este patrón necesitamos primero un archivo
+strategy y un segundo archivo context. El primero es donde vamos a definir las interfaces de las
+implementaciones concretas del patrón strategy y su clase abstracta y el contexto es la clase
+que se encarga de hacer el procesamiento de las estrategias entonces para comenzar con este
+ejemplo vamos a irnos a nuestro fichero de estrategia y vamos a vamos a implementar una clase abstracta y
+luego las clases concretas entonces prom ya sabes que tenemos que importar abc e implementamos
+también importamos abstract method. Una vez que ya lo tenemos vamos a definir una clase que se
+llame Commission Yawm Commission Strategy, este hereda de ABC y vamos a generar un abstract method
+que se va a llamar calculate commission y ahora sí implementamos las clases concretas de nuestra
+clase comisión entonces una de ellas va a ser pixel comision que es que siempre por
+ese si lo cobramos una cantidad fija por la comisión de la de la transacción o
+lo que sea que se está haciendo y por otra parte podemos cobrar también por
+ejemplo un porcentaje de la comisión por ejemplo un 5 por ciento
+después pues vamos a implementar el contexto el contexto es la clase que
+se encarga de precisamente decernos cuántos se va a cobrar por la transacción en cuestión
+dado el usuario. Vamos a definir una clase que se llame Payment Processor y su constructor
+va a tener como entrada pues una estrategia. La guardamos como atributo y luego decimos
+Process Payment y vamos a retornar Strategy Calculate Commission. Y de esta manera ya
+tenemos el patrón estrategia implementado y lo tenemos que implementar ahora en el código cliente,
+entonces vamos a importar las estrategias y nuestro contexto, entonces from strategy vamos a
+importar fixate commission y percentage commission y del contexto vamos a importar el payment
+proceso, es nuestro contexto. Ahora sí, vamos a utilizar nuestro main y vamos a definir ambas
+estrategias y vamos a ver cuál es el resultado. Entonces, para empezar, vamos a inicializar el
+contexto. Vamos a inicializar un payment processor, por ejemplo, con una fixed commission y vamos a
+decir que vamos a procesar un pago de 100. Y por otro lado, vamos a darle el percentage commission
+y vamos a procesar también un pago de 100 y vamos a ver el resultado ejecutamos nuestro código main
+y como puedes ver en un caso se pagan 5 dólares y en el otro se pagan 5.0 pero aquí algo que está
+mal vamos a nuestro presentation comision y 100 por 0.5 ajá pues sí el 5 por ciento de 100 es 5
+entonces está bien pensé que algo estaba mal aquí pero es el mismo resultado pero si te
+fijas uno es entero y otro es float porque en el fixed commission lo hemos definido literalmente como
+un 5 entero y acá es una multiplicación por un float entonces aquí también pues hay que
+tener cuidado con el tipado de los retornos pero si te fijas utilicé diferentes estrategias a través
+del payment processor y yo no tuve que modificar nada del payment processor para poder llevar a cabo
+este algoritmo. Entonces, ¿en qué sentido este patrón de diseño es open-closed? En el sentido de
+que tú puedes seguir agregando diferentes formas de cobrar a una comisión a través de una transacción
+y no tendrás que modificar nada de tu contexto. Tu contexto al momento de inicializarse con su
+constructor de estrategia va a directamente aplicar la comisión dada a la estrategia. Entonces,
+en el código cliente pues esto ya es no no no entras en detalles del contexto ni de la estrategia
+simplemente usas el constructor del payment processor y luego invocas el método process payment y
+se gestiona todo automáticamente y bueno aquí se termina este vídeo de el patrón de diseño
+strategy espero que te esté gustando el curso y que te ha gustado también este vídeo dale like
+suscríbete, compártelo y recuerda que siempre, siempre vas a aprender un vídeo a la vez.

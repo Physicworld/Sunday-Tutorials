@@ -1,0 +1,335 @@
+1
+00:00:01,100 --> 00:00:05,100
+Bienvenido a un nuevo video del curso de patrones de diseño con Python.
+
+2
+00:00:05,100 --> 00:00:09,100
+En esta ocasión vamos a implementar el patrón de diseño Observer.
+
+3
+00:00:09,100 --> 00:00:12,100
+Este en lo personal es mi patrón de diseño favorito
+
+4
+00:00:12,100 --> 00:00:15,100
+y porque lo utilizo mucho en finanzas quantitativas.
+
+5
+00:00:15,100 --> 00:00:17,100
+A continuación, vas a ver por qué.
+
+6
+00:00:17,100 --> 00:00:19,100
+El patrón de diseño Observer en Python
+
+7
+00:00:19,100 --> 00:00:23,100
+se utiliza para crear una relación de suscripción entre objetos
+
+8
+00:00:23,100 --> 00:00:25,100
+de modo que cuando un objeto cambia su estado
+
+9
+00:00:25,100 --> 00:00:29,100
+todos sus dependientes son notificados y actualizados automáticamente.
+
+10
+00:00:29,100 --> 00:00:35,100
+Este patrón es útil en situaciones donde un objeto necesita ser monitoreado por uno o varios dependientes,
+
+11
+00:00:35,100 --> 00:00:40,100
+como en interfaces gráficas de usuario, sistemas de notificación o en el manejo de eventos.
+
+12
+00:00:41,100 --> 00:00:44,100
+A continuación, vamos a implementar el patrón de diseño.
+
+13
+00:00:44,100 --> 00:00:47,100
+Este patrón de diseño tiene cierta abstracción, como por ejemplo,
+
+14
+00:00:47,100 --> 00:00:53,100
+que consideramos que un sistema es un sujeto y que el observador es algo que se registra en el sujeto
+
+15
+00:00:53,100 --> 00:00:58,760
+registro en el sujeto para ser constantemente observado y el observador es notificado de los
+
+16
+00:00:58,760 --> 00:01:04,200
+cambios internos del sujeto. Vamos a imaginar, por ejemplo, que tenemos un sistema meteorológico.
+
+17
+00:01:04,200 --> 00:01:09,320
+En este caso lo vamos a definir en el archivo de Python Subject. Aquí vamos a definir,
+
+18
+00:01:09,320 --> 00:01:15,280
+por ejemplo, una estación del clima. Entonces vamos a definir class, water station,
+
+19
+00:01:15,280 --> 00:01:23,390
+vamos a definir un constructor y dentro del constructor vamos a declarar una lista de
+
+20
+00:01:23,390 --> 00:01:30,310
+observadores y aquí vamos a tener ciertos atributos como pueden ser la temperatura,
+
+21
+00:01:30,310 --> 00:01:42,200
+la humedad o la presión. En este caso vamos a definir únicamente la temperatura. A continuación
+
+22
+00:01:42,200 --> 00:01:47,280
+vamos a definir algunas funciones que nos van a servir para registrar los observadores dentro
+
+23
+00:01:47,280 --> 00:01:58,480
+de nuestra clase Witter Station. Entonces vamos a poner Death Register Observer. Vamos a pasarle
+
+24
+00:01:58,480 --> 00:02:02,760
+el observador que deseamos registrar y lo vamos a agregar a la lista de Python que hemos definido.
+
+25
+00:02:02,760 --> 00:02:09,240
+Después también vamos a tener la opción de remover un observador y también vamos a tener
+
+26
+00:02:09,240 --> 00:02:14,200
+la opción de notificar a los observadores. Entonces vamos a poner el notifyObservers y vamos
+
+27
+00:02:14,200 --> 00:02:20,640
+a poner vamos a interar sobre los observadores y vamos a notificarle del cambio de la del
+
+28
+00:02:20,640 --> 00:02:25,440
+cambio en la temperatura que hay en el sistema. Imaginemos que esto está conectado a una API
+
+29
+00:02:25,440 --> 00:02:32,320
+en tiempo real y cada cambio que haya, todos los observadores van a ser notificados y cada
+
+30
+00:02:32,320 --> 00:02:39,480
+observador puede ser muchas cosas distintas, o sea puede ser desde un displayer hasta que esta
+
+31
+00:02:39,480 --> 00:02:44,720
+actualización dispare una predicción de un modelo de machine learning por ejemplo. Entonces en este
+
+32
+00:02:44,720 --> 00:02:52,640
+caso también vamos a tener una función que se llama set temperature y notificamos la nueva
+
+33
+00:02:52,640 --> 00:02:57,160
+temperatura, es decir, guardamos la nueva temperatura y notificamos a todos los observadores que
+
+34
+00:02:57,160 --> 00:03:03,240
+están registrados en la estación del clima. En este caso, la implementación de nuestra clase
+
+35
+00:03:03,240 --> 00:03:07,760
+sujeto ya estaría lista, pero imagina que esto lo podéis implementar para cualquier cosa. O sea,
+
+36
+00:03:07,760 --> 00:03:13,600
+hasta esto puede ser un exchange station en donde obtenga los precios de diferentes activos o de
+
+37
+00:03:13,600 --> 00:03:20,320
+diferentes stocks y pues los cambios de los precios o cuando tengas una nueva vela,
+
+38
+00:03:20,320 --> 00:03:25,960
+pues son notificados, por ejemplo, a una estrategia. Entonces esta estrategia va a recalcularse y
+
+39
+00:03:25,960 --> 00:03:32,200
+te va a dar un callback de decirte, bueno, pues es tiempo de comprar o vender, por ejemplo. En este
+
+40
+00:03:32,200 --> 00:03:36,240
+caso pues vamos a implementarlo muy simple, el observador simplemente va a ser un display de
+
+41
+00:03:36,240 --> 00:03:41,560
+la nueva temperatura. Entonces vamos con la implementación del Observer. El Observer pues
+
+42
+00:03:41,560 --> 00:03:46,600
+puede ser realmente de muchas formas, le puedes llamar a la clase incluso Observer, en este
+
+43
+00:03:46,600 --> 00:03:53,900
+caso, yo lo voy a poner Temperature Display porque es lo que voy a estar haciendo. Entonces Temperature
+
+44
+00:03:53,900 --> 00:04:01,420
+Display, simplemente cuando se mande llamar la función Update, lo que va a hacer es pues imprimirme
+
+45
+00:04:01,420 --> 00:04:16,370
+la temperatura actual. Lo voy a poner Current Temperature es grados Celsius. Entonces me voy a
+
+46
+00:04:16,370 --> 00:04:22,530
+imprimir la temperatura, cada vez que yo notifique, cada vez que la API me notifique que hay un cambio
+
+47
+00:04:22,530 --> 00:04:28,690
+en el objeto, que hay un cambio interno en la temperatura de mi estación, de mi estación del
+
+48
+00:04:28,690 --> 00:04:34,570
+clima. Entonces esto ya estaría listo para empezar a usarse y pues vamos a ver cómo se implementa
+
+49
+00:04:34,570 --> 00:04:42,740
+en el código cliente. En el código cliente necesitamos importar nuestro sujeto y también
+
+50
+00:04:42,740 --> 00:04:46,220
+necesitamos implementar, importar nuestro patrón observador.
+
+51
+00:04:46,220 --> 00:04:51,980
+En este caso, el display de la temperatura.
+
+52
+00:04:51,980 --> 00:04:54,900
+Entonces, inicializamos nuestro,
+
+53
+00:04:54,900 --> 00:04:58,700
+vamos a definir nuestro main, e inicializamos nuestro
+
+54
+00:04:58,700 --> 00:04:59,700
+wearer station.
+
+55
+00:04:59,700 --> 00:05:04,420
+Entonces, aquí, por lo visto, Copilot ya sabe lo que voy
+
+56
+00:05:04,420 --> 00:05:04,820
+a hacer.
+
+57
+00:05:04,820 --> 00:05:07,300
+En este caso, si te fijas el código que me está recomendando
+
+58
+00:05:07,300 --> 00:05:11,700
+Copilot es inicializar mi sujeto, mi wearer station,
+
+59
+00:05:11,700 --> 00:05:13,400
+inicializar un observador.
+
+60
+00:05:13,400 --> 00:05:16,580
+Y después, registrar en la Weather Station este observador.
+
+61
+00:05:16,580 --> 00:05:20,140
+Entonces tú puedes registrar aquí tantos observadores como
+
+62
+00:05:20,140 --> 00:05:21,340
+tú quieras.
+
+63
+00:05:21,340 --> 00:05:23,780
+Y un observador puede hacer diferentes cosas.
+
+64
+00:05:23,780 --> 00:05:28,700
+Un observador puede mostrar la temperatura en terminal.
+
+65
+00:05:28,700 --> 00:05:31,500
+Otro observador puede, como te dije anteriormente,
+
+66
+00:05:31,500 --> 00:05:34,220
+disparar la predicción de un modelo de Machine Learning.
+
+67
+00:05:34,220 --> 00:05:38,060
+Y otro observador puede, por ejemplo,
+
+68
+00:05:38,060 --> 00:05:41,300
+enviar este cambio a un canal de Telegram, por ejemplo.
+
+69
+00:05:41,300 --> 00:05:46,580
+cada observador puede hacer diferentes cosas o puedes implementar un solo observador que dentro de
+
+70
+00:05:46,580 --> 00:05:52,180
+update tenga diferentes métodos que hacer después que le llegue una notificación hay muchas formas
+
+71
+00:05:52,180 --> 00:05:57,700
+de hacer y de utilizar el patrón de diseño observador como te repito es de mis favoritos entonces
+
+72
+00:05:57,700 --> 00:06:04,780
+es lo uso siempre cuando implemento sistemas de train en tiempo real entonces ya que registramos el
+
+73
+00:06:04,780 --> 00:06:09,220
+patrón observado registramos el observador en nuestra estación del clima pues vamos a
+
+74
+00:06:09,220 --> 00:06:18,480
+algunos experimentos de set temperature 20 30 y 40 no entonces vamos a correr este main al final
+
+75
+00:06:18,480 --> 00:06:24,240
+pues puede remover el observer pero yo lo voy a dejar así y podemos correr nuestro código entonces
+
+76
+00:06:24,240 --> 00:06:31,280
+como puedes ver yo no modifique mi observador lo único que fue fue modificar el estado interno
+
+77
+00:06:31,280 --> 00:06:37,960
+de la temperatura en mi estación del clima y fue la estación del clima notificó a cada
+
+78
+00:06:37,960 --> 00:06:42,640
+observador registrado de los cambios, el que en este caso solamente tengo un observador registrado
+
+79
+00:06:42,640 --> 00:06:50,920
+y aquí tengo mi comportamiento del temperatura display, es decir, que me reportó la temperatura
+
+80
+00:06:50,920 --> 00:06:57,320
+actual para cada cambio que hubo en el código. Pero recordemos que esto pues puede estar conectado
+
+81
+00:06:57,320 --> 00:07:03,040
+un API a un web socket en tiempo real o hasta puede ser una notificación, una actualización
+
+82
+00:07:03,040 --> 00:07:09,000
+tuya, que tú hagas al sistema y demás, entonces así es como funciona el patrón y diseño observer,
+
+83
+00:07:09,000 --> 00:07:13,680
+espero que te haya gustado este vídeo del curso, dale like, suscríbete, compártelo y recuerda que
+
+84
+00:07:13,680 --> 00:07:15,880
+siempre, siempre vas a aprender un bit a la vez.

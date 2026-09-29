@@ -1,0 +1,127 @@
+Hola, qué tal y bienvenidos a un nuevo video de este curso patrón en diseño
+compitón. El siguiente método que vamos a implementar es el factory method. Este es un
+patrón creacional que define una interfaz para crear un objeto, pero deja que las subclases
+decidan qué hacer con los métodos a través de métodos abstractos. En este video vamos
+a hacer una implementación de ejemplo con una fábrica de coches, por ejemplo, y para
+definir la estructura de este proyecto o que vas a encontrar en algunos proyectos es la siguiente.
+Por lo general vas a encontrar una carpeta que se llame iFactory o Factory que dentro va a tener
+una carpeta con cada uno de los métodos que se están o interfaces que se están implementando,
+en este caso por ejemplo Vehicle Factory y dentro por lo general hay cuatro archivos,
+uno que se llama Product Creator Concrete Factory y Client Code. Esta estructura de
+proyecto puede variar muchísimo, depende mucho de los estándares de cada lugar, este es el ejemplo
+más básico, pero puede haber más maneras de poder instanciar y crear esta estructura de proyecto,
+pero bueno yo te voy a enseñar la básica que es esta y vamos entonces con el ejemplo. Dentro
+de la clase product vamos a generar una clase base, en este caso por ejemplo que va a ser
+vehículo, vehículo es la clase más general que puede existir de un vehículo como tal,
+como media transporte, entonces dentro de vehículo vamos a tener ciertos métodos y esos métodos
+van a ser abstractos, que es un método abstracto, un método abstracto es un elemento de la
+programación orientada a objetos que se declaran una clase pero no proporciona ninguna implementación,
+el propósito de un método abstracto es declarar un método que debe ser implementado
+por las subclases no abstractas derivadas de la clase base, es decir, yo voy a tener una clase
+base vehículo pero por ejemplo mis otros productos va a ser un car y un truck, es decir un carro y
+un camión, entonces estos van a heredar de vehículo y van a tener estos métodos pero
+cada uno va a tener su propia implementación. Entonces vamos a comenzar con la implementación,
+dentro de Product tenemos que importar ABC para que nos permita implementar metodos abstractos
+y el decorador abstract method. Entonces, vamos a generar una clase vehículo y vehículo
+variedad de ABC. Nada más que lo vamos a poner en inglés. Clas Bakel variedad de ABC.
+vamos a si tú te fijas que el copilot me está recomendando ciertos métodos abstractos como
+por ejemplo el número de ruedas y el número de asientos y si este coche es de gasolina. Entonces
+por ejemplo el número de coches pues el número de llantas puede variar dependiendo si es un
+carro, si es un camión, si es una motocicleta, si es un monociclo, cualquier vehículo puede
+variar su número tanto de llantas como de asientos y hay coches eléctricos y hay coches de
+pero para hacer todo mucho más simple vamos a simplemente definir un método que se
+llame Deliver, es decir, entregar. Vamos a generar entonces un abstractMethod y este abstractMethod se
+va a llamar Deliver. Entonces este Deliver no lo vamos a implementar como lo dije antes, lo vamos
+a dejar así en la clase base y lo vamos a implementar en cada subclase que hereda de
+vehículo. En este caso, por ejemplo, vamos a implementar la clase car. Entonces vamos a para
+acá y vamos a ponerle class car y esta clase car va a ir a dar de vehículo. Entonces va a ser
+vehicle. Entonces vamos a generar el método abstracto que se llama deliver propio para car,
+pero aquí lo vamos a cambiar la implementación. Lo que va a ser esto va a ser retornar un string
+que va a decir auto y ahorita voy a definir el constructor de la clase pero va a recibir el modelo
+entonces voy a acceder al modelo y se va a llamar entregado entonces aquí se me pasó a definir
+el constructor, vamos a definir el constructor, vamos a definir el constructor va a recibir el
+modelo, entonces cuando tú generes una clase coche o car, va a recibir el modelo y cuando
+instancias el método Deliver va a decir auto de tal modelo entregado, entonces de esta manera
+es como implementamos la interfaz, entonces tú puedes tener tantos subclases como quieras,
+tantos productos como quieras, en este caso puede ser un coche, una motocicleta, un truck,
+lo que sea. La siguiente clase que vamos a implementar va a ser el truck. Entonces, class truck
+va a heredar de vehículo, voy a definir el constructor, entonces el atributo va a ser el
+modelo y de igual forma voy a implementar su método delivery. Entonces aquí retrune,
+camión entregado de tal modelo. Entonces tú aquí puedes implementar tantas subclases como
+tú quieras y en algunos proyectos lo que hacen es generar un directorio que se
+llaman Models y dentro de Models tienen la clase base, un archivo, un
+feature específico para la clase base y tienen un feature único para cada
+su producto que se tiene en el proyecto. En este caso los estoy implementando en
+un mismo archivo de Python pero cada uno de estos se puede repartir en
+archivos y hacer el código más segmentado y más fácil de mantener.
+en este caso lo vamos a mantener simple, lo vamos a dejar así, pero por ejemplo si este
+fuera un proyecto mucho más grande, con muchísimas más cosas, pues a lo mejor si elegiría la
+opción de repartir en diferentes archivos. Uno es que implementamos todas nuestras op classes
+en producto, lo que sigue es generar el creador. El creador es como tal la fábrica que nos
+va a permitir generar una fábrica concreta para cada tipo de producto. En este caso
+vamos a tener un vehicle factory y luego de vehicle factory vamos a crear subclases de esta clase base
+de la fábrica como tal, pero vamos a tener una fábrica tanto de coches y tanto de camiones,
+entonces vamos aquí a nuestro siguiente archivo creator y vamos a importar de igual forma from
+abc import abc abstract method, entonces vamos a importar también los productos,
+esto es fromProduct, vamos a importar tanto el coche como el camión, entonces vamos a definir
+la clase vehicleFactory y vamos a generar un método abstract, entonces abstractMethod vamos a
+definir una función, un método abstracto que se llame getVacle, entonces getVacle va a recibir
+los parámetros de vehicle type. No va a recibir el modelo simplemente vehicle type y esto va a ser un
+pass y aquí hemos definido como tal el modelo de fábrica para vehículo y vamos a definir el
+modelo de fábrica ahora para cada producto entonces vamos a generar, vamos a pasar a nuestro
+archivo concrete factory y en concrete factory vamos a importar vehicle factory, vamos a importar
+nuestros productos y vamos a generar una clase de fábrica para cada uno de nuestros
+productos, entonces from creator import
+vehicle factory from product importamos nuestros productos y vamos a generar
+clas y bueno como prácticas de programación muchos personas utilizan
+concrete vehicle factory como etiqueta de las clases en este caso yo lo voy a
+poner car factory y en este car factory va a heredar de vehicle factory y lo único que va a
+ser es retornar un objeto car con el tipo de vehículo instanciado. Si tú ya sabes que car
+factory reciben únicamente ciertos tipos de strings o variables e incluso hasta un ennum,
+aquí es donde tú puedes implementar las excepciones para lanzar errores al cliente de decir que
+ese vehículo o ese tipo de modelo no está permitido o no existe, pero en este caso, como
+nuestros casos son muy poquitos y en general enviamos simplemente un string, pues no vamos
+a poner ninguna excepción aquí, para aquí las podréis implementar. Entonces voy a generar
+esta función que se llama GetBacon y lo que va a recibir únicamente va a ser BacodeType.
+Entonces, aquí voy a retornar simplemente un objeto car y lo voy a pasar vehicle type y lo
+mismo voy a hacer con la clase truck factory que GitHub Copilot con los ejemplos ya aprendido y
+ya me ha ayudado a implementar esa función de forma rápida. Entonces ya tenemos nuestras
+fábricas para generar coches y generar cosas. Entonces ahora sí vamos a pasar a lo que es
+nuestro código cliente donde vamos a probar nuestro código entonces venimos aquí a client
+code y decimos from concrete factory vamos a importar la fábrica de coches y la fábrica de
+camiones y vamos a generar una función que se llame client vehicle code entonces vamos a poner
+aquí factory es decir qué fábrica queremos emplear para generar coche para generar un
+coche un cañón y vamos a también enviar vehicle type entonces de aquí simplemente sin sin sin
+especificar qué tipo de fábrica vamos a utilizar vamos a utilizar este código que es un general
+O sea, vehicle va a ser igual a factory punto get vehicle y vamos a pasarle únicamente vehicle type.
+Entonces, vamos a ponerle print vehicle drive. Bueno, no tenemos un método drive implementado,
+pero sí tenemos el método deliver. Entonces, esto ya lo puedes pasar a command, entonces
+fromClientCode, importClientBacalCode, bueno aquí no es fromClientCode, sino más bien tengo que
+pasarle en la carpeta también, entonces bacalfactory.clientCode, importClientBacalCode, entonces
+voy a generar a mi main, ifName, es igual igual a main, entonces y aquí ha podido hacer uso
+de esa función. Entonces, tengo que pasarle también la facturía que voy a utilizar. Entonces,
+vamos a importar las facturías. From vehicle factory, así es, in clean code, no utilizamos
+esto como tal. Esto, además, es una función que nos permite interactuar con la interfaz,
+pero esto también lo podrás incluir en el main. Entonces, vamos a generar un producto de cada
+entonces client vehicle code vamos a pasarle por ejemplo car factory y como modelo vamos a ponerle
+que es un modelo seda y en los camiones por ejemplo vamos a ponerle que sea true factory
+simplemente podemos decirle que es un camión de remorque por ejemplo entonces ya que ya podemos
+correr nuestro código main, de hecho, aquí lo tengo, podemos correr nuestro código main y ver
+que nos imprimimos, entonces lo corremos y nos marca un error, nos dice que el main.py no existe,
+a lo mejor no está reconociendo que estés, vamos a decirle que queramos que corra este y nos dice
+que no hay creator, from creator, y si así le pasamos, si generamos aquí el init y lo
+volvemos a correr, bueno vamos a ponerle el importado relativo y seguramente nos va a
+decir el mismo error en muchas partes, por ejemplo aquí creo que es todo, nos dice carfactory
+get vehicle is missing one record position argument vehicle type entonces aquí nos dice que el problema
+está en car factory entonces vamos a car factory y aquí estamos instanciando bien el método está
+recibiendo el modelo lo corremos y bueno corremos nuestro código y nos va a dar este error y esto
+es porque en esta parte no estamos instanciando la clase, tenemos que pasar la instancia no
+la referencia de la clase, entonces lo corremos y como podemos ver aquí autos te dan entregado,
+camión remolque entregado y bueno así es como funciona el factor y método esto ya depende de
+si como lo abstrae si lo aplicas al mundo de el diseño de patrones en el código y como
+aplicas a tus proyectos, no hay nada como practicar, no hay nada como resolver este
+tipo de problemas y hacer patrones de diseño para precisamente entender cómo funciona y
+el día de mañana cuando te encuentres con un problema nuevo, automáticamente de tu cabeza
+va a salir bueno, pues quizá esto se va a resolver aplicando un factory method.
+Entonces, espero que te esté usando el curso, dale like, suscríbete y recuerda
+que siempre, siempre vas a aprender un Vita a la vez.

@@ -1,0 +1,67 @@
+En este video del curso, vamos a implementar el patrón de diseño Flyweight.
+Este patrón de diseño se enfoca en reducir la cantidad de memoria utilizada por un programa
+al compartir objetos comunes en lugar de crear instancias nuevas para cada uso.
+Este patrón es útil en situaciones donde un gran número de objetos similares son utilizados
+permitiendo una gestión eficiente de memoria.
+En este caso vamos a implementar el patrón Flyweight para piezas de ajedrez, es decir,
+en un tarlero de ajedrez hay muchas piezas que son parecidas e incluso que están repetidas.
+En este caso la cantidad de objetos es pequeña pero si tú te encuentras con un problema que
+requiera la creación de un gran número de objetos iguales puedes aplicar este patrón
+de diseño y a continuación vas a ver su funcionalidad. El patrón de diseño flyweight
+ocupa la clase flyweight que especifica los atributos de cada objeto individual y por otra parte ocupa
+una fábrica y esta fábrica lo que va a hacer es controlar la creación de objetos en función de
+los atributos de tu clase, tus objetos de clase, en este caso por ejemplo nuestros objetos de
+clase en nuestro archivo flyweight va a ser nuestra pieza de ajedrez, entonces vamos a
+genera una clase que se llame Cheese, Piece, Flyway y pues las piezas de ajedrez se pueden
+generalizar por dos atributos, uno por su nombre y dos por su color, es decir puede ser una pieza
+de caballo, un peón, una torre, una pil y puede ser blanca o negra, entonces vamos a
+inicializar su constructor con estos atributos, entonces por el nombre y el color, guardamos
+estos atributos y pues a continuación cada pieza de la gdres pues tiene una opción que
+se llama display. Este display se va a agregar de imprimir en pantalla la posición en la
+que está dicha pieza. Entonces vamos a ponerle de display. Entonces vamos a recibir tanto
+puedes de su posición en X en Y o nada más simplemente recibir su posición. Entonces
+vamos a imprimir este mensaje mostrando la pieza tal, de color tal, en la posición tal. La posición
+pues va a ser una combinación por ejemplo a 8, a 1, a 2, b3, b4 dependiendo en qué
+posición esté. Este es nuestra clase o nuestra nuestro nuestro primer objeto que
+utilizaremos y lo vamos a controlar desde la fábrica del flyway, entonces vamos al archivo factory
+y vamos a generar una clase que se llama cheese piece factory que va a controlar la creación de objetos
+dado a sus atributos, entonces class cheese piece factory y este va a tener una estructura de datos
+que va a sostener pues toda la creación de objetos, en este caso la estructura que voy
+utilizar es un diccionario. Entonces, Flyweights va a ser un diccionario en donde
+voy a tener un class method en donde voy a definir cada una de las piezas y voy
+a controlar su creación. Entonces, voy a definir una función que se llama
+dead get flyweight, en este caso con la clase, el nombre y el color. Entonces, en
+este caso voy a generar una llave con la que voy a controlar en el
+diccionario el retorno de los objetos, entonces esta clave va a estar conformada por los atributos
+de nuestra clase base, entonces primero tengo que comprobar si esta no existe, si esta llave no
+existe en mi diccionario de flyweights lo que tengo que hacer es entonces retornar una nueva
+instancia de mi pieza, ¿no? En este caso, play weight import de mi clase chis piz play weight.
+Entonces, aquí lo pongo y lo que vas a hacer es, pues, guardar en el diccionario esa, esa
+nueva instancia. Y en el caso de que ya exista, pues, simplemente retornamos lo que hemos declarado.
+es bastante similar al patrón singleton, pero el patrón singleton te permite crear
+una única clase que te especifiques y en este caso en lugar de clases es crear una
+unicidad en los objetos de la clase, es decir puedes crear tantos objetos de la
+clase siempre y cuando estos objetos sean diferentes, si son iguales no puedes
+crear nuevos, entonces esas son las únicas dos estructuras o dos
+clases que necesitas para implementar el patrón de diseño flyweight. Ahora vamos al código cliente,
+nuestro código cliente lo único que vamos a utilizar es la fábrica, entonces from factory
+import cheese piece factory, entonces tú puedes quedar tantas piezas como quieras, voy a definir
+main y por ejemplo piece 1 va a ser igual a cheese piece factory y le puedes decir que quieres que sea
+un peón, en este caso por ejemplo puede ser un peón, la reina, el rey o por ejemplo una torre y su
+color puede ser por ejemplo black y el piece 2 vamos a demostrar que pues se va a tratar
+del mismo objeto. Entonces, por ejemplo, vamos a imprimir si la pieza 1 es la pieza 2 y vamos
+a imprimir las piezas en la terminal. Entonces, piece1.display y por ejemplo en el A8 y piece2.display en
+el A8 vamos a poner por ejemplo en el A8. Entonces, vamos a estar mostrando el mismo
+pero lo único que cambiamos es la posición en la que se muestra, entonces por ejemplo vamos a
+correr este main, lo corremos y como puedes ver demostramos que la pieza 1 y la pieza 2 se trata
+de la misma, de la misma objeto, es decir a pesar de que a la fábrica le dijimos que queríamos
+un objeto para rock black y otro objeto para rock black, la fábrica los regresó el mismo
+objeto para para ambos porque se trata de un objeto con los mismos atributos, aquí demostramos
+que se trata del mismo objeto y además imprimimos el objeto pero en diferentes casillas del tablero,
+de esta manera pues ahorramos una cierta cantidad de memoria. Obviamente en este
+caso solamente son dos objetos pero cuando empezamos a trabajar con proyectos grandes en
+medida que crecen y crecen el número de objetos que hay pues es bueno implementar
+este tipo de cosas para ahorrar memoria porque siempre vamos a controlar la
+creación de objetos y bueno que se termina el vídeo del curso espero que
+te haya gustado, te ven el siguiente, dale like, suscríbete y recuerda que
+siempre vas a aprender un vida a la vez

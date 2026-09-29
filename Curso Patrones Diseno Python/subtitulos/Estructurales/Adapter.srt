@@ -1,0 +1,527 @@
+1
+00:00:00,820 --> 00:00:05,280
+Bienvenidos a este nuevo vídeo del curso donde empezaremos a programar el
+
+2
+00:00:05,280 --> 00:00:10,080
+primer patrón de diseño estructural. El patrón adapter nos permite adaptar
+
+3
+00:00:10,080 --> 00:00:14,160
+interfaces que tienen diferentes formatos para poder adaptarlas a nuestro
+
+4
+00:00:14,160 --> 00:00:18,600
+código de forma sencilla sin tener que hacer mayores modificaciones. Los
+
+5
+00:00:18,600 --> 00:00:22,280
+patrones de diseño que estudiamos en los vídeos interiores son patrones de
+
+6
+00:00:22,280 --> 00:00:26,000
+diseño creacionales. Los patrones de diseño que veremos ahora son
+
+7
+00:00:26,000 --> 00:00:33,920
+estructurales. La mayoría de ellos nos permiten manipular código externo o este código de terceros
+
+8
+00:00:33,920 --> 00:00:39,440
+para adaptarlo de forma sencilla a nuestro software. Vamos a empezar entonces con el patrón de diseño
+
+9
+00:00:39,440 --> 00:00:46,080
+adapter. El patrón de diseño adapter nos permite adaptar diferentes interfaces a nuestro código,
+
+10
+00:00:46,080 --> 00:00:54,280
+por ejemplo, si tuviéramos que adaptar código que lee, por ejemplo, nuestro código necesita un
+
+11
+00:00:54,280 --> 00:01:01,040
+formato JSON, pero tenemos los datos en un formato CSV o lo recibimos en un formato CSV, pues el
+
+12
+00:01:01,040 --> 00:01:07,680
+patrón adapter nos permitirá adaptar estas estructuras para no modificar nuestro código y no tener
+
+13
+00:01:07,680 --> 00:01:15,680
+que programar casos especiales en nuestros códigos. Para poder llevar a cabo este patrón de diseño
+
+14
+00:01:15,680 --> 00:01:23,560
+estructural necesitamos tres archivos, bueno, en este caso dos y el código cliente. El primer
+
+15
+00:01:23,560 --> 00:01:30,040
+código es el Handler. El Handler se va a encargar de gestionar los diferentes tipos de archivos y los
+
+16
+00:01:30,040 --> 00:01:37,840
+Adapter se va a encargar de adaptar esas interfaces para que podamos usarlas sin aliscreción, por
+
+17
+00:01:37,840 --> 00:01:44,360
+así decirlo, utilizar una interfaz como si fuera otra. En este caso vamos a empezar con nuestros
+
+18
+00:01:44,360 --> 00:01:50,440
+datos de prueba. Tengo los mismos datos de prueba para ambos archivos. En un archivo JSON
+
+19
+00:01:50,440 --> 00:01:57,320
+tengo, por ejemplo, estructuras, atributos de una persona como su nombre y su edad, por ejemplo,
+
+20
+00:01:57,320 --> 00:02:04,400
+Alice y 30 años, Bob y 25 años, y este está en formato JSON. Y en formato CSV tengo los mismos
+
+21
+00:02:04,400 --> 00:02:12,520
+datos y pues vamos a ver cómo podemos manipular estos datos para utilizar, por ejemplo, un adaptador
+
+22
+00:02:12,520 --> 00:02:19,720
+que convierta nuestro CSV a JSON. Vamos a empezar con nuestro archivo de Atlas Handlers,
+
+23
+00:02:19,720 --> 00:02:23,720
+vamos a definir un handler para los datos de tipo JSON
+
+24
+00:02:23,720 --> 00:02:26,220
+y un handler para los datos de tipo CSV.
+
+25
+00:02:26,220 --> 00:02:29,720
+Entonces en Data Handlers vamos a importar en primer lugar JSON
+
+26
+00:02:29,720 --> 00:02:32,720
+y vamos a importar la librería CSV.
+
+27
+00:02:32,720 --> 00:02:35,220
+Y luego vamos a declarar los handlers.
+
+28
+00:02:35,220 --> 00:02:40,720
+Entonces vamos a declarar una clase que se llame JSON Data Handler
+
+29
+00:02:40,720 --> 00:02:44,720
+y este JSON Data Handler va a tener una posición que se llame Load Data.
+
+30
+00:02:44,720 --> 00:02:54,220
+de load data, todos los miembros de estas clases son estáticos, por lo que no necesitamos inicializar un constructor en este caso
+
+31
+00:02:54,220 --> 00:03:06,720
+y vamos a decir with openfilepad y este filepad se lo tenemos que pasar a la función, entonces filepad está aquí
+
+32
+00:03:06,720 --> 00:03:15,400
+withOpenFilePad de modo lectura, y inicializamos el modo lectura as file, lo que hacemos será
+
+33
+00:03:15,400 --> 00:03:21,760
+retornar la lectura del archivo JSON. Y haremos algo similar con el data handler del csv.
+
+34
+00:03:21,760 --> 00:03:30,680
+Entonces vamos a generar una clase que se llame csv data handler y vamos a también definir
+
+35
+00:03:30,680 --> 00:03:35,400
+tu método loadData. Aquí ya GitHub Copilot me lo auto completa, pero voy a corregir
+
+36
+00:03:35,400 --> 00:03:44,840
+algunas cosas. Va a tener load data y voy a pasar el filepad y lo voy a abrir en modo lectura
+
+37
+00:03:44,840 --> 00:03:51,200
+pero lo voy a leer línea por línea, entonces new line va a ser igual a donde encuentre
+
+38
+00:03:51,200 --> 00:04:07,480
+el archivo de cada línea y lo que va a hacer es retornar una lista de el csv.tiktriderfile.
+
+39
+00:04:07,480 --> 00:04:12,320
+Desde lo que va a hacer esto, va a hacer retornar línea por línea una lista de las líneas
+
+40
+00:04:12,320 --> 00:04:19,600
+de nuestro archivo csv. Entonces ya tenemos los data handlers, ya tenemos la forma de
+
+41
+00:04:19,600 --> 00:04:26,400
+manipular archivos, al menos de leerlos, a partir de nuestros datos, que yo los tengo
+
+42
+00:04:26,400 --> 00:04:32,920
+en una carpeta que se llama data, que son archivos de prueba. Esto es muy fácil de escribir,
+
+43
+00:04:32,920 --> 00:04:38,800
+tú los puedes, no copiere pegar, pero puedes escribirlos por ti mismo y vas a tener el ejemplo
+
+44
+00:04:38,800 --> 00:04:43,940
+listo para usarse. Después de que ya definimos los data handlers y sabemos que nuestro
+
+45
+00:04:43,940 --> 00:04:48,120
+código va a crear un conflicto porque tenemos diferentes archivos de diferentes
+
+46
+00:04:48,120 --> 00:04:51,620
+tipos, pues lo que necesitamos será crear un adaptador.
+
+47
+00:04:52,120 --> 00:04:55,520
+En este caso, vamos a crear un adaptador de CSV a JSON
+
+48
+00:04:55,820 --> 00:04:59,020
+y se va a quedar como tarea que tú implementes el mismo adaptador
+
+49
+00:04:59,020 --> 00:05:00,620
+pero de JSON a CSV.
+
+50
+00:05:01,320 --> 00:05:04,320
+Entonces, de esta manera, vamos a importar de data handlers,
+
+51
+00:05:04,320 --> 00:05:05,620
+los handlers que acabamos de crear.
+
+52
+00:05:05,620 --> 00:05:07,820
+Entonces, from data handlers,
+
+53
+00:05:07,820 --> 00:05:11,720
+vamos a importar JSON data handler y CSV data handler.
+
+54
+00:05:12,320 --> 00:05:14,420
+Entonces, en este caso, vamos a crear una clase
+
+55
+00:05:14,420 --> 00:05:24,100
+que se llame CSV2JSONAdapter, y esta clase de lo que se va a encargar es que podamos manipular
+
+56
+00:05:24,100 --> 00:05:29,020
+un archivo CSV como si fuera JSON, va a dar la ilusión y no vamos a tener que modificar
+
+57
+00:05:29,020 --> 00:05:35,060
+muchas cosas de nuestros archivos. Entonces vamos a definir el constructor de esta clase.
+
+58
+00:05:35,060 --> 00:05:40,300
+Entonces vamos a inicializar el constructor, le pasamos CEL y lo que vamos a pasar, lo
+
+59
+00:05:40,300 --> 00:05:46,980
+Lo que vamos a pasarle es un csv handler y voy a especificar el tipo simplemente para hacer
+
+60
+00:05:46,980 --> 00:05:52,660
+énfasis en esto. En este caso opilot ya lo reconoce, lugar del handler y lo que voy a hacer
+
+61
+00:05:52,660 --> 00:06:01,540
+a continuación es instanciar el método loadData y va a retornar un diccionario. ¿Por qué?
+
+62
+00:06:01,540 --> 00:06:05,940
+Porque va a tomar cada línea de nuestros csv data, lo va a transformar en un diccionario
+
+63
+00:06:05,940 --> 00:06:08,740
+y va a dar la ilusión de que es un archivo JSON.
+
+64
+00:06:08,940 --> 00:06:12,100
+Entonces, vamos a decirle devloadData,
+
+65
+00:06:12,380 --> 00:06:15,100
+vamos a pasarle selfPilePath.
+
+66
+00:06:16,340 --> 00:06:20,980
+Y lo que vamos a hacer será tener csvData,
+
+67
+00:06:21,020 --> 00:06:24,540
+va a ser igual a self.csvHandler.
+
+68
+00:06:24,820 --> 00:06:28,140
+Vamos a cargar el archivo con nuestros datos de configuración.
+
+69
+00:06:28,420 --> 00:06:31,820
+Y bueno, aquí puedes crear una función que se llama convertoJSON,
+
+70
+00:06:31,860 --> 00:06:33,260
+pero aquí voy a hacer lo que va a hacer,
+
+71
+00:06:33,300 --> 00:06:35,580
+va a ser una lista de comprensión condicionarios.
+
+72
+00:06:35,940 --> 00:06:42,820
+esto es más rápido, pero puedes incluso pasarlo a una función externa de la clase.
+
+73
+00:06:42,820 --> 00:06:50,060
+Entonces, lo que voy a hacer va a ser generar un diccionario con las columnas por rowin.csbdeta.
+
+74
+00:06:50,060 --> 00:06:58,260
+Entonces, esto lo que voy a ocasionar es que cuando tengo un archivo CSV y yo necesito
+
+75
+00:06:58,260 --> 00:07:03,300
+en myinterface utilizar JSON, lo que voy a hacer es crear un CSV toJSONAdapter
+
+76
+00:07:03,300 --> 00:07:11,260
+y lo que va a hacer es pasarle a este adapter el filepad de mi archivo CSV y lo que va a hacer
+
+77
+00:07:11,260 --> 00:07:16,140
+es que me va a regresar los datos como si se tratara de los datos que utilizo en mi código,
+
+78
+00:07:16,140 --> 00:07:20,780
+en mi interfaz. Si te fijas de esta manera, yo ya no tuve que adaptar mi código para que
+
+79
+00:07:20,780 --> 00:07:30,180
+sea compatible con archivos JSON, sino que estoy forzando un adaptador que transforma
+
+80
+00:07:30,180 --> 00:07:37,220
+de alguna manera los datos para que yo no tenga que modificar mi código interno entonces ya que
+
+81
+00:07:37,220 --> 00:07:44,140
+generamos nuestro adapter ahora sí podemos probar nuestro nuestro código en el código cliente es
+
+82
+00:07:44,140 --> 00:07:50,020
+decir en nuestra aplicación en este caso supongamos que es en un main y lo que vamos a hacer es
+
+83
+00:07:50,020 --> 00:07:58,500
+simplemente importar el adaptador e importar los handlers entonces from adapters import tcb
+
+84
+00:07:58,500 --> 00:08:04,900
+tu JSONAdapter y lo que vamos a hacer es también importar los handlers, el JSONDataHandler y el
+
+85
+00:08:04,900 --> 00:08:10,500
+CSVDataHandler. Vamos a generar una función que lo que va a hacer es cargar los datos e imprimirlo
+
+86
+00:08:10,500 --> 00:08:19,260
+simplemente. Entonces, Dev, LoadAndDisplayData. Vamos a pasarle por una parte del DataHandler
+
+87
+00:08:19,260 --> 00:08:26,820
+y vamos a pasarle por otra parte el FilePad. Lo que vamos a hacer es utilizar el DataHandler,
+
+88
+00:08:26,820 --> 00:08:30,420
+este interfaz para poder cargar los datos e imprimirlos.
+
+89
+00:08:30,420 --> 00:08:31,920
+En el caso de nuestra aplicación,
+
+90
+00:08:31,920 --> 00:08:34,420
+será para quizá hacer una gráfica,
+
+91
+00:08:34,420 --> 00:08:37,620
+sacar un análisis o hacer cualquier otra cosa que necesites.
+
+92
+00:08:37,620 --> 00:08:39,420
+Entonces, imprimimos los datos
+
+93
+00:08:39,420 --> 00:08:44,420
+y vamos ahora a utilizar a generar nuestro main de nuestra función.
+
+94
+00:08:44,420 --> 00:08:46,020
+Entonces, en primer lugar,
+
+95
+00:08:46,020 --> 00:08:48,620
+vamos a cargar nuestro JSON handler.
+
+96
+00:08:48,620 --> 00:08:52,720
+Y lo que vamos a hacer será generar simplemente un objeto
+
+97
+00:08:52,720 --> 00:08:54,720
+de este JSON handler
+
+98
+00:08:54,720 --> 00:09:02,720
+y generar el path. Bueno, se lo tenemos que pasar de alguna manera. Entonces, yo tengo mis archivos en data,
+
+99
+00:09:04,720 --> 00:09:13,720
+tengo data y es sample data, sample data. Es este archivo que está aquí. Entonces lo va a poner aquí sample data
+
+100
+00:09:13,720 --> 00:09:21,720
+JSON. Y lo que voy a hacer pues será simplemente a cargar esta función. O sea, de esta manera es como si mi aplicación
+
+101
+00:09:21,720 --> 00:09:27,960
+está utilizando directamente el archivo JSON porque pues mi aplicación utiliza el JSON,
+
+102
+00:09:27,960 --> 00:09:34,520
+pero ahora imaginemos que nos pasaron los datos ahora en un CSV y nuestra aplicación necesita
+
+103
+00:09:34,520 --> 00:09:42,240
+el JSON. Si podríamos ajustar nuestra aplicación, pues conllevaría mucho trabajo poder reescribir
+
+104
+00:09:42,240 --> 00:09:48,520
+ciertas funciones, entonces es más fácil escribir un adaptador para que podamos tratar los
+
+105
+00:09:48,520 --> 00:09:55,720
+CSV como si fuera en JSON. Entonces vamos a generar un CSV handler con el adapter.
+
+106
+00:09:55,720 --> 00:10:03,160
+Entonces CSV handler, inicializamos el constructor del data handler, del CSV data
+
+107
+00:10:03,160 --> 00:10:09,800
+handler como siempre lo haríamos y cargamos los datos del filepad, nada
+
+108
+00:10:09,800 --> 00:10:20,720
+más que ahora, en lugar de pasarle al loadData, el CSVHandler lo que vamos a hacer es pasarle
+
+109
+00:10:20,720 --> 00:10:29,960
+el adaptador que creamos que pasa de CSVAjation. Entonces, lo que va a hacer esto es que vamos
+
+110
+00:10:29,960 --> 00:10:36,600
+a cargar los datos y vamos a pasarle el CSVAdapter y vamos a pasarle también el filePath.
+
+111
+00:10:36,600 --> 00:10:44,600
+En este caso ya tenemos la clase definida y creo que no es necesario que definamos el
+
+112
+00:10:44,600 --> 00:10:48,600
+CSV data handler, igual lo tenemos ahí pero no es necesario que lo hagamos porque en
+
+113
+00:10:48,600 --> 00:10:54,600
+realidad no se utiliza, nos sacamos el pad, a la CSV JSON le pasamos el pad y lo que utilizamos
+
+114
+00:10:54,600 --> 00:10:59,600
+es esto, esta línea se puede comentar pero la puedes dejar como referencia, pero no
+
+115
+00:10:59,600 --> 00:11:04,600
+te quedas, si lo utilizamos, lo utilizamos aquí porque para JSON adapter necesitamos
+
+116
+00:11:04,600 --> 00:11:06,920
+necesitamos pasarle el data handler,
+
+117
+00:11:06,920 --> 00:11:09,200
+porque el data handler es el encargado de leer los datos.
+
+118
+00:11:09,200 --> 00:11:12,440
+Entonces, sí lo utilizamos.
+
+119
+00:11:12,440 --> 00:11:16,080
+Corremos el programa, lo vamos a correr.
+
+120
+00:11:16,080 --> 00:11:21,160
+Y como puedes ver, ambos datos vienen uno si viene de un JSON,
+
+121
+00:11:21,160 --> 00:11:24,640
+y el otro no viene de un JSON, viene de un CSV.
+
+122
+00:11:24,640 --> 00:11:27,240
+Pero si te fijas, está formateado como sifron diccionario,
+
+123
+00:11:27,240 --> 00:11:30,760
+es decir, como naturalmente se carga un archivo JSON.
+
+124
+00:11:30,760 --> 00:11:34,000
+Entonces, como puedes ver, esto en producción
+
+125
+00:11:34,000 --> 00:11:39,080
+significa que no tuviste que refactorizar código de tu aplicación original,
+
+126
+00:11:39,440 --> 00:11:45,080
+sino que este adaptador se encargo de poder adaptar los datos a tu aplicación
+
+127
+00:11:45,080 --> 00:11:48,360
+y ya no vas a tener que hacer ninguna modificación extra a tu código,
+
+128
+00:11:48,360 --> 00:11:53,040
+sino que ya está el adaptador se encarga de hacer ese trabajo sucio.
+
+129
+00:11:54,120 --> 00:11:57,600
+Entonces, hasta aquí se termina el video del curso.
+
+130
+00:11:57,600 --> 00:11:58,720
+Espero que te esté gustando.
+
+131
+00:11:58,720 --> 00:12:02,720
+Suscríbete, dale like, recomiendalo y recuerda que siempre vas a aprender
+
+132
+00:12:02,720 --> 00:12:04,715
+un vita a la vez.

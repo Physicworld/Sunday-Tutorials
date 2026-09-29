@@ -1,0 +1,78 @@
+En este vídeo del curso vamos a implementar el patrón de diseño Package,
+traducido del español como Fachada. En Python se utiliza este para proporcionar una interfaz
+simplificada a un conjunto complejo de clases, una biblioteca o framework. Este patrón es especialmente
+útil cuando se trabaja con sistemas complicados que tienen múltiples subsistemas y hay que ofrecer
+una manera sencilla y clara de interactuar con el sistema sin necesidad de comprender
+todos sus detalles internos. Para llevar a cabo este patrón de diseño vamos a generar cuatro
+archivos, más uno que es el del cliente. Supongamos que tenemos una, por ejemplo, una tienda y la
+tienda se puede entender como un sistema que tiene varios subsistemas, como por ejemplo el
+subsistema alimentario, el subsistema de pagos y el subsistema de entregas. Estos subsistemas,
+a su vez tienen sus lógicas de programación dentro de sí mismos y pueden ser muy complejas,
+pero este patrón de diseño nos permite simplificar cada subsistema e integrarlos todos en una misma
+interfaz. Entonces para empezar a implementar este patrón vamos a empezar implementando
+cada uno de los subsistemas. El primer subsistema que vamos a implementar es el
+del inventario, entonces vamos a generar una clase que se llama inventory y esta
+clase inventory va a tener una función que se llama check inventory y dentro va a tener pues el
+product ID y este product ID bien ahora puede hacer una solicitud a una base de datos para verificar
+si ese producto por ejemplo está en existencia. Vamos a verificar si el producto está en existencia
+retornando simplemente true, vamos a suponer que este producto existe, pero aquí pues pues va
+una conexión completa a todo el sistema de almacén por ejemplo, ahora el segundo subsistema puede ser
+el proceso de pagos, entonces vamos a generar una clase que se llama payment y esta clase payment lo
+que va a hacer es por ejemplo verificar si el pago del usuario y su aumento que pagó
+pues es válido, entonces por ejemplo va a tener una función que se llama processPayment y este
+processPayment va a tener por ejemplo el userID y va a tener el amount que el usuario pago,
+podemos imprimir el usuario y cuanto ha pagado, entonces retornamos true porque
+vamos a considerar que también esto se cumple y por último por ejemplo el sistema de entregas,
+entonces vamos a tener una clase que se llama shipping y esta clase shipping lo que va a hacer es
+verificar por ejemplo si el estado de la entrega de un producto que bien puede ser preparándose en
+camino o puede ser por ejemplo que ya esté entregado entonces vamos a definir una función que se llame
+checkshipping y vamos a imprimir que se está revisando el producto y entonces retornamos True
+también. Entonces todos estos subsistemas que hemos implementado y que tienen diferentes,
+pueden ser sus implementaciones tan complejas como tú quieras porque cada uno de estos puede
+estar pidiendo datos de una API, pidiendo datos de una base de datos, actualizándose en tiempo
+real a través de WebSockets o de lo que sea para que el sistema general o la fachada de tu sistema
+funcione. Entonces ahora vamos a hacer la integración de los subsistemas en el patrón de diseño
+faque. Vamos a hacer la fachada de nuestra, por ejemplo, tiende línea. Entonces from
+subsystem 1, vamos a importar inventory. Prum subsystem 2, vamos a importar
+payment. Y por último, from subsystem 3, vamos a importar shipping. Entonces, vamos a generar una clase
+que englobe todos estos subsystemas. Entonces, class online shopping
+ShoppingPackage, es decir una fachada de una tienda en línea, por así decirlo, vamos a generar
+su constructor y este constructor pues dentro va a tener cada subsistema, entonces Inventory
+va a ser igual a Inventory, Payment y Shipping. Entonces dentro de todos nuestros subsistemas
+ya están los métodos que definen a cada clase, entonces por ejemplo podemos generar
+una función que se llame PlaysOrder y este PlaysOrder pues al final de cuentas
+es la orden de un cliente, entonces vamos a poner PlaysOrder y como
+como parámetros esta función va a tener el ID del usuario, el ID del producto
+y la cantidad de dinero que, por ejemplo, cuesta del producto o que el cliente va a pagar.
+Entonces primero tenemos que checar si el producto existe en inventario
+y si el pago pues se hace con si es exitoso el pago
+y si estas dos condiciones se cumplen, pues entonces ahora
+revisamos el estado de él, por eso decirlo, de la entrega
+entonces if serve.inventory.checkInventory
+le vas a pasar el product ID
+Y si el proceso de pago es exitoso, entonces pues vas a empezar a monitorear el pedido.
+Entonces, por ejemplo, vamos a darle return selfshipping.checkshipping.
+Le pasas el product ID y también el user ID.
+Creo que esto no lo configure en el subsystem3.
+3 también hay que pasarle user ID y vamos a ponerle aquí checking shipping
+por product, product ID, in user ID entonces de esta manera pues empezaremos a gestionar
+para decirlo la orden que el cliente ha puesto pero si esto no se cumple
+vamos a retornar un able to place order, esto significa que no podemos poner la orden porque
+o bien el producto no está en existencias o bien el proceso del pago ha fallado. Entonces para poder
+utilizar esto en un código cliente vamos a generar nuestro archivo main, nuestro main.py y lo que
+vamos a hacer será pues importar from package import nuestra clase de nuestra
+línea en línea que es esta y ahora sí vamos a generar vamos a intensitar un objeto de
+nuestra tienda y vamos a por ejemplo imprimir una orden entonces por ejemplo
+Fikit punto place order y vamos a decirle que, por ejemplo, la pidió el usuario 1, 2, 3, que el allí del
+producto es product, por ejemplo, 4, 5, 6 y que el costo del producto pues son 100, lo que sea,
+no pueden ser dolares pesos o lo que ustedes, como ustedes lo configuren. Entonces podemos
+correr este main y pues vamos a ver qué pasa. Vamos a correr este archivo y como
+puedes ver se hacen las impresiones de cada comprobación de cada subsistema.
+Si te fijas primero se checa si el product existe en el inventario, luego se
+procesa el payment gateway y si esto fue verdadero pues entonces empieza a
+hacer el tracking del producto para un usuario y al final pues nos retorna
+true porque pues todo el proceso fue exitoso. Al final retorna el check shipping pero pues
+esto puede retornar diferentes estados, por ejemplo puede retornar 0 si es falso, retornar 1
+si el producto se está procesando, 2 si está enviándose y 3 si ya llegó. Entonces esto es el
+patrón de diseño package o bien fachada, espero que te esté gustando el curso,
+dale like, suscríbete, compártelo y recuerda que siempre, siempre vas a aprender un bit a la vez.

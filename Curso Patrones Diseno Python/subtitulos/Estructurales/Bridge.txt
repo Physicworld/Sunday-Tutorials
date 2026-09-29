@@ -1,0 +1,108 @@
+Bienvenidos a otro video del curso de patrones de diseño con Python.
+En esta ocasión, vamos a implementar el patrón de diseño bridge.
+El patrón de diseño bridge se utiliza para desacoplar la abstracción de la implementación
+de una clase de manera que ambos puedan variar de forma independiente.
+Este patrón es útil cuando se desea separar la lógica de alto nivel de implementación específica,
+lo que facilita la extensibilidad y escalabilidad del código.
+En este caso se implementa definiendo una interfaz de abstracción
+que contiene una referencia a un objeto de tipo implementor.
+Las subclases de abstraction pueden cambiar la implementación concreta en tiempo de ejecución
+permitiendo variaciones en la implementación sin cambiar la abstracción.
+Vamos a ver un ejemplo en el que queremos renderizar,
+podemos tener un programa que grafique ciertos objetos en 3D, en 2D y demás
+Pero, por ejemplo, podemos... hay diferentes formas de renderizar un objeto.
+Una puede ser, mediante un objeto vectorizado y otra puede ser, por ejemplo, en un objeto...
+en una forma que sea como de trama, ¿no? Así se le dice, en trama.
+y la forma en la que... la forma en que se implementa esto
+varía dependiendo de lo que tú quieras graficar, ¿no?
+Entonces, por ejemplo, en nuestra clase implementor
+vamos a definir la clase abstracta
+y vamos a implementar una clase para cada tipo de renderizado.
+Entonces, por ejemplo, como ya sabes, cuando queremos
+declarar una clase abstracta, tenemos que importar ABC
+y tenemos que importar abstract método. Entonces esta clase abstracta pues será renderer y vamos a tener ABC
+y vamos a dar de ABC y vamos a definir el método abstracto. Este método abstracto pues puede ser renderizar cualquier cosa
+en este caso yo lo voy a poner render shape. Entonces la vas a pasar la figura que quería renderizar
+renderizar y en este caso se define dentro de las interfaces de cada tipo de renderizado.
+Entonces por ejemplo aquí por ejemplo si queremos definir el renderizador de vectorial por ejemplo
+pues tenemos que pasarle la forma y esto hereda de renderer y de esta forma pues si tú te fijas
+aquí nos dice que está dibujando una figura con vectores como tipo vector y por ejemplo
+podemos tener otro, otro renderizado que sea el raster renderer que lo grafica, bueno en este
+caso lo grafica por ejemplo con líneas y en este caso lo grafique con píxeles ¿no? o sea tú
+puedes implementar dentro de estas clases la forma abstracta de cómo se dibuja una una figura
+dada la forma que lo quiere renderizar, ya sea de una forma vectorial a una forma que le hice en raster,
+como como de trama y se grafica pixel a pixel por ejemplo. Entonces tenemos estas dos
+implementaciones, recordemos que incluso la clase abstracta la podemos extraer a otro
+archivo, en este caso los voy a implementar aquí todos juntos y ahora si en abstraction es donde vamos
+a definir cómo es que se grafica cada figura o cada o cada cosa, entonces vamos a importar
+nuestra clase abstracta, entonces from implementor vamos a importar nuestro renderizador y vamos a
+definir una clase base que es figura y bueno esta tiene diferentes métodos en este caso su
+constructor pues será el tipo de renderizado que queremos utilizar y vamos a definir por ejemplo un
+método draw en este caso simplemente lo dejamos así sin definir porque esto depende de la figura
+la forma de dibujar cada figura cambia y por ejemplo una función resize que también la vamos a darle
+paz y luego podemos empezar a implementar cada tipo de figura que queramos como por ejemplo un
+drángulo, un círculo, un rombo, cualquier figura que tú quieras implementar aquí, aquí es donde
+se va a definir. En este caso vamos a definir una clase círculo y en esta clase círculo va a
+redar de shape y pues aquí es donde vamos a inicializar el constructor de la figura shape
+porque en este caso vamos a pasarle el renderizador y vamos a pasarle los atributos propios de la
+figura como por ejemplo el radio de un círculo entonces def init vamos a pasarle el renderizador
+y vamos a pasarle el radio en este caso inicializamos también la super clase con el renderer que
+lo recibe como constructor y aparte pues definimos los atributos particulares de la figura que en
+este caso es el radio y pues aquí pues agarrar más cosas como posición x, posición n y hay de más,
+pero aquí lo vamos, estamos simplemente poniendo el ejemplo, entonces ahora sí podemos definir
+el método draw particular para esta subclase de quereda de figura y pues como renderizas un
+un círculo pues nuestro renderizador es el que hará el trabajo entonces le damos render shape y
+pues puedes tener un enum dentro de render shape o diferentes formas de graficar algo pero por ejemplo
+aquí en shape puedes tener casos de cómo se renderiza cada figura que tú quieras en este caso yo le
+paso el círculo entonces cuando llega esta función va a ir dibujando un círculo con líneas
+y si utilizamos el otro tipo de renderizador va a decir dibujando un círculo con píxeles
+y demás entonces esa es la forma en la que se abstrae y si te fijas pues aquí ya es por
+así decimos por así decirlo extrajimos la complejidad de implementar la parte del código
+que se encarga de renderizar y la parte que se encarga de cargar el objeto como tal
+con, por ejemplo, el radio y demás. Por ejemplo, también tenemos la función resize y pues esta
+resize lo que hace es alterar el radio, por ejemplo. Entonces, tú puedes tener tantas
+acciones aquí como tú quieras, que alteren la figura del círculo, pero a final de cuentas,
+la función o la clase que se encarga de hacer renderizado, de dibujar el círculo
+tu aplicación, está abstraída en otra clase que no afecta tu código del círculo, es decir,
+ya está definido, no tienes que hacer cambios en tu clase círculo para poder definir eso,
+ya está en tu clase abstracta. Ahora, una vez que ya tenemos esto definido pues sigue lo que es
+implementar el código cliente, entonces para esto tenemos que importar las figuras que queremos
+generar. En este caso yo definí la figura circle y en implementor yo definí los diferentes
+tipos de renderizado. Entonces si tú te fijas lo que me va a permitir hacer este patrón de diseño
+es cambiar entre cada forma de renderizar una figura y la figura que quiero usar. Entonces aquí
+defino mi main y por ejemplo vector cycle va a ser igual a cycle pasándole vector renderer
+y en el segundo caso va a ser por ejemplo raster cycle utilizando el raster render y finalmente pues
+simplemente los puedo dibujar. Entonces ejecutando mi código cliente aquí puedes ver que metí un
+error me dice que no tiene atributo nombre simplemente porque este no es un objeto sino que es un
+string directamente, entonces vamos a decirle que nos imprima simplemente shape, lo volvamos a ejecutar y
+aquí me está retornando pero no lo está imprimiendo, entonces vamos a vamos a imprimirlo,
+vamos a imprimir la respuesta de esta función, lo volvamos a ejecutar y nos retorna, no vamos
+a ver por qué, porque brao no retorna, entonces no retorna nada, en este caso entonces en
+en lugar de hacer un return vamos a cambiar esto por un print, que nos imprima lo que está aquí,
+también le damos print, como puedes ver puedo modificar este código y no se va a alterar
+nada de mi clase abstracta, en esta ocasión es return, simplemente aquí es print, imprimimos
+y imprimimos, quitamos esto, lo volvemos a correr y como puedes ver cada renderizador me
+me... me dio un comportamiento diferente sin... utilizando el mismo constructor del objeto
+circle. Entonces aquí me está diciendo drawing circle as lines y drawing circles as pixels.
+Entonces no me está... no... no estoy alterando el código de implementación del círculo,
+sino que estoy cambiando el renderizador que estoy usando y aquí podría seguir agregando
+más renderizadores, más tipos de renderizadores, o incluso hasta proyecciones. Por ejemplo,
+si quisiera proyectar una figura de tres dimensiones en dos dimensiones,
+podría ser una clase que se encargue de eso. Y de esta forma, obviamente no estamos implementando
+esto con un motor gráfico ni nada, sino que estamos entendiendo el patón de diseño con
+un ejemplo y estamos entendiendo la potencia que tiene este patón de diseño para separar
+el código complejo, que es como tal un renderizador, pero lo puedes extender a más cosas, de la
+definición de un objeto y sus atributos y cómo puedes utilizar esto para incluso cambiar el
+tipo de renderizador directamente de una clase, sin necesidad de hacer mayores modificaciones en tu
+código. Y esto te fijas, es escalable porque tú puedes seguir agregando más tipos de renderizadores
+y a su vez los vas a poder seguir usando en cada clase circle. Entonces finalmente aquí
+el comportamiento cambia y esto si lo implementas bien en una aplicación con
+monográfico, vas a ver el impacto que tiene al momento de poder graficar por
+ejemplo hasta un círculo, pero ve esto de forma un poco más compleja.
+Cuando empiezo a hacer figuras más compuestas y demás, todo esto le da
+comportamientos a tus elementos y a tus objetos. Entonces de esta manera te
+permite abstraer cosas muy complejas, hacer el código abierto cerrado,
+que os decir que pueda seguir elegando cosas y seguir los principios sólidos y pues aquí está
+el patrón de diseño. Espero que te haya gustado este vídeo del curso, dale like,
+suscríbete, compártelo y bueno vamos a empezar en el siguiente vídeo a ver los patrónes
+de diseño de comportamiento y bueno recuerda que siempre, siempre vas a aprender un bit a la vez.

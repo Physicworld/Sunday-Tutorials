@@ -1,0 +1,311 @@
+1
+00:00:00,780 --> 00:00:04,980
+En este vídeo del curso vamos a implementar el patrón de diseño Package,
+
+2
+00:00:04,980 --> 00:00:11,660
+traducido del español como Fachada. En Python se utiliza este para proporcionar una interfaz
+
+3
+00:00:11,660 --> 00:00:19,980
+simplificada a un conjunto complejo de clases, una biblioteca o framework. Este patrón es especialmente
+
+4
+00:00:19,980 --> 00:00:25,700
+útil cuando se trabaja con sistemas complicados que tienen múltiples subsistemas y hay que ofrecer
+
+5
+00:00:25,700 --> 00:00:29,700
+una manera sencilla y clara de interactuar con el sistema sin necesidad de comprender
+
+6
+00:00:29,700 --> 00:00:37,340
+todos sus detalles internos. Para llevar a cabo este patrón de diseño vamos a generar cuatro
+
+7
+00:00:37,340 --> 00:00:46,300
+archivos, más uno que es el del cliente. Supongamos que tenemos una, por ejemplo, una tienda y la
+
+8
+00:00:46,300 --> 00:00:51,460
+tienda se puede entender como un sistema que tiene varios subsistemas, como por ejemplo el
+
+9
+00:00:51,460 --> 00:00:57,420
+subsistema alimentario, el subsistema de pagos y el subsistema de entregas. Estos subsistemas,
+
+10
+00:00:57,420 --> 00:01:01,700
+a su vez tienen sus lógicas de programación dentro de sí mismos y pueden ser muy complejas,
+
+11
+00:01:01,700 --> 00:01:07,340
+pero este patrón de diseño nos permite simplificar cada subsistema e integrarlos todos en una misma
+
+12
+00:01:07,340 --> 00:01:12,660
+interfaz. Entonces para empezar a implementar este patrón vamos a empezar implementando
+
+13
+00:01:12,660 --> 00:01:17,300
+cada uno de los subsistemas. El primer subsistema que vamos a implementar es el
+
+14
+00:01:17,300 --> 00:01:22,100
+del inventario, entonces vamos a generar una clase que se llama inventory y esta
+
+15
+00:01:22,100 --> 00:01:32,620
+clase inventory va a tener una función que se llama check inventory y dentro va a tener pues el
+
+16
+00:01:32,620 --> 00:01:41,260
+product ID y este product ID bien ahora puede hacer una solicitud a una base de datos para verificar
+
+17
+00:01:41,260 --> 00:01:46,940
+si ese producto por ejemplo está en existencia. Vamos a verificar si el producto está en existencia
+
+18
+00:01:46,940 --> 00:01:53,220
+retornando simplemente true, vamos a suponer que este producto existe, pero aquí pues pues va
+
+19
+00:01:53,220 --> 00:02:00,140
+una conexión completa a todo el sistema de almacén por ejemplo, ahora el segundo subsistema puede ser
+
+20
+00:02:00,140 --> 00:02:07,420
+el proceso de pagos, entonces vamos a generar una clase que se llama payment y esta clase payment lo
+
+21
+00:02:07,420 --> 00:02:14,420
+que va a hacer es por ejemplo verificar si el pago del usuario y su aumento que pagó
+
+22
+00:02:14,420 --> 00:02:20,420
+pues es válido, entonces por ejemplo va a tener una función que se llama processPayment y este
+
+23
+00:02:20,420 --> 00:02:27,260
+processPayment va a tener por ejemplo el userID y va a tener el amount que el usuario pago,
+
+24
+00:02:28,140 --> 00:02:37,420
+podemos imprimir el usuario y cuanto ha pagado, entonces retornamos true porque
+
+25
+00:02:37,420 --> 00:02:42,580
+vamos a considerar que también esto se cumple y por último por ejemplo el sistema de entregas,
+
+26
+00:02:42,580 --> 00:02:51,630
+entonces vamos a tener una clase que se llama shipping y esta clase shipping lo que va a hacer es
+
+27
+00:02:51,630 --> 00:02:59,310
+verificar por ejemplo si el estado de la entrega de un producto que bien puede ser preparándose en
+
+28
+00:02:59,310 --> 00:03:06,590
+camino o puede ser por ejemplo que ya esté entregado entonces vamos a definir una función que se llame
+
+29
+00:03:06,590 --> 00:03:16,670
+checkshipping y vamos a imprimir que se está revisando el producto y entonces retornamos True
+
+30
+00:03:16,670 --> 00:03:23,710
+también. Entonces todos estos subsistemas que hemos implementado y que tienen diferentes,
+
+31
+00:03:23,710 --> 00:03:29,070
+pueden ser sus implementaciones tan complejas como tú quieras porque cada uno de estos puede
+
+32
+00:03:29,070 --> 00:03:33,830
+estar pidiendo datos de una API, pidiendo datos de una base de datos, actualizándose en tiempo
+
+33
+00:03:33,830 --> 00:03:40,630
+real a través de WebSockets o de lo que sea para que el sistema general o la fachada de tu sistema
+
+34
+00:03:40,630 --> 00:03:46,430
+funcione. Entonces ahora vamos a hacer la integración de los subsistemas en el patrón de diseño
+
+35
+00:03:46,430 --> 00:03:51,750
+faque. Vamos a hacer la fachada de nuestra, por ejemplo, tiende línea. Entonces from
+
+36
+00:03:51,750 --> 00:04:00,750
+subsystem 1, vamos a importar inventory. Prum subsystem 2, vamos a importar
+
+37
+00:04:01,750 --> 00:04:09,750
+payment. Y por último, from subsystem 3, vamos a importar shipping. Entonces, vamos a generar una clase
+
+38
+00:04:10,750 --> 00:04:16,750
+que englobe todos estos subsystemas. Entonces, class online shopping
+
+39
+00:04:16,750 --> 00:04:23,790
+ShoppingPackage, es decir una fachada de una tienda en línea, por así decirlo, vamos a generar
+
+40
+00:04:23,790 --> 00:04:29,550
+su constructor y este constructor pues dentro va a tener cada subsistema, entonces Inventory
+
+41
+00:04:29,550 --> 00:04:36,710
+va a ser igual a Inventory, Payment y Shipping. Entonces dentro de todos nuestros subsistemas
+
+42
+00:04:36,710 --> 00:04:42,350
+ya están los métodos que definen a cada clase, entonces por ejemplo podemos generar
+
+43
+00:04:42,350 --> 00:04:47,470
+una función que se llame PlaysOrder y este PlaysOrder pues al final de cuentas
+
+44
+00:04:47,990 --> 00:04:52,910
+es la orden de un cliente, entonces vamos a poner PlaysOrder y como
+
+45
+00:04:53,510 --> 00:04:59,950
+como parámetros esta función va a tener el ID del usuario, el ID del producto
+
+46
+00:05:00,870 --> 00:05:06,470
+y la cantidad de dinero que, por ejemplo, cuesta del producto o que el cliente va a pagar.
+
+47
+00:05:06,950 --> 00:05:11,510
+Entonces primero tenemos que checar si el producto existe en inventario
+
+48
+00:05:11,510 --> 00:05:17,510
+y si el pago pues se hace con si es exitoso el pago
+
+49
+00:05:17,510 --> 00:05:22,510
+y si estas dos condiciones se cumplen, pues entonces ahora
+
+50
+00:05:22,510 --> 00:05:27,510
+revisamos el estado de él, por eso decirlo, de la entrega
+
+51
+00:05:27,510 --> 00:05:37,260
+entonces if serve.inventory.checkInventory
+
+52
+00:05:37,260 --> 00:05:40,260
+le vas a pasar el product ID
+
+53
+00:05:40,260 --> 00:05:55,610
+Y si el proceso de pago es exitoso, entonces pues vas a empezar a monitorear el pedido.
+
+54
+00:05:55,610 --> 00:06:02,610
+Entonces, por ejemplo, vamos a darle return selfshipping.checkshipping.
+
+55
+00:06:02,610 --> 00:06:06,610
+Le pasas el product ID y también el user ID.
+
+56
+00:06:06,610 --> 00:06:10,610
+Creo que esto no lo configure en el subsystem3.
+
+57
+00:06:10,610 --> 00:06:18,770
+3 también hay que pasarle user ID y vamos a ponerle aquí checking shipping
+
+58
+00:06:18,770 --> 00:06:25,650
+por product, product ID, in user ID entonces de esta manera pues empezaremos a gestionar
+
+59
+00:06:26,890 --> 00:06:34,330
+para decirlo la orden que el cliente ha puesto pero si esto no se cumple
+
+60
+00:06:34,330 --> 00:06:45,510
+vamos a retornar un able to place order, esto significa que no podemos poner la orden porque
+
+61
+00:06:45,510 --> 00:06:53,910
+o bien el producto no está en existencias o bien el proceso del pago ha fallado. Entonces para poder
+
+62
+00:06:53,910 --> 00:07:01,990
+utilizar esto en un código cliente vamos a generar nuestro archivo main, nuestro main.py y lo que
+
+63
+00:07:01,990 --> 00:07:11,470
+vamos a hacer será pues importar from package import nuestra clase de nuestra
+
+64
+00:07:11,470 --> 00:07:18,550
+línea en línea que es esta y ahora sí vamos a generar vamos a intensitar un objeto de
+
+65
+00:07:18,550 --> 00:07:24,550
+nuestra tienda y vamos a por ejemplo imprimir una orden entonces por ejemplo
+
+66
+00:07:24,550 --> 00:07:35,030
+Fikit punto place order y vamos a decirle que, por ejemplo, la pidió el usuario 1, 2, 3, que el allí del
+
+67
+00:07:35,030 --> 00:07:45,070
+producto es product, por ejemplo, 4, 5, 6 y que el costo del producto pues son 100, lo que sea,
+
+68
+00:07:45,070 --> 00:07:50,830
+no pueden ser dolares pesos o lo que ustedes, como ustedes lo configuren. Entonces podemos
+
+69
+00:07:50,830 --> 00:07:58,290
+correr este main y pues vamos a ver qué pasa. Vamos a correr este archivo y como
+
+70
+00:07:58,290 --> 00:08:04,890
+puedes ver se hacen las impresiones de cada comprobación de cada subsistema.
+
+71
+00:08:04,890 --> 00:08:10,490
+Si te fijas primero se checa si el product existe en el inventario, luego se
+
+72
+00:08:10,490 --> 00:08:16,810
+procesa el payment gateway y si esto fue verdadero pues entonces empieza a
+
+73
+00:08:16,810 --> 00:08:21,290
+hacer el tracking del producto para un usuario y al final pues nos retorna
+
+74
+00:08:21,290 --> 00:08:30,110
+true porque pues todo el proceso fue exitoso. Al final retorna el check shipping pero pues
+
+75
+00:08:30,110 --> 00:08:36,490
+esto puede retornar diferentes estados, por ejemplo puede retornar 0 si es falso, retornar 1
+
+76
+00:08:36,490 --> 00:08:43,890
+si el producto se está procesando, 2 si está enviándose y 3 si ya llegó. Entonces esto es el
+
+77
+00:08:43,890 --> 00:08:48,850
+patrón de diseño package o bien fachada, espero que te esté gustando el curso,
+
+78
+00:08:48,850 --> 00:08:54,930
+dale like, suscríbete, compártelo y recuerda que siempre, siempre vas a aprender un bit a la vez.

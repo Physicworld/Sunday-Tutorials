@@ -1,0 +1,113 @@
+Hola qué tal y bienvenidos a un nuevo vídeo del curso de patrones de diseño con Python.
+En esta ocasión vamos a hacer una implementación del patrón Builder. Este patrón es un patrón
+creacional el cual nos permite crear objetos y a manera de que los damos creando nos permite
+irnos componiendo de diferentes partes para poder tener el objeto final como deseamos que esté
+creado. Para llevar a cabo este patrón de diseño voy a hacer una analogía con una pizza.
+Cuando tú querás una pizza de diferentes ingredientes, tienes la opción de usar una cierta salsa,
+si ponerle cierto ingrediente, hornearla, seleccionar el tipo de masa y demás.
+Por lo cual este ejemplo se presta mucho a poder utilizarlo de ejemplo para implementar
+el patrón de diseño Builder.
+Entonces para llevar a cabo este patrón de diseño necesitamos esta carpeta que
+está aquí.
+Y pues por lo general el patrón Builder se divide en tres partes.
+la primera parte que es el pizza pie es donde se define el objeto o la base class de tu objeto,
+luego está el pizza builder donde se definen las clases de cada tipo de objeto que se puede crear,
+en este caso cada clase puede ser el tipo de pizza, por ejemplo una clase puede ser el tipo
+de pizza margarita y esta pizza que se llama margarita tendrá ciertos ingredientes y por
+general de forma opcional se genera un nuevo fichero que es el que se llama cook.py que es el
+director. Este patrón director será el encargado de hacer esta parte creacional, de regresarte los
+objetos y de que puedas utilizarlos como si fuera una interfaz. Esta última parte es opcional,
+no siempre se incluye en el patrón builder pero también es una buena práctica cuando el
+proyecto es muy grande y demás. Cabe recalcar que cada cosa que vamos a poner aquí pues por
+por ejemplo los ingredientes de la pizza, el tipo de pizza y todo, puede ser declarado como en OMS,
+entonces si tú querás en OMS de los ingredientes y demás pues hace que tu diseño siga un patrón
+abierto cerrado, como siguiendo los principios sólidos, pero pues vamos a hacer esto con,
+vamos a pasarle los tipos, los ingredientes y todo de forma directa para mostrar cómo
+funciona el patrón builder. Entonces para comenzar en nuestra clase base que es pizza,
+vamos a declarar pues es la clase, entonces vamos a poner clas, pizza y vamos a definir su
+constructor, entonces de init y vamos a, y una pizza pues puede tener diferentes tipos de,
+de componentes, de hecho aquí Copilot me atinó y me leyó la mente porque realmente voy a
+utilizar estos atributos, por una parte el Dow que es la masa, South que es la salsa y el
+topping que es lo que le vas a poner a tu salsa, ¿no? A tu pizza, puede ser el ingrediente, si lo vas a
+poner carne, jamón, lo que sea, ¿no? Entonces vamos a definir los componentes, en este caso el tipo de
+masa, el tipo de salsa y el topping. Entonces esta es tu clase base pizza y además para hacer un
+poquito más bonito esto, vamos a también definir tu representación. Entonces vamos a definir
+la función retron, string perdón y vamos a retornar una cadena formateada con el tipo de masa,
+el tipo de salsa y el tipo de topping. Esto es lo único que vas a aclarar en tu clase base,
+que en este caso nuestra clase base es pizza y luego vamos a seguir con el pizza builder. Entonces
+en pizza builder vamos a importar nuestro objeto base que es pizza, entonces decimos
+form pizza import pizza entonces vamos a definir una clase que se llama pizza builder entonces aquí
+vamos a definir los setters por así decirlo de nuestro objeto entonces pero los vamos a
+dejar sin definir no se le vamos a poner un pass porque luego cada constructor de cada tipo de pizza
+va a encargarse de definir estos atributos. Entonces vamos a poner DEV, SET, SET DOG que es
+definir masa y vamos a ponerle SELF, SELF DOG y vamos a ponerle aquí un PASS. ¿Por qué le pongo PASS?
+Porque esto se va a definir en cada tipo de pizza, es decir tú vas a tener este pizza
+builder va a ser... las subclases van a heredar de pizza builder estos métodos y tú vas a poder
+setear de forma independiente todos estos atributos, entonces de igual manera vamos a definir el método setSaus
+vamos a pasarle la salsa igual no lo definimos y por último definimos el método setTopping,
+entonces también lo pasamos y aquí es donde vamos a definir cada tipo de pizza,
+en este caso vamos a definir un tipo de pizza, por ejemplo, margarita, entonces, clas,
+margarita, builder, es decir, pizza margarita, el constructor de la pizza margarita, entonces
+esta va a heredar de pizza builder y vamos a definir ahora sí su constructor y sus atributos,
+entonces aquí ya copilot me lo recomienda y como debe de ser, nada más que los atributos no llevan
+guion bajo vamos a escribirlo de forma correcta, entonces vamos a definir su constructor self y
+pues cada tipo de pizza o cada receta va a guardar dentro y si un objeto pizza, entonces self.pizza
+es igual a pizza. Entonces vamos a poner de secdote y self.pizza vamos a exceder al
+atributo dode y lo seteamos. Entonces nada más que lo que cabe recalcar aquí es que como van
+a ser tipos bien definidos, no vas a pasarle como tal el atributo dode, no vas a definirlo. En
+este caso puedes hacer uso de algún enum para tomar el tipo de masa y de masa, entonces aquí
+no le vamos a pasar el tipo de masa, sino que vamos a ponerla aquí por ejemplo regular, esto puede ser
+puedes usar un enum, entonces ponemos ese comentario pero por ejemplo la pizza
+margarita va a tener un tipo de masa regular, ahora vas a aceitear el tipo de salsa, el tipo de salsa pues
+va a ser de tomate y pues vas a aceitear los toppings, entonces los toppings pues es por ejemplo el queso,
+vamos a decir que esta pizza tiene un topping de queso mozzarella, entonces este es un patrón de
+diseño que ya tiene predefinido el patrón Margarita y dentro de cada clase se gestiona
+cómo se inicializan los atributos de la clase pero eso tú lo puedes generalizar a cualquier
+problema o sea si quieres por ejemplo construir una casa pues no sé la casa puede tener dos
+baños tres cuartos y un estacionamiento puedes construir diferentes tipos de casa
+definiendo sus clases heredando de una clase base entonces ya que tenemos esto vamos a
+definir ahora la clase directora, que esta es opcional pero igual la vamos a definir porque pues es parte
+del patrón builder, entonces from pizza builder vamos a importar margarita builder, entonces vamos
+a definir la clase cock que es nuestra clase directora y vamos a ponerle un método estático que
+se llame MakePizza. Entonces, vamos a pasarle Self y el Builder. En este caso, el Builder
+pues es el constructor que ya hemos definido en la clase, ¿no? O sea, en este caso, en
+este caso los Builders va a ser el tipo de pizza, ¿no? O sea, por ejemplo, tú puedes
+generar otra clase que se llame CheeseBuilder y va a ser una pizza, por ejemplo, de extra
+eso y ya tienes tus patrones de diseño definidos y a la clase directora simplemente vas a tener
+que pasarle el builder, ahorita vas a ver en el código cliente como es que mandamos llamar
+estas funciones, entonces dentro de makepizza generalizamos los setters de la clase y se
+definen los atributos y de esta forma retornamos la pizza, si usted lo fijas al final retornamos
+retornamos el objeto pizza. Entonces, ésta es la clase directora y ahora en el código
+cliente ¿cómo instanceríamos esto? Entonces, import cook, importamos la clase directora
+e importamos los builders que queremos inicializar. En este caso, si te fijas, por ejemplo, Copilot
+nos dice que también implementemos creamy bacon builder. Es una pizza que no definimos,
+nos autocompleta porque Copilot reconoce que estamos implementando un patrón de diseño builder,
+entonces nos recomienda que importemos otros builders, pero pues no los tenemos. Entonces ahora sí,
+instanciamos la clase de directoria y instanciamos también los constructores de los diferentes
+builders y después pues simplemente podemos mandar llamar la clase directora y recibir
+objetos de tipo pizza, entonces pizza va a ser igual a cook.makepizza y le dices qué tipo de pizza
+quieres y tú tuvieras muchos tipos de pizza pues aquí tú lo seguías instanciando y te
+irían retornando ese tipo de objeto a tu variable pizza. Desde esta manera con este mismo patrón
+tú podrías por ejemplo generar un programa que genere recetas y para un restaurante y que además
+puedes implementar, por ejemplo, un gestor de tareas en el que...
+un gestor de órdenes en el que habías diciéndole al restaurante
+qué tipo de comida sigue, ¿no? O sea, todo esto pues es...
+lo puedes implementar en un programa literal de sistema de...
+de pagos como tipo Uber Eats, Rapid y demás, ¿no?
+Entonces, una vez que ya generamos nuestro objeto pizza
+pues lo imprimimos y se va a imprimir pues de alguna manera
+también su representación. Entonces, vamos a correr
+el main, vamos a ponerle run main y si te fijas aquí nos dice que el tipo de pizza que estamos
+generando es un tipo de pizza regular con salsa de tomate y con topping que es mozzarella, es decir
+generamos una pizza de margarita pero tu aquí puedes definir todos los tipos de pizza que quieras
+con diferentes combinaciones y entonces la carta de un restaurante de pizzas se convierte en un patrón
+diseño builder con muchos builders donde tú puedes definir específicamente la receta de, por ejemplo,
+una pizza. Pero esto lo puedes extender a muchísimos más casos. Digo, esto es un ejemplo
+para que tú puedas imaginar cómo implementar esto en problemas de la vida real, en un problema
+tuyo en empresa y demás y la ventaja que tienen los patrones de diseño es que son
+abiertos cerrados y siguen el principio sólido por ejemplo si yo quisiera ahora
+generar otro tipo de pizza lo único que tengo que hacer es definir la clase una
+clase nueva pero no tengo que modificar ni la clase base ni la clase de margarita
+builder es decir el código va a ser fácilmente mantenible y fácilmente
+escalable. Entonces espero que te haya gustado este vídeo te veo en el
+siguiente vídeo del curso y suscríbete, dale like, recomiendalo y te veo en la siguiente.

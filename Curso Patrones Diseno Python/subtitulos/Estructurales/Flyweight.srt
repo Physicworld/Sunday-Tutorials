@@ -1,0 +1,267 @@
+1
+00:00:00,750 --> 00:00:05,350
+En este video del curso, vamos a implementar el patrón de diseño Flyweight.
+
+2
+00:00:05,350 --> 00:00:10,390
+Este patrón de diseño se enfoca en reducir la cantidad de memoria utilizada por un programa
+
+3
+00:00:10,390 --> 00:00:15,270
+al compartir objetos comunes en lugar de crear instancias nuevas para cada uso.
+
+4
+00:00:15,270 --> 00:00:20,270
+Este patrón es útil en situaciones donde un gran número de objetos similares son utilizados
+
+5
+00:00:20,270 --> 00:00:24,540
+permitiendo una gestión eficiente de memoria.
+
+6
+00:00:24,540 --> 00:00:31,100
+En este caso vamos a implementar el patrón Flyweight para piezas de ajedrez, es decir,
+
+7
+00:00:31,100 --> 00:00:35,660
+en un tarlero de ajedrez hay muchas piezas que son parecidas e incluso que están repetidas.
+
+8
+00:00:35,660 --> 00:00:41,780
+En este caso la cantidad de objetos es pequeña pero si tú te encuentras con un problema que
+
+9
+00:00:41,780 --> 00:00:49,460
+requiera la creación de un gran número de objetos iguales puedes aplicar este patrón
+
+10
+00:00:49,460 --> 00:00:55,500
+de diseño y a continuación vas a ver su funcionalidad. El patrón de diseño flyweight
+
+11
+00:00:55,500 --> 00:01:04,280
+ocupa la clase flyweight que especifica los atributos de cada objeto individual y por otra parte ocupa
+
+12
+00:01:04,280 --> 00:01:10,660
+una fábrica y esta fábrica lo que va a hacer es controlar la creación de objetos en función de
+
+13
+00:01:10,660 --> 00:01:17,820
+los atributos de tu clase, tus objetos de clase, en este caso por ejemplo nuestros objetos de
+
+14
+00:01:17,820 --> 00:01:24,460
+clase en nuestro archivo flyweight va a ser nuestra pieza de ajedrez, entonces vamos a
+
+15
+00:01:24,460 --> 00:01:38,860
+genera una clase que se llame Cheese, Piece, Flyway y pues las piezas de ajedrez se pueden
+
+16
+00:01:38,860 --> 00:01:44,660
+generalizar por dos atributos, uno por su nombre y dos por su color, es decir puede ser una pieza
+
+17
+00:01:44,660 --> 00:01:51,520
+de caballo, un peón, una torre, una pil y puede ser blanca o negra, entonces vamos a
+
+18
+00:01:51,520 --> 00:01:58,760
+inicializar su constructor con estos atributos, entonces por el nombre y el color, guardamos
+
+19
+00:01:58,760 --> 00:02:09,240
+estos atributos y pues a continuación cada pieza de la gdres pues tiene una opción que
+
+20
+00:02:09,240 --> 00:02:14,400
+se llama display. Este display se va a agregar de imprimir en pantalla la posición en la
+
+21
+00:02:14,400 --> 00:02:24,360
+que está dicha pieza. Entonces vamos a ponerle de display. Entonces vamos a recibir tanto
+
+22
+00:02:24,360 --> 00:02:33,210
+puedes de su posición en X en Y o nada más simplemente recibir su posición. Entonces
+
+23
+00:02:35,130 --> 00:02:41,630
+vamos a imprimir este mensaje mostrando la pieza tal, de color tal, en la posición tal. La posición
+
+24
+00:02:41,630 --> 00:02:48,950
+pues va a ser una combinación por ejemplo a 8, a 1, a 2, b3, b4 dependiendo en qué
+
+25
+00:02:48,950 --> 00:02:54,990
+posición esté. Este es nuestra clase o nuestra nuestro nuestro primer objeto que
+
+26
+00:02:54,990 --> 00:03:01,870
+utilizaremos y lo vamos a controlar desde la fábrica del flyway, entonces vamos al archivo factory
+
+27
+00:03:01,870 --> 00:03:08,070
+y vamos a generar una clase que se llama cheese piece factory que va a controlar la creación de objetos
+
+28
+00:03:08,070 --> 00:03:17,950
+dado a sus atributos, entonces class cheese piece factory y este va a tener una estructura de datos
+
+29
+00:03:17,950 --> 00:03:22,350
+que va a sostener pues toda la creación de objetos, en este caso la estructura que voy
+
+30
+00:03:22,350 --> 00:03:27,750
+utilizar es un diccionario. Entonces, Flyweights va a ser un diccionario en donde
+
+31
+00:03:27,750 --> 00:03:34,910
+voy a tener un class method en donde voy a definir cada una de las piezas y voy
+
+32
+00:03:34,910 --> 00:03:39,550
+a controlar su creación. Entonces, voy a definir una función que se llama
+
+33
+00:03:39,550 --> 00:03:48,780
+dead get flyweight, en este caso con la clase, el nombre y el color. Entonces, en
+
+34
+00:03:48,780 --> 00:03:53,140
+este caso voy a generar una llave con la que voy a controlar en el
+
+35
+00:03:53,140 --> 00:03:59,300
+diccionario el retorno de los objetos, entonces esta clave va a estar conformada por los atributos
+
+36
+00:03:59,300 --> 00:04:07,660
+de nuestra clase base, entonces primero tengo que comprobar si esta no existe, si esta llave no
+
+37
+00:04:07,660 --> 00:04:15,340
+existe en mi diccionario de flyweights lo que tengo que hacer es entonces retornar una nueva
+
+38
+00:04:15,340 --> 00:04:26,340
+instancia de mi pieza, ¿no? En este caso, play weight import de mi clase chis piz play weight.
+
+39
+00:04:26,340 --> 00:04:33,220
+Entonces, aquí lo pongo y lo que vas a hacer es, pues, guardar en el diccionario esa, esa
+
+40
+00:04:33,220 --> 00:04:40,420
+nueva instancia. Y en el caso de que ya exista, pues, simplemente retornamos lo que hemos declarado.
+
+41
+00:04:40,420 --> 00:04:45,500
+es bastante similar al patrón singleton, pero el patrón singleton te permite crear
+
+42
+00:04:45,500 --> 00:04:52,980
+una única clase que te especifiques y en este caso en lugar de clases es crear una
+
+43
+00:04:52,980 --> 00:04:57,300
+unicidad en los objetos de la clase, es decir puedes crear tantos objetos de la
+
+44
+00:04:57,300 --> 00:05:01,980
+clase siempre y cuando estos objetos sean diferentes, si son iguales no puedes
+
+45
+00:05:01,980 --> 00:05:06,900
+crear nuevos, entonces esas son las únicas dos estructuras o dos
+
+46
+00:05:06,900 --> 00:05:12,480
+clases que necesitas para implementar el patrón de diseño flyweight. Ahora vamos al código cliente,
+
+47
+00:05:12,480 --> 00:05:19,520
+nuestro código cliente lo único que vamos a utilizar es la fábrica, entonces from factory
+
+48
+00:05:20,960 --> 00:05:29,240
+import cheese piece factory, entonces tú puedes quedar tantas piezas como quieras, voy a definir
+
+49
+00:05:29,240 --> 00:05:40,560
+main y por ejemplo piece 1 va a ser igual a cheese piece factory y le puedes decir que quieres que sea
+
+50
+00:05:40,560 --> 00:05:47,840
+un peón, en este caso por ejemplo puede ser un peón, la reina, el rey o por ejemplo una torre y su
+
+51
+00:05:47,840 --> 00:05:58,740
+color puede ser por ejemplo black y el piece 2 vamos a demostrar que pues se va a tratar
+
+52
+00:05:58,740 --> 00:06:05,740
+del mismo objeto. Entonces, por ejemplo, vamos a imprimir si la pieza 1 es la pieza 2 y vamos
+
+53
+00:06:05,740 --> 00:06:19,300
+a imprimir las piezas en la terminal. Entonces, piece1.display y por ejemplo en el A8 y piece2.display en
+
+54
+00:06:19,300 --> 00:06:27,740
+el A8 vamos a poner por ejemplo en el A8. Entonces, vamos a estar mostrando el mismo
+
+55
+00:06:27,740 --> 00:06:34,220
+pero lo único que cambiamos es la posición en la que se muestra, entonces por ejemplo vamos a
+
+56
+00:06:34,220 --> 00:06:47,090
+correr este main, lo corremos y como puedes ver demostramos que la pieza 1 y la pieza 2 se trata
+
+57
+00:06:47,090 --> 00:06:54,130
+de la misma, de la misma objeto, es decir a pesar de que a la fábrica le dijimos que queríamos
+
+58
+00:06:56,130 --> 00:07:01,690
+un objeto para rock black y otro objeto para rock black, la fábrica los regresó el mismo
+
+59
+00:07:01,690 --> 00:07:09,250
+objeto para para ambos porque se trata de un objeto con los mismos atributos, aquí demostramos
+
+60
+00:07:09,250 --> 00:07:15,850
+que se trata del mismo objeto y además imprimimos el objeto pero en diferentes casillas del tablero,
+
+61
+00:07:15,850 --> 00:07:23,590
+de esta manera pues ahorramos una cierta cantidad de memoria. Obviamente en este
+
+62
+00:07:23,590 --> 00:07:28,250
+caso solamente son dos objetos pero cuando empezamos a trabajar con proyectos grandes en
+
+63
+00:07:28,250 --> 00:07:32,970
+medida que crecen y crecen el número de objetos que hay pues es bueno implementar
+
+64
+00:07:32,970 --> 00:07:36,530
+este tipo de cosas para ahorrar memoria porque siempre vamos a controlar la
+
+65
+00:07:36,530 --> 00:07:40,650
+creación de objetos y bueno que se termina el vídeo del curso espero que
+
+66
+00:07:40,650 --> 00:07:44,650
+te haya gustado, te ven el siguiente, dale like, suscríbete y recuerda que
+
+67
+00:07:44,650 --> 00:07:47,605
+siempre vas a aprender un vida a la vez

@@ -1,0 +1,83 @@
+Hola qué tal y bienvenidos a un nuevo vídeo del curso de patrones de diseño con Python.
+En esta ocasión vamos a implementar el patrón de diseño comand. El patrón de diseño comand se
+utiliza para encapsular la solicitud como un objeto, permitiendo de esta manera para
+metrizar clientes con colas, solicitudes y operaciones. Facilita la implementación de
+operaciones como deshacer, rehacer y también permite llevar un registro de las operaciones.
+es especialmente útil en interfaces gráficas o en sistemas que ocupen tareas en colas,
+donde las acciones del usuario se traducen en comandos específicos.
+Y para implementar el patrón de diseño command necesitamos por lo general tres archivos de Python,
+más el código cliente. El primero define la interfaz command y sus implementaciones concretas,
+luego la clase invoker que maneja y ejecuta comandos y por último el receiver. Define
+las clases que realizarán las acciones concretas cuando se ejecute un comando. Como por ejemplo,
+un receiver podría ser un editor de texto, como bien puede ser este editor de código o este ID
+que es PyCharm, el invoker puede ser pues un botón que dispara una acción y el command pues es como
+tal la acción que se va a hacer, en este caso puede ser guardar, guardar como, imprimir y
+y demás, son diferentes comandos por así decirlo, de ahí viene el nombre command y bueno para
+comenzar a implementar este patrón de diseño vamos a nuestro archivo command y dentro del
+command vamos a definir una clase abstracta command con un método abstracto que se llame execute o
+ejecutar, entonces aquí tenemos a definir las clases definidas como copy command y past command,
+entonces vamos a hacer lo siguiente, from abc import abc y vamos a implementar abstract method
+entonces class command abc tenemos un método abstract que se llama execute entonces vamos
+a implementar los comandos concretos en este caso vamos a generar un comando con un concreto que
+se llame copy. Entonces, class, copy command y esa es la implementación. En este caso se
+inicializa con un receiver. En este caso puede ser, por ejemplo, el editor de texto y el execute,
+el editor de texto va a decidir cómo copia esa acción. O sea, la acción copiar se define
+dentro de nuestro receiver. Y, por ejemplo, también el pastMethod que es copiar, pegar. En este caso,
+past es pegar y aquí definimos la acción, como tal, cuando ejecutamos este comando. Ahora en nuestra
+clase receiver es donde vamos a definir los diferentes tipos de recibidores o receptores que
+puede haber, en este caso vamos a definir un text editor por ejemplo, entonces class text editor
+vamos a definir el comando copy y vamos a imprimir text editor copiando texto, vamos a
+ponerlo en inglés text copied y también el método paste, es decir definimos el método copiar
+pegar de nuestro recibidor y si te fijas cada cada método que definimos de nuestro de cada
+recibidor corresponde a una clase de copy command o sea por ejemplo corresponde un comando en concreto
+porque es una acción que va a tomar y ahora ya que tenemos nuestro recibidor el comando
+pues nos falta implementar el invoker el invoker es el elemento al que se le hace click o se
+ejecuta para poder llevar a cabo esta acción o este comando, en este caso por ejemplo podemos
+implementar una clase botón, entonces por ejemplo classButtonDevInit puede tener una lista de comandos
+porque como recordamos puede ser una cola de comandos como tal pero en este caso vamos a
+definir uno solo, entonces self command va a ser igual a command y command se va a pasar como
+constructor. En este caso un botón puede
+realizar más de un comando.
+Entonces, cuando definimos el
+diccionario, podemos guardar las
+diferentes acciones que puede hacer, por
+ejemplo, este botón. Pero en este caso
+vamos a definir solamente un botón para
+un comando. En este caso lo podríamos
+incluso definir como button copy,
+exactamente, o button paste para cada
+uno. En este caso vamos a definir
+simplemente este botón, porque lo
+generaliza el comando como tal son las subclases de querida de comando, o sea las clases abstractas
+o las clases hijas de la clase abstracta. Estas son las que por así decirlo definen la acción.
+Ahora solamente necesitamos un invoker porque pues el botón es el que va a disparar esta
+acción. Entonces podemos definir una función que se me por ejemplo presiona y al momento de que
+se presiona el comando que hemos definido se ejecuta y si te fijas el comando se pasa al
+momento de construir nuestro invoker ahora ya que tenemos esta receta es decir el comando
+la clase comanda abstracta sus clases hijas nuestro recibidor y nuestro invoker tenemos
+todo listo para llevar este código a código cliente entonces nuestro código cliente
+tendremos que importar las clases de los comandos concretos de nuestros recibidores y de nuestros
+invocadores, entonces from command vamos a importar copy command y vamos a importar también
+paste command, vamos a importar nuestro invoker y vamos a importar también nuestro receiver,
+entonces generamos nuestro main, entonces editor es igual a text editor y pues el copy, copyButton
+va a ser igual a button y le vas a pasar el comando que quieres que haga ese botón,
+como te dije lo que abstrae la acción del botón es literal el comando que hemos definido
+en un comando concreto. Entonces le pasamos también al comando como al constructor el recibidor
+quién va a hacer esta acción. En este caso es nuestro editor, el text editor. Lo mismo hacemos
+con pastebutton y damos la acción que va a desencadenar la ejecución del comando. En este
+caso que es copybutton.press y pastebutton.press. Ya que hemos hecho esto ejecutamos nuestro
+código, ejecutamos el main, corremos el main y como puedes ver aquí está funcionando nuestro
+patón de diseño, command. En este caso con el command que es copy y el command que es pasted.
+En este caso pues aquí vemos la generalización de código. Si te digas lo que nos permite hacer
+esto y es muy común en el software dofimática, todos esos botones, todos los botones que
+vemos aquí en nuestros programas y demás, muy seguramente tienen un patrón de diseño
+de alguna manera relacionado con command, porque esto permite generalizar las acciones
+que aún algo puede llevar a cabo. Y realmente todos estos botones, lo único que se abstrae
+es esta parte, o sea, lo que ejecute el comando, porque realmente el logo, o sea,
+el icono y todo eso, pues son personalizables. O sea, aquí dentro de botón tú puedes
+también tener un pad que te lleve una imagen que haga que el botón se muestre con este icono de play por
+ejemplo. Entonces todos los programas al momento que se instalan tienen una libreta con los sources o
+con las imágenes de todos los iconos y pues se guardan de esta forma y hay formas de generalizar
+todo esto pero este es uno de los patrones más usados a la hora de crear e interfaces de
+usuario. Entonces espero que te ha gustado este vídeo, espero que te esté gustando el
+dale like, suscríbete, compártelo y recuerda que siempre, siempre vas a aprender un bit a la vez.

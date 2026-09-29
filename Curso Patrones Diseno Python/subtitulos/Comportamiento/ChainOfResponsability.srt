@@ -1,0 +1,275 @@
+1
+00:00:00,820 --> 00:00:05,820
+Bienvenidos a un nuevo video del curso de patrones de diseño con Python y el último de este.
+
+2
+00:00:05,820 --> 00:00:11,820
+El último patrón de diseño que vamos a estudiar se llama Chainer Responsibility, cadena de responsabilidad.
+
+3
+00:00:11,820 --> 00:00:17,820
+Este patrón de diseño permite pasar la solicitud a lo largo de una cadena de manejadores.
+
+4
+00:00:17,820 --> 00:00:22,820
+Al recibir una solicitud, cada manejador decide si puede procesarla o no.
+
+5
+00:00:22,820 --> 00:00:28,820
+Si en este caso no la puede procesar, pues decide si la pasa al siguiente manejador de la cadena.
+
+6
+00:00:28,820 --> 00:00:35,620
+Este patrón es útil para poder manejar solicitudes y procesarlas de manera flexible.
+
+7
+00:00:36,660 --> 00:00:39,260
+Entonces, para poder implementar este patrón de diseño,
+
+8
+00:00:39,620 --> 00:00:47,180
+vamos a utilizar 3 ficheros de Python, se puede extender un poco más y dividirlo incluso en más ficheros,
+
+9
+00:00:47,180 --> 00:00:50,420
+pero vamos a hacerlo en 3.
+
+10
+00:00:52,260 --> 00:00:55,380
+Entonces, bueno, vamos a empezar con el handler.
+
+11
+00:00:55,380 --> 00:01:02,140
+el handler es el que se encarga de definir los niveles de procesamiento, es decir, por ejemplo,
+
+12
+00:01:02,140 --> 00:01:08,500
+si tú tienes una solicitud que solamente puede ser procesada por un handler de nivel 1 o nivel 2,
+
+13
+00:01:08,500 --> 00:01:14,740
+aquí es donde lo tomamos a definir. Y pues como en la mayoría de los patrones de diseño,
+
+14
+00:01:14,740 --> 00:01:22,940
+tenemos que generar una clase abstracta. Entonces vamos a implementar los handlers,
+
+15
+00:01:22,940 --> 00:01:33,660
+entonces vamos a importar fromABC, vamos a darle importABC y abstractMethod, vamos a definir una
+
+16
+00:01:33,660 --> 00:01:46,260
+clase que se llame supportHandler que va a ir a dar de ABC y vamos a definir su constructor. Entonces
+
+17
+00:01:46,260 --> 00:01:54,260
+el constructor de un handler recibe en sus atributos el siguiente manejador y tiene una función que
+
+18
+00:01:54,260 --> 00:02:01,540
+se llama Handle Request. Entonces de esta manera vamos a implementar el Handle Request para
+
+19
+00:02:01,540 --> 00:02:13,820
+cada uno de los manejadores. Entonces por ejemplo, Class Level 1 Support Handler. Imaginemos que
+
+20
+00:02:13,820 --> 00:02:24,460
+esto no sé, es un centro técnico de soporte al cliente, entonces hay personas que atienden,
+
+21
+00:02:24,460 --> 00:02:31,140
+por ejemplo casos de nivel 1 y casos de nivel 2. Los niveles 1 son más sencillos de resolver por lo
+
+22
+00:02:31,140 --> 00:02:35,340
+cual los principiantes tienen más posibilidad de resolverlos y los niveles 2 son más complejos.
+
+23
+00:02:35,340 --> 00:02:43,740
+Entonces, los niveles 1, si tú ves aquí, si el nivel del request es igual igual a 1,
+
+24
+00:02:44,940 --> 00:02:52,460
+decimos que el nivel 1 de soporte ha resuelto este conflicto. Sin embargo, si es de otro
+
+25
+00:02:52,460 --> 00:02:59,900
+nivel distinto o mayor a 1, pues decide enviarlo al siguiente manejador. Entonces por ejemplo,
+
+26
+00:02:59,900 --> 00:03:13,650
+vamos a implementar el level 2, entonces en este caso pues podemos agregar tantos manejadores como
+
+27
+00:03:13,650 --> 00:03:21,690
+quisiéramos, en este caso yo solamente voy a agregar tanto el 1 como el 2. Entonces vamos
+
+28
+00:03:21,690 --> 00:03:27,330
+a también definir este request como es esta figura del request y este request pues dentro
+
+29
+00:03:27,330 --> 00:03:32,410
+tiene que tener como atributo el nivel, como tú imaginaras. Pero esto puedes extrapolar
+
+30
+00:03:32,410 --> 00:03:38,890
+las muchas cosas. Como por ejemplo, en el banco las personas que otorgan los créditos,
+
+31
+00:03:38,890 --> 00:03:44,010
+si son menores a cierto monto, pues quizá la persona que está en los mostradores puede
+
+32
+00:03:44,010 --> 00:03:49,490
+autorizar ese tipo de créditos. Pero créditos más grandes como por ejemplo de un millón de
+
+33
+00:03:49,490 --> 00:03:55,290
+dólares por ejemplo, pues solamente el gerente puede autorizarlos. Entonces de esta manera
+
+34
+00:03:55,290 --> 00:04:01,450
+pues es como darle permiso a cada usuario y también pues lo puedes extrapolar a muchos muchos casos,
+
+35
+00:04:01,450 --> 00:04:09,710
+entonces vamos a definir el request, entonces vamos a definir una clase request y en esta clase
+
+36
+00:04:09,710 --> 00:04:19,280
+request pues simplemente en su constructor va a tener pues un nivel, entonces self level es igual a
+
+37
+00:04:19,280 --> 00:04:26,640
+level, entonces de esta manera ya tenemos el patrón de diseño implementado, ya tenemos el request
+
+38
+00:04:26,640 --> 00:04:33,640
+implementado y ahora sí podemos ir a código cliente a probar el código, entonces vamos a importar
+
+39
+00:04:33,640 --> 00:04:48,560
+from handler import vamos a importar los dos tipos de nivel de de soporte y vamos a también importar
+
+40
+00:04:48,560 --> 00:04:55,280
+nuestro request from request import request entonces vamos a definir nuestro main para poner nuestro
+
+41
+00:04:55,280 --> 00:05:03,440
+código cliente y vamos a definir los manejadores entonces level 1 va a ser igual a level 1 support
+
+42
+00:05:03,440 --> 00:05:14,680
+handler y la cadena que sigue del support handler es un caso que no vamos a definir todavía porque no
+
+43
+00:05:14,680 --> 00:05:22,440
+hay como el caso 0 por así decirlo bueno en este caso el level 2 va a seguir de level 1
+
+44
+00:05:22,440 --> 00:05:29,200
+pero para seguir con la lógica que hemos definido anteriormente con el ejemplo que
+
+45
+00:05:29,200 --> 00:05:35,000
+di, vamos a definir primero el level 2, vamos a poner el level 1 y vamos a poner aquí non,
+
+46
+00:05:35,000 --> 00:05:46,200
+es decir, si el soporte técnico es de nivel 1, si no puede resolverlo va a seguir al nivel 2
+
+47
+00:05:46,200 --> 00:05:50,920
+y si el nivel 2 no puede resolverlo pues no hemos definido un manejador de nivel 3,
+
+48
+00:05:50,920 --> 00:06:00,420
+por lo tanto recibe un non, entonces de esta manera cuando recibe el super handler el nivel 1
+
+49
+00:06:00,420 --> 00:06:06,680
+sabe cómo manejarlo en caso de que el nivel sea distinto de 1, es decir va a pasar al siguiente
+
+50
+00:06:06,680 --> 00:06:13,640
+manejador que es el manejador de nivel 2, entonces aquí tenemos el nivel 2 y el nivel 1, entonces
+
+51
+00:06:13,640 --> 00:06:21,480
+vamos a generar un request por ejemplo de nivel 1, entonces level 1 va a decir handle request y
+
+52
+00:06:21,480 --> 00:06:28,080
+vamos a decirle request, entonces al momento de que pasemos a handle 1 va a decir level 1 support
+
+53
+00:06:28,080 --> 00:06:33,280
+has resolved the issue y caso contrario nos va a decir que el nivel 2 lo ha resuelto,
+
+54
+00:06:33,280 --> 00:06:55,810
+entonces vamos a ejecutar nuestro código main y vamos a correr este código, es al revés,
+
+55
+00:06:55,810 --> 00:07:06,900
+lo ponemos aquí y lo corremos, entonces como puedes ver el request era de nivel 1 y nos dijo
+
+56
+00:07:06,900 --> 00:07:13,800
+que el nivel 1 fue capaz de resolver el issue, pero por ejemplo si fuera a nivel 2 lo podemos
+
+57
+00:07:13,800 --> 00:07:20,980
+volver a correr y nos dice que el nivel 1 ha sido capaz de resolver el issue o sea el problema,
+
+58
+00:07:20,980 --> 00:07:27,760
+pero si te fijas el problema se lo pasamos o sea el request se lo pasamos a nivel 1 y
+
+59
+00:07:27,760 --> 00:07:32,220
+nivel 1 al momento de no poder gestionarlo automáticamente se lo ha pasado a nivel 2.
+
+60
+00:07:32,220 --> 00:07:40,360
+Entonces nos dice que level 2 support has resolved the issue. Entonces aquí ya tenemos el patrón
+
+61
+00:07:40,360 --> 00:07:46,940
+de diseño implementado, chain of responsibility y bueno aquí se termina el último patrón
+
+62
+00:07:46,940 --> 00:07:50,460
+de diseño del curso y también se termina el curso. Espero que este curso te haya gustado,
+
+63
+00:07:50,460 --> 00:07:56,500
+te haya servido a mejorar tu nivel de programación y te ven los demás cursos de la academia que
+
+64
+00:07:56,500 --> 00:08:01,700
+pues tenemos ya gran variedad de cursos tenemos un curso de análisis de datos de machine learning,
+
+65
+00:08:01,700 --> 00:08:06,500
+tren algoritmico, programación básica en python, este mismo curso de patrón y diseño ya está
+
+66
+00:08:06,500 --> 00:08:13,900
+disponible y se irán agregando más cursos en lo que va el año, bueno ya este año ya casi va a
+
+67
+00:08:13,900 --> 00:08:17,300
+terminar pero en el año que sigue vamos a seguir agregando más cursos, espero que te haya
+
+68
+00:08:17,300 --> 00:08:20,260
+gustado, dale like, suscríbete, recomiendo este curso si te ha gustado,
+
+69
+00:08:20,260 --> 00:08:26,100
+suscríbete y bueno pues recuerda que siempre, siempre vas a aprender un vídeo a la vez.

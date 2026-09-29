@@ -1,0 +1,135 @@
+Hola qué tal y bienvenidos a un nuevo curso en Quantacademy.
+En esta ocasión, venimos presentando el curso de patrones de diseño con Python.
+Cuando aprendemos a programar, por lo general, intentamos crear soluciones a nuestros problemas
+desde nuestro conocimiento y como normalmente implementamos todas nuestras funciones.
+Sin embargo, conforme vamos avanzando en el mundo la programación, nos damos cuenta
+que todos los problemas que hay y todas las cosas que hemos programado a Lingela se ha resuelto.
+Entonces, de forma interactiva, bajo este proceso de perfección, creación y volver a intentar
+cosas y volver a programar la misma función, se generaron soluciones generales a problemas
+generales. Entonces, estos son los patrones de diseño. Los patrones de diseño muchas
+veces en el mundo laboral es lo que separa a las personas que son, por decirlo, juniors de los que
+son seniors. Entonces si dominas los patrones de diseño podrás implementar soluciones robustas
+a cualquier problema que te propongas en programación. Como dije, los patrones de diseño son
+plantillas rehusables para problemas de software, son plantillas reutilizables de código,
+son clases o clases con métodos e incluso funciones que te permiten dar soluciones a problemas que ya
+existieron y que alguien los resolvió de una forma muy efectiva y eficiente. Hay tres tipos de
+categorías de patrones de diseño. La primera categoría es la categoría de los creacionales.
+Esta te permite crear de forma sencilla y implementar diferentes formas de creación de
+objetos, pero se simplifica porque poniendo tu ejemplo, el primer patrón que vamos a estudiar es el
+singleton. Este patrón singleton es de mucho ayuda, por ejemplo, cuando estableces una conexión con una
+base de datos, porque el conectarte una base de datos es costoso en cuanto a recursos y si querás
+múltiples instancias puede generar inestabilidad en tu programa. Sin embargo, por ejemplo,
+cuando implementas el patrón de diseño singleton te permite generar solamente una instancia de la
+base de datos y demás. Vamos a ir paso a paso en cada patrón y en cada método o categoría de
+los patrónes de diseño. Luego están los estructurales que mejoran la composición y relación
+entre los objetos y finalmente los de comportamiento que te ayudan a optimizar la
+comunicación entre los objetos y las responsabilidades que a cada uno le competen.
+Los beneficios de aprender patrones de diseño es que son soluciones probadas y mejora la comunicación
+entre los desarrolladores porque si tú ya sabes patrones de diseño y tu colega también sabe
+patrones de diseño pues es más sencillo que le digas a tu colega pues vamos a implementarlo
+en Singleton para dar soluciones a este problema por ejemplo y él te va a entender
+por qué ambos han estudiado patrones de diseño. Este es el outline del curso y los patrones
+que vamos a ver. Este curso tiene un enfoque práctico por lo que vamos a estudiar tanto
+de patrón de diseño y vamos a generar un ejemplo práctico de cada patrón de diseño.
+Entonces, por la parte de los patrones creacionales, tenemos el singleton, que es un objeto para
+una clase que solamente te permite crear un objeto para una clase. Está el factor
+y método que es muy utilizado al momento de crear interfaces en nuestros códigos
+y te permite crear objetos sin exponer la lógica de su creación.
+Está el builder que te permite crear un objeto complejo paso a paso,
+como si se trataba de una composición de cosas, como si fue una receta,
+te permite crear objetos de esa manera.
+El prototype, copiar objetos existentes,
+la abstract factory te permite crear familias de objetos relacionados.
+Y estos son los patrones creacionales más usados.
+Allá fuera en la industria puede ser que haya muchísimos más patrones creacionales,
+pero estos son los más usados y los que deberías de aprender a usar.
+Luego están los patrones estructurales, por ejemplo el adapter, ese te permite crear una
+interfaz unificada entre interfaces incompatibles como por ejemplo, si tienes una librería que te
+regresa documento ccb y para tu programa te necesitas documento, esa información en formato
+xml, el adaptador se encargará de modificar esa información para que tu código no se rompa
+puedes seguir utilizando lo que viene de fuera de tu interfaz o de tu código.
+El decorador te permite añadir responsabilidades a objetos de forma dinámica. Puedes añadir nuevas
+funciones y pueden hacer nuevas cosas en cada objeto que tú definas con algún decorador.
+Lo veremos a detalle cuando lleguemos a ese patrón de diseño. El patrón de señor
+facade, es una interfaz simplificada de un sistema complejo, igual vamos a verlo detalle pero vamos
+a dar la presentación aquí, el composite te permite componer objetos en estructuras de árbol,
+hay formas de poder relacionar los árboles utilizando una estructura de árbol como tal,
+el flyweight te permite minimizar el uso de memoria o costos computacionales implementando
+está este método de forma pues correcta, o sea, te permite mantener más objetos dentro de la
+cantidad disponible de memoria porque de alguna manera compartes memoria común entre diferentes
+objetos en lugar de crear memoria para cada objeto, pues por ejemplo un ejemplo claro es por
+ejemplo la conexión a la base de datos puede estar compartida entre diferentes objetos y
+y no cada objeto debe de tener su propia conexión de la base altos, por ejemplo, está el bridge
+que lo que hace es que permite separar la extracción de implementación, es decir, te permite dividir
+una clase grande o un grupo de clases estrechamente relacionadas en dos génergías separadas,
+o sea, por una parte tiene la extracción y por otra la implementación, y te permite
+desarrollar independientemente una de la obra.
+tenemos lo que son los patronos de comportamiento que son muy útiles al momento de generar un
+programa ya incluso en videojuegos. Incluso también por ejemplo en train algorithmico se utiliza
+mucho el patrón de comportamiento observer. El patrón de comportamiento observer es un objeto
+que te permite suscribir y notificar cambios a varios objetos, es decir, tú este patrón
+observer puede estar conectado por ejemplo a una API o a un web socket y cada vez que
+un cambio o una notificación te permite enviar esa notificación a otros objetos en el programa,
+como por ejemplo si vemos un objeto de tren algrímico es que un objeto observer está observando el
+web socket que te manda los precios de bitcoin, entonces cuando hay un cambio en el precio de
+bitcoin este observer notifica a otros objetos como pueden ser los objetos de estrategia y
+los objetos de estrategia de trading sabrán qué hacer con ese cambio de precio, luego por
+por ejemplo, tenemos el command, el command te permite encapsular una solicitud como un
+objeto. Es decir, convierte una solicitud en un objeto independiente que contiene toda
+la información sobre la solicitud, esta transformación te permite parametrizar los métodos con diferentes
+solicitudes, retrasar o poner en cola la ejecución de una solicitud y soportar operaciones que
+no se pueden realizar. Eso es muy útil a la hora de poder implementar por ejemplo
+interfaces gráficas con botones de guardar, nuevo, cortar, pegar, imprimir, todo ese
+tipo de cosas se implementan con el comando comment, como tal por eso se llama comment.
+Luego por ejemplo tenemos el patrón de diseño strategy y este patrón te permite la selección
+de un algoritmo en tiempo de ejecución, es decir te permite definir una familia de algoritmos y
+colocar cada uno de ellos en una clase separada y hacer sus objetos intercambiables, es decir un
+objeto puede tener diferentes estrategias que puede decidir tomar o usar dadas
+ciertas condiciones del programa. Luego tenemos el patrón state. El patrón state tiene, por ejemplo,
+cambios de comportamiento de un objeto cuando su estado interno cambia y te permite alterar su
+comportamiento y esto parece, da la sensación de que el objeto cambia su clase. A lo mejor no
+está entendido de las aplicaciones que te estoy dando, pero poco a poco vamos a llegar a cada uno
+de los patrones de diseño y te los voy a explicar y vas a entender cómo funcionan y si los
+aplicas de forma correcta, vas a poder usarlos de forma eficaz y tu nivel de programación va a
+hacer va a elevarse, va a ser mayor. Y por último patrón diseñado que vamos a ver es el chain
+de responsabilidad. Este te permite pasar solicitudes a lo largo de una cadena de manejadores. Si
+alguna vez has visto en los códigos que utilizan por ejemplo handlers, estos handlers por lo
+general pertenecen a una cadena de responsabilidad, es decir, por ejemplo si eres un cliente de un
+banco y por ejemplo el asesor solamente te puede dar préstamos de mil dólares, solamente tiene permiso
+para darte préstamos de mil dólares, pero por ejemplo tú necesitas 10 mil dólares, bueno pues
+entonces el siguiente que te puede dar ese préstamo es el gerente y ya si necesitas más dinero pues a lo
+mejor será un director. Entonces la cosa es que se van pasando a la responsabilidad dado lo que
+pueden hacer con lo que tienen en el objeto o sea la información que tienen en el objeto. Entonces
+te permite la cadena de responsabilidades pasar solicitudes a lo largo de esta y al recibir una
+solicitud, cada manejador decide si la procesa o si la pasa el siguiente manejador de la cadena.
+Todos estos patrones son herramientas para tu casa de herramientas, vaya a la redundancia y
+tiene esos procesos contra. ¿Cuáles son los controles de los patrones de diseño?
+Su único contra es que los utilices cuando no son necesarios. Es decir,
+una vez que los aprendes te vas a dar cuenta que la mayoría de problemas de programación
+se pueden resolver con esto, pero por ejemplo si estás en un startup pues a la
+mejor quizá no querrás implementar patrones de diseño porque las
+startups crecen en cuanto a requerimientos, implementaciones de
+código y demás. Entonces puede ser que tu diseño es un código de una manera y
+que el día de mañana te pide otra cosa y tengas que cambiar todo y pues
+mucho de tu trabajo ya no va a valer. Entonces por lo general las empresas
+después contratan programadores que saben todo esto para poder arreglar todo lo que pasó en la
+startup cuando estaba levantando el proyecto porque seguramente todos los códigos spaghetti,
+pero entonces ahí es donde entran las personas que realmente saben programación. Las personas
+que fundan el código y demás por lo general no siguen siempre las mejores prácticas de
+programación y por lo general ese código no es tan robusto y cuando la empresa tiene un
+un income, un revenue de su proyecto.
+Entonces, tratan de refactorizar el código de su producto.
+Y entonces, a partir de ahí, eso les permite crecer,
+les permite, este, muchas veces hasta bajar costos de producción,
+porque como viste algunos patrones de diseño,
+te permiten ahorrar recursos de la computadora.
+Entonces, para decirlo, si un producto necesitaba 64 gigabytes
+de RAM, pues ahora aplicando patrones de diseño,
+pues a puede que ocupe 32.
+Entonces, ya cuesta menos tu servidor o cosas de ese
+entonces todas estas cosas que vas a aprender en este curso van a van a hacer la explicación del
+patrón de diseño, un ejemplo práctico y pues vamos a tratar de abarcar lo más posible de cada
+patrón y pues ya queda tu imaginación, cómo puedes aplicar cada uno de esos patrones creacionales
+y cómo lo aplicarás en tu trabajo, en tus proyectos personales o en lo que sé que se
+trabajan. Entonces espero que te guste este curso y pues sin más vamos a entender el primer
+patrón arqueacional que es el Siegelton.

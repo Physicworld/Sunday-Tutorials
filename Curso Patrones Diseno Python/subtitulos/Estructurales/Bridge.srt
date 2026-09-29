@@ -1,0 +1,431 @@
+1
+00:00:00,940 --> 00:00:04,440
+Bienvenidos a otro video del curso de patrones de diseño con Python.
+
+2
+00:00:04,440 --> 00:00:08,440
+En esta ocasión, vamos a implementar el patrón de diseño bridge.
+
+3
+00:00:08,440 --> 00:00:14,440
+El patrón de diseño bridge se utiliza para desacoplar la abstracción de la implementación
+
+4
+00:00:14,440 --> 00:00:18,440
+de una clase de manera que ambos puedan variar de forma independiente.
+
+5
+00:00:18,440 --> 00:00:23,940
+Este patrón es útil cuando se desea separar la lógica de alto nivel de implementación específica,
+
+6
+00:00:23,940 --> 00:00:27,940
+lo que facilita la extensibilidad y escalabilidad del código.
+
+7
+00:00:27,940 --> 00:00:31,940
+En este caso se implementa definiendo una interfaz de abstracción
+
+8
+00:00:31,940 --> 00:00:35,940
+que contiene una referencia a un objeto de tipo implementor.
+
+9
+00:00:35,940 --> 00:00:40,940
+Las subclases de abstraction pueden cambiar la implementación concreta en tiempo de ejecución
+
+10
+00:00:40,940 --> 00:00:43,940
+permitiendo variaciones en la implementación sin cambiar la abstracción.
+
+11
+00:00:43,940 --> 00:00:47,940
+Vamos a ver un ejemplo en el que queremos renderizar,
+
+12
+00:00:47,940 --> 00:00:54,940
+podemos tener un programa que grafique ciertos objetos en 3D, en 2D y demás
+
+13
+00:00:54,940 --> 00:01:03,140
+Pero, por ejemplo, podemos... hay diferentes formas de renderizar un objeto.
+
+14
+00:01:03,140 --> 00:01:12,140
+Una puede ser, mediante un objeto vectorizado y otra puede ser, por ejemplo, en un objeto...
+
+15
+00:01:12,140 --> 00:01:18,140
+en una forma que sea como de trama, ¿no? Así se le dice, en trama.
+
+16
+00:01:18,140 --> 00:01:23,140
+y la forma en la que... la forma en que se implementa esto
+
+17
+00:01:23,140 --> 00:01:27,140
+varía dependiendo de lo que tú quieras graficar, ¿no?
+
+18
+00:01:27,140 --> 00:01:31,140
+Entonces, por ejemplo, en nuestra clase implementor
+
+19
+00:01:31,140 --> 00:01:34,140
+vamos a definir la clase abstracta
+
+20
+00:01:34,140 --> 00:01:38,140
+y vamos a implementar una clase para cada tipo de renderizado.
+
+21
+00:01:38,140 --> 00:01:42,140
+Entonces, por ejemplo, como ya sabes, cuando queremos
+
+22
+00:01:42,140 --> 00:01:45,140
+declarar una clase abstracta, tenemos que importar ABC
+
+23
+00:01:45,140 --> 00:01:55,140
+y tenemos que importar abstract método. Entonces esta clase abstracta pues será renderer y vamos a tener ABC
+
+24
+00:01:55,140 --> 00:02:04,620
+y vamos a dar de ABC y vamos a definir el método abstracto. Este método abstracto pues puede ser renderizar cualquier cosa
+
+25
+00:02:04,620 --> 00:02:11,620
+en este caso yo lo voy a poner render shape. Entonces la vas a pasar la figura que quería renderizar
+
+26
+00:02:11,620 --> 00:02:19,540
+renderizar y en este caso se define dentro de las interfaces de cada tipo de renderizado.
+
+27
+00:02:19,540 --> 00:02:26,220
+Entonces por ejemplo aquí por ejemplo si queremos definir el renderizador de vectorial por ejemplo
+
+28
+00:02:26,220 --> 00:02:34,820
+pues tenemos que pasarle la forma y esto hereda de renderer y de esta forma pues si tú te fijas
+
+29
+00:02:34,820 --> 00:02:43,620
+aquí nos dice que está dibujando una figura con vectores como tipo vector y por ejemplo
+
+30
+00:02:43,620 --> 00:02:52,260
+podemos tener otro, otro renderizado que sea el raster renderer que lo grafica, bueno en este
+
+31
+00:02:52,260 --> 00:02:59,460
+caso lo grafica por ejemplo con líneas y en este caso lo grafique con píxeles ¿no? o sea tú
+
+32
+00:02:59,460 --> 00:03:06,500
+puedes implementar dentro de estas clases la forma abstracta de cómo se dibuja una una figura
+
+33
+00:03:06,500 --> 00:03:13,380
+dada la forma que lo quiere renderizar, ya sea de una forma vectorial a una forma que le hice en raster,
+
+34
+00:03:13,380 --> 00:03:21,100
+como como de trama y se grafica pixel a pixel por ejemplo. Entonces tenemos estas dos
+
+35
+00:03:21,100 --> 00:03:26,420
+implementaciones, recordemos que incluso la clase abstracta la podemos extraer a otro
+
+36
+00:03:26,420 --> 00:03:32,780
+archivo, en este caso los voy a implementar aquí todos juntos y ahora si en abstraction es donde vamos
+
+37
+00:03:32,780 --> 00:03:43,180
+a definir cómo es que se grafica cada figura o cada o cada cosa, entonces vamos a importar
+
+38
+00:03:43,180 --> 00:03:50,820
+nuestra clase abstracta, entonces from implementor vamos a importar nuestro renderizador y vamos a
+
+39
+00:03:50,820 --> 00:03:58,580
+definir una clase base que es figura y bueno esta tiene diferentes métodos en este caso su
+
+40
+00:03:58,580 --> 00:04:08,220
+constructor pues será el tipo de renderizado que queremos utilizar y vamos a definir por ejemplo un
+
+41
+00:04:08,220 --> 00:04:14,700
+método draw en este caso simplemente lo dejamos así sin definir porque esto depende de la figura
+
+42
+00:04:14,700 --> 00:04:22,360
+la forma de dibujar cada figura cambia y por ejemplo una función resize que también la vamos a darle
+
+43
+00:04:22,360 --> 00:04:27,840
+paz y luego podemos empezar a implementar cada tipo de figura que queramos como por ejemplo un
+
+44
+00:04:27,840 --> 00:04:33,160
+drángulo, un círculo, un rombo, cualquier figura que tú quieras implementar aquí, aquí es donde
+
+45
+00:04:33,160 --> 00:04:38,520
+se va a definir. En este caso vamos a definir una clase círculo y en esta clase círculo va a
+
+46
+00:04:38,520 --> 00:04:44,640
+redar de shape y pues aquí es donde vamos a inicializar el constructor de la figura shape
+
+47
+00:04:44,640 --> 00:04:49,440
+porque en este caso vamos a pasarle el renderizador y vamos a pasarle los atributos propios de la
+
+48
+00:04:49,440 --> 00:04:57,640
+figura como por ejemplo el radio de un círculo entonces def init vamos a pasarle el renderizador
+
+49
+00:04:57,640 --> 00:05:03,520
+y vamos a pasarle el radio en este caso inicializamos también la super clase con el renderer que
+
+50
+00:05:03,520 --> 00:05:08,960
+lo recibe como constructor y aparte pues definimos los atributos particulares de la figura que en
+
+51
+00:05:08,960 --> 00:05:15,000
+este caso es el radio y pues aquí pues agarrar más cosas como posición x, posición n y hay de más,
+
+52
+00:05:15,000 --> 00:05:20,840
+pero aquí lo vamos, estamos simplemente poniendo el ejemplo, entonces ahora sí podemos definir
+
+53
+00:05:20,840 --> 00:05:28,280
+el método draw particular para esta subclase de quereda de figura y pues como renderizas un
+
+54
+00:05:28,280 --> 00:05:34,440
+un círculo pues nuestro renderizador es el que hará el trabajo entonces le damos render shape y
+
+55
+00:05:34,440 --> 00:05:45,840
+pues puedes tener un enum dentro de render shape o diferentes formas de graficar algo pero por ejemplo
+
+56
+00:05:45,840 --> 00:05:51,720
+aquí en shape puedes tener casos de cómo se renderiza cada figura que tú quieras en este caso yo le
+
+57
+00:05:51,720 --> 00:05:56,640
+paso el círculo entonces cuando llega esta función va a ir dibujando un círculo con líneas
+
+58
+00:05:56,640 --> 00:06:02,880
+y si utilizamos el otro tipo de renderizador va a decir dibujando un círculo con píxeles
+
+59
+00:06:02,880 --> 00:06:11,560
+y demás entonces esa es la forma en la que se abstrae y si te fijas pues aquí ya es por
+
+60
+00:06:11,560 --> 00:06:17,840
+así decimos por así decirlo extrajimos la complejidad de implementar la parte del código
+
+61
+00:06:17,840 --> 00:06:24,600
+que se encarga de renderizar y la parte que se encarga de cargar el objeto como tal
+
+62
+00:06:24,600 --> 00:06:32,200
+con, por ejemplo, el radio y demás. Por ejemplo, también tenemos la función resize y pues esta
+
+63
+00:06:32,200 --> 00:06:37,920
+resize lo que hace es alterar el radio, por ejemplo. Entonces, tú puedes tener tantas
+
+64
+00:06:37,920 --> 00:06:43,120
+acciones aquí como tú quieras, que alteren la figura del círculo, pero a final de cuentas,
+
+65
+00:06:43,120 --> 00:06:49,760
+la función o la clase que se encarga de hacer renderizado, de dibujar el círculo
+
+66
+00:06:49,760 --> 00:06:56,160
+tu aplicación, está abstraída en otra clase que no afecta tu código del círculo, es decir,
+
+67
+00:06:57,440 --> 00:07:02,640
+ya está definido, no tienes que hacer cambios en tu clase círculo para poder definir eso,
+
+68
+00:07:02,640 --> 00:07:09,400
+ya está en tu clase abstracta. Ahora, una vez que ya tenemos esto definido pues sigue lo que es
+
+69
+00:07:09,400 --> 00:07:16,960
+implementar el código cliente, entonces para esto tenemos que importar las figuras que queremos
+
+70
+00:07:16,960 --> 00:07:22,760
+generar. En este caso yo definí la figura circle y en implementor yo definí los diferentes
+
+71
+00:07:22,760 --> 00:07:27,040
+tipos de renderizado. Entonces si tú te fijas lo que me va a permitir hacer este patrón de diseño
+
+72
+00:07:27,040 --> 00:07:34,720
+es cambiar entre cada forma de renderizar una figura y la figura que quiero usar. Entonces aquí
+
+73
+00:07:34,720 --> 00:07:43,000
+defino mi main y por ejemplo vector cycle va a ser igual a cycle pasándole vector renderer
+
+74
+00:07:43,000 --> 00:07:51,880
+y en el segundo caso va a ser por ejemplo raster cycle utilizando el raster render y finalmente pues
+
+75
+00:07:51,880 --> 00:08:01,160
+simplemente los puedo dibujar. Entonces ejecutando mi código cliente aquí puedes ver que metí un
+
+76
+00:08:01,160 --> 00:08:08,720
+error me dice que no tiene atributo nombre simplemente porque este no es un objeto sino que es un
+
+77
+00:08:08,720 --> 00:08:19,150
+string directamente, entonces vamos a decirle que nos imprima simplemente shape, lo volvamos a ejecutar y
+
+78
+00:08:21,230 --> 00:08:25,350
+aquí me está retornando pero no lo está imprimiendo, entonces vamos a vamos a imprimirlo,
+
+79
+00:08:25,350 --> 00:08:38,920
+vamos a imprimir la respuesta de esta función, lo volvamos a ejecutar y nos retorna, no vamos
+
+80
+00:08:38,920 --> 00:08:48,670
+a ver por qué, porque brao no retorna, entonces no retorna nada, en este caso entonces en
+
+81
+00:08:48,670 --> 00:08:55,730
+en lugar de hacer un return vamos a cambiar esto por un print, que nos imprima lo que está aquí,
+
+82
+00:08:55,730 --> 00:09:04,020
+también le damos print, como puedes ver puedo modificar este código y no se va a alterar
+
+83
+00:09:04,020 --> 00:09:17,600
+nada de mi clase abstracta, en esta ocasión es return, simplemente aquí es print, imprimimos
+
+84
+00:09:17,600 --> 00:09:31,210
+y imprimimos, quitamos esto, lo volvemos a correr y como puedes ver cada renderizador me
+
+85
+00:09:31,210 --> 00:09:37,690
+me... me dio un comportamiento diferente sin... utilizando el mismo constructor del objeto
+
+86
+00:09:37,690 --> 00:09:44,650
+circle. Entonces aquí me está diciendo drawing circle as lines y drawing circles as pixels.
+
+87
+00:09:44,650 --> 00:09:51,210
+Entonces no me está... no... no estoy alterando el código de implementación del círculo,
+
+88
+00:09:51,210 --> 00:09:57,410
+sino que estoy cambiando el renderizador que estoy usando y aquí podría seguir agregando
+
+89
+00:09:57,410 --> 00:10:02,210
+más renderizadores, más tipos de renderizadores, o incluso hasta proyecciones. Por ejemplo,
+
+90
+00:10:02,210 --> 00:10:06,690
+si quisiera proyectar una figura de tres dimensiones en dos dimensiones,
+
+91
+00:10:06,690 --> 00:10:14,330
+podría ser una clase que se encargue de eso. Y de esta forma, obviamente no estamos implementando
+
+92
+00:10:14,330 --> 00:10:18,370
+esto con un motor gráfico ni nada, sino que estamos entendiendo el patón de diseño con
+
+93
+00:10:18,370 --> 00:10:25,170
+un ejemplo y estamos entendiendo la potencia que tiene este patón de diseño para separar
+
+94
+00:10:25,170 --> 00:10:31,290
+el código complejo, que es como tal un renderizador, pero lo puedes extender a más cosas, de la
+
+95
+00:10:31,290 --> 00:10:37,050
+definición de un objeto y sus atributos y cómo puedes utilizar esto para incluso cambiar el
+
+96
+00:10:37,050 --> 00:10:42,650
+tipo de renderizador directamente de una clase, sin necesidad de hacer mayores modificaciones en tu
+
+97
+00:10:42,650 --> 00:10:48,770
+código. Y esto te fijas, es escalable porque tú puedes seguir agregando más tipos de renderizadores
+
+98
+00:10:48,770 --> 00:10:54,810
+y a su vez los vas a poder seguir usando en cada clase circle. Entonces finalmente aquí
+
+99
+00:10:54,810 --> 00:10:59,810
+el comportamiento cambia y esto si lo implementas bien en una aplicación con
+
+100
+00:10:59,810 --> 00:11:05,450
+monográfico, vas a ver el impacto que tiene al momento de poder graficar por
+
+101
+00:11:05,450 --> 00:11:09,210
+ejemplo hasta un círculo, pero ve esto de forma un poco más compleja.
+
+102
+00:11:09,210 --> 00:11:13,570
+Cuando empiezo a hacer figuras más compuestas y demás, todo esto le da
+
+103
+00:11:13,570 --> 00:11:18,650
+comportamientos a tus elementos y a tus objetos. Entonces de esta manera te
+
+104
+00:11:18,650 --> 00:11:22,690
+permite abstraer cosas muy complejas, hacer el código abierto cerrado,
+
+105
+00:11:22,690 --> 00:11:28,850
+que os decir que pueda seguir elegando cosas y seguir los principios sólidos y pues aquí está
+
+106
+00:11:28,850 --> 00:11:32,210
+el patrón de diseño. Espero que te haya gustado este vídeo del curso, dale like,
+
+107
+00:11:32,210 --> 00:11:38,090
+suscríbete, compártelo y bueno vamos a empezar en el siguiente vídeo a ver los patrónes
+
+108
+00:11:38,090 --> 00:11:45,450
+de diseño de comportamiento y bueno recuerda que siempre, siempre vas a aprender un bit a la vez.

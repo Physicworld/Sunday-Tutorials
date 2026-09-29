@@ -1,0 +1,271 @@
+1
+00:00:01,650 --> 00:00:05,650
+A continuación, vamos a implementar el patrón de diseño Composite.
+
+2
+00:00:05,650 --> 00:00:11,650
+Este patrón de diseño se utiliza para tratar un grupo de objetos de manera similar a un objeto individual.
+
+3
+00:00:11,650 --> 00:00:18,650
+Sin embargo, este patrón es particularmente útil cuando se trabaja con estructuras de datos jerárquicas,
+
+4
+00:00:18,650 --> 00:00:27,220
+permitiendo a los clientes tratar objetos individuales y composiciones de objetos de manera uniforme.
+
+5
+00:00:27,220 --> 00:00:32,700
+El patrón Composite permite componer objetos en estructuras de árboles para representar
+
+6
+00:00:32,700 --> 00:00:38,060
+jerarquías y facilita a los clientes el manejo de objetos.
+
+7
+00:00:38,060 --> 00:00:43,720
+La implementación define una interfaz común para clases individuales y sus composiciones,
+
+8
+00:00:43,720 --> 00:00:49,080
+como por ejemplo una clase Live puede representar un objeto individual y las clases Composite
+
+9
+00:00:49,080 --> 00:00:53,430
+representan grupos de objetos Live.
+
+10
+00:00:53,430 --> 00:00:57,150
+Los clientes interactúan con la interfaz común, lo que les permite tratar a los
+
+11
+00:00:57,150 --> 00:01:02,190
+objetos individuales y compuestos de la misma manera. Para poder implementar este archivo,
+
+12
+00:01:02,190 --> 00:01:09,150
+vamos a utilizar cuatro archivos de Python, el archivo component live, composite y el archivo
+
+13
+00:01:09,150 --> 00:01:14,190
+cliente main. Para empezar tenemos que empezar declarando la interfaz común que va a ser una
+
+14
+00:01:14,190 --> 00:01:20,630
+interfaz abstracta y el ejemplo que vamos a utilizar para este patrón de diseño es utilizar
+
+15
+00:01:20,630 --> 00:01:30,270
+archivos de sistema para anotar su jerarquía. Entonces vamos a implementar esto, ya sabemos que
+
+16
+00:01:30,270 --> 00:01:36,950
+para implementar una clase abstracta tenemos que importar de ABC, tanto ABC como abstract method,
+
+17
+00:01:36,950 --> 00:01:47,830
+entonces fromABC importABC y abstract method. Vamos a generar una clase que se llame fileSystemComponent
+
+18
+00:01:47,830 --> 00:01:54,830
+y este va a heredar de ABC. Entonces este va a tener un método abstracto que se va a llamar simplemente
+
+19
+00:01:54,830 --> 00:02:07,170
+mostrar detalles, show details. Entonces abstract método lo definimos como show details y lo dejamos
+
+20
+00:02:07,170 --> 00:02:15,170
+sin declarar porque esto lo vamos a implementar en cada uno de las de las componentes y de nuestros
+
+21
+00:02:15,170 --> 00:02:20,530
+objetos individuales entonces ya que declaramos nuestra clase, nuestra clase
+
+22
+00:02:20,530 --> 00:02:24,570
+común vamos ahora a leaf, leaf va a implementar los objetos
+
+23
+00:02:24,570 --> 00:02:29,270
+individuales y estos son objetos que por ejemplo no tienen hijos en nuestro
+
+24
+00:02:29,270 --> 00:02:35,570
+árbol de jerarquías entonces desde leaf vamos a vamos a importar nuestra
+
+25
+00:02:35,570 --> 00:02:42,450
+clase component pero vamos a por ejemplo importar file system component porque
+
+26
+00:02:42,450 --> 00:02:48,010
+estamos hablando de archivos. Y bueno, lo que está hasta debajo de nuestro archivo, de
+
+27
+00:02:48,010 --> 00:02:56,170
+nuestro sistema de archivos, pues es un archivo como tal. Entonces, lo inicializamos y lo
+
+28
+00:02:56,170 --> 00:03:00,110
+único que tenemos que inicializar pues es un nombre, porque pues puede ser un archivo,
+
+29
+00:03:00,110 --> 00:03:07,250
+por ejemplo, archivo1.txt. Guardamos ese nombre como atributo y vamos a generar una función
+
+30
+00:03:07,250 --> 00:03:12,210
+que se llame showDetails y esta es la función que vamos a implementar que
+
+31
+00:03:12,210 --> 00:03:18,210
+habíamos declarado en nuestra class abstracta de fileSystemComponent entonces
+
+32
+00:03:18,210 --> 00:03:23,250
+aquí nos va a mostrar el archivo y ahora lo que queremos mostrar es por ejemplo
+
+33
+00:03:23,250 --> 00:03:29,650
+el Composite, el Composite es el grupo de archivos que gestiona por
+
+34
+00:03:29,650 --> 00:03:34,170
+ejemplo los hijos que son las hojas de nuestro árbol en este caso los
+
+35
+00:03:34,170 --> 00:03:39,090
+archivos. Lo que gestiona los archivos pues son los directorios, entonces un
+
+36
+00:03:39,090 --> 00:03:45,650
+directorio está compuesto de archivos, entonces from component vamos a importar
+
+37
+00:03:45,650 --> 00:03:52,090
+nuestra clase base que es file system component, definimos un directorio y este
+
+38
+00:03:52,090 --> 00:03:57,770
+directorio va a tener de igual manera un hombre y una lista de hijos, es decir
+
+39
+00:03:57,770 --> 00:04:02,970
+vamos a poder guardar dentro de este directorio pues algunos archivos.
+
+40
+00:04:02,970 --> 00:04:10,970
+Entonces, este va a tener algunos métodos como por ejemplo, add child que nos va a permitir
+
+41
+00:04:10,970 --> 00:04:16,970
+añadir un hijo a nuestro directorio, en este caso simplemente le voy a poner add y pues
+
+42
+00:04:16,970 --> 00:04:22,970
+self.children que es una lista ya bien definida, le agregamos el hijo que le vamos a pasar
+
+43
+00:04:22,970 --> 00:04:29,970
+y también definir un método remove si lo deseas, en este caso voy a implementar
+
+44
+00:04:29,970 --> 00:04:37,970
+el objeto, el método abstracto para, ahora para directorios, y lo que va a hacer un directorio básicamente es
+
+45
+00:04:37,970 --> 00:04:43,970
+mostrar su nombre y iterar a través de sus hijos, mostrando sus detalles.
+
+46
+00:04:43,970 --> 00:04:50,970
+Y de esta forma, tenemos ya implementado de alguna manera el patrón composite.
+
+47
+00:04:50,970 --> 00:04:56,970
+¿Por qué? Porque tenemos los objetos individuales que son gestionados a través de objetos compuestos de estos
+
+48
+00:04:56,970 --> 00:04:58,970
+y está en estructura de árbol.
+
+49
+00:04:58,970 --> 00:05:02,770
+Digo, es un caso muy simple, pero es un ejemplo muy claro, ¿no?
+
+50
+00:05:02,770 --> 00:05:08,070
+Como los archivos de nuestros sistemas operativos, tanto Windows, Unix,
+
+51
+00:05:08,070 --> 00:05:10,270
+no sé, cualquiera que escojas,
+
+52
+00:05:10,270 --> 00:05:12,970
+están ordenados de esta manera jerárquica.
+
+53
+00:05:12,970 --> 00:05:16,270
+Accedes a un directorio y, por ejemplo,
+
+54
+00:05:16,270 --> 00:05:19,570
+puede ser que un director esté compuesto de más directorios
+
+55
+00:05:19,570 --> 00:05:25,170
+y hasta el final de los directorios, pues al final tienes un archivo individual.
+
+56
+00:05:25,170 --> 00:05:31,170
+En este caso, una hoja de árbol, o sea, un live, una hoja terminal se le dice.
+
+57
+00:05:31,170 --> 00:05:36,170
+Ahora, ¿cómo manipulamos esto desde el código cliente? Pues muy sencillo.
+
+58
+00:05:36,170 --> 00:05:47,170
+Tenemos que importar from live, import file y from composi, vamos a importar al directorio.
+
+59
+00:05:47,170 --> 00:05:52,170
+Entonces, vamos a declarar nuestro main y vamos a crear archivos.
+
+60
+00:05:52,170 --> 00:06:01,170
+como por ejemplo archivo 1, va a ser igual a file1.txt, .csb, .doc, cualquier archivo que te imagines
+
+61
+00:06:01,170 --> 00:06:07,170
+vamos a crear dos archivos, va a ser file2.txt, vamos a generar un directorio
+
+62
+00:06:07,170 --> 00:06:13,170
+y a este directorio le vamos a añadir tanto el archivo 1 como el archivo 2
+
+63
+00:06:13,170 --> 00:06:17,170
+y finalmente vamos a mostrar los detalles del directorio
+
+64
+00:06:17,170 --> 00:06:28,590
+entonces directory directory 1 punto show details entonces vamos a correr nuestro nuestro archivo
+
+65
+00:06:28,590 --> 00:06:35,970
+main lo corremos y como puedes ver aquí ya nos da el archivo directorio como sus hijos en este caso
+
+66
+00:06:35,970 --> 00:06:43,130
+los archivos que definimos como file 1 y file 2 pues aquí se termina este video del curso espero
+
+67
+00:06:43,130 --> 00:06:47,790
+que te esté usando al curso dale like, suscríbete, compártelo y recuerda que siempre, siempre
+
+68
+00:06:47,790 --> 00:06:49,590
+vas a aprender un vida a la vez.

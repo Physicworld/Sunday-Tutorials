@@ -1,0 +1,567 @@
+1
+00:00:01,420 --> 00:00:05,380
+Hola, qué tal y bienvenidos a un nuevo video de este curso patrón de diseño
+
+2
+00:00:05,380 --> 00:00:10,620
+compitón. El siguiente método que vamos a implementar es el factory method. Este es
+
+3
+00:00:10,620 --> 00:00:15,020
+un patón creacional que define una interfaz para crear un objeto, pero deja
+
+4
+00:00:15,020 --> 00:00:19,380
+que las subclases decidan qué hacer con los métodos a través de métodos
+
+5
+00:00:19,380 --> 00:00:25,300
+abstractos. En este vídeo vamos a hacer una implementación de ejemplo con una
+
+6
+00:00:25,300 --> 00:00:30,580
+fábrica de coches, por ejemplo, y para definir la estructura de este
+
+7
+00:00:30,580 --> 00:00:32,620
+proyecto o que vas a encontrar en algunos proyectos,
+
+8
+00:00:32,620 --> 00:00:33,820
+es la siguiente.
+
+9
+00:00:33,820 --> 00:00:37,300
+Por lo general, vas a encontrar una carpeta que se llama iFactory o
+
+10
+00:00:37,300 --> 00:00:42,100
+Factory, que dentro va a tener una carpeta con cada uno de los
+
+11
+00:00:42,100 --> 00:00:44,860
+métodos o interfaces que se están implementando.
+
+12
+00:00:44,860 --> 00:00:47,620
+En este caso, por ejemplo, Vehicle Factory.
+
+13
+00:00:47,620 --> 00:00:50,060
+Y dentro, por lo general, hay cuatro archivos,
+
+14
+00:00:50,060 --> 00:00:53,580
+uno que se llama Product, Creator, Concrete Factory,
+
+15
+00:00:53,580 --> 00:00:54,780
+y Client Co.
+
+16
+00:00:54,780 --> 00:00:58,380
+Esta estructura de proyecto puede variar muchísimo,
+
+17
+00:00:58,380 --> 00:01:00,900
+Depende mucho de los estándares de cada war.
+
+18
+00:01:00,900 --> 00:01:02,820
+Este es el ejemplo más básico,
+
+19
+00:01:02,820 --> 00:01:07,020
+pero puede haber más maneras de poder instanciar y crear
+
+20
+00:01:07,020 --> 00:01:08,420
+esta estructura de proyecto.
+
+21
+00:01:08,420 --> 00:01:11,140
+Pero bueno, yo te voy a enseñar la básica que es esta y vamos
+
+22
+00:01:11,140 --> 00:01:13,700
+entonces con el ejemplo.
+
+23
+00:01:13,700 --> 00:01:17,700
+Dentro de la clase Product, vamos a generar una clase base.
+
+24
+00:01:17,700 --> 00:01:20,620
+En este caso, por ejemplo, que va a ser Vehicle.
+
+25
+00:01:20,620 --> 00:01:24,980
+Vehículo es la clase más general que puede existir de un
+
+26
+00:01:24,980 --> 00:01:27,900
+vehículo como tal, como medio transporte.
+
+27
+00:01:27,900 --> 00:01:33,580
+Entonces, dentro de vehicle, vamos a tener ciertos métodos y esos métodos van a ser abstractos.
+
+28
+00:01:33,980 --> 00:01:35,340
+¿Qué es un método abstracto?
+
+29
+00:01:35,780 --> 00:01:39,340
+Un método abstracto es un elemento de la programación orientada a objetos
+
+30
+00:01:39,860 --> 00:01:43,540
+que se declaran una clase, pero no proporcionan ninguna implementación.
+
+31
+00:01:43,860 --> 00:01:49,020
+El propósito de un método abstracto es declarar un método que debe ser implementado por las subclases
+
+32
+00:01:49,380 --> 00:01:52,700
+no abstractas derivadas de la clase base, es decir,
+
+33
+00:01:52,700 --> 00:01:58,060
+yo voy a tener una clase base vehículo pero por ejemplo mis otros productos va a
+
+34
+00:01:58,060 --> 00:02:03,780
+ser un car y un truck o sea es decir un un carro y un camión entonces estos van
+
+35
+00:02:03,780 --> 00:02:08,660
+a heredar de vehículo y van a tener estas estos métodos pero cada uno va a
+
+36
+00:02:08,660 --> 00:02:13,060
+tener su propia implementación entonces vamos a comenzar con la
+
+37
+00:02:13,060 --> 00:02:19,140
+implementación dentro del producto tenemos que importar ABC para que nos
+
+38
+00:02:19,140 --> 00:02:24,820
+permita implementar métodos abstractos y el decorador abstract método. Entonces,
+
+39
+00:02:24,820 --> 00:02:33,860
+vamos a generar una clase vehículo y vehículo variadar de ABC, nada más que lo vamos a poner
+
+40
+00:02:33,860 --> 00:02:42,220
+en inglés, clase beco variadar de ABC. Entonces, si tú te fijas que el copilot me está recomendando
+
+41
+00:02:42,220 --> 00:02:46,500
+ciertos métodos abstractos como por ejemplo el número de ruedas y el número de asientos y
+
+42
+00:02:46,500 --> 00:02:53,220
+si este coche es de gasolina. Entonces, por ejemplo, el número de coches, pues el número de llantas puede
+
+43
+00:02:53,220 --> 00:02:57,940
+variar dependiendo si es un carro, si es un camión, si es una motocicleta, si es un monociclo,
+
+44
+00:02:57,940 --> 00:03:04,660
+cualquier vehículo puede variar su número tanto de llantas como de asientos y hay coches
+
+45
+00:03:04,660 --> 00:03:08,860
+eléctricos y hay coches de gas, ¿no? Pero para hacer todo mucho más simple,
+
+46
+00:03:08,860 --> 00:03:13,020
+vamos simplemente a definir un método que se llama Deliver, es decir, entregar.
+
+47
+00:03:13,020 --> 00:03:20,740
+vamos a generar entonces un abstract metod y este abstract metod se va a llamar deliver,
+
+48
+00:03:20,740 --> 00:03:27,060
+entonces este deliver no lo vamos a implementar como lo dije antes, lo vamos a dejar así en
+
+49
+00:03:27,060 --> 00:03:33,100
+la clase base y lo vamos a implementar en cada subclase que hereda de vehículo, en este caso
+
+50
+00:03:33,100 --> 00:03:39,100
+por ejemplo vamos a implementar la clase car, entonces vamos a para acá y vamos a ponerle
+
+51
+00:03:39,100 --> 00:03:52,310
+class car y esta clase car va a heredar de vehículo, entonces va a ser vehículo. Entonces vamos a
+
+52
+00:03:53,350 --> 00:04:01,110
+generar el método abstracto que se llama deliver propio para car, pero aquí lo vamos a cambiar la
+
+53
+00:04:01,110 --> 00:04:07,990
+implementación. Lo que va a ser esto va a ser retornar un string que va a decir auto
+
+54
+00:04:07,990 --> 00:04:17,110
+y ahorita voy a definir el constructor de la clase pero va a recibir el modelo, entonces
+
+55
+00:04:17,110 --> 00:04:25,110
+voy a acceder al modelo y se va a llamar entregado, entonces aquí se me pasó a definir el constructor,
+
+56
+00:04:25,110 --> 00:04:29,790
+vamos a definir el constructor, vamos a definir el constructor va a recibir el modelo, entonces
+
+57
+00:04:29,790 --> 00:04:38,490
+cuando tú generes una clase coche o car va a recibir el modelo y cuando instancias el método
+
+58
+00:04:38,490 --> 00:04:46,510
+de liver va a decir auto de tal modelo entregado entonces de esta manera es como implementamos
+
+59
+00:04:46,510 --> 00:04:53,190
+la interfaz entonces tú puedes tener tantos subclases como quieras tantos productos como quieras en
+
+60
+00:04:53,190 --> 00:04:58,470
+este caso puede ser un coche una motocicleta un truck lo que sea la siguiente clase que vamos
+
+61
+00:04:58,470 --> 00:05:09,880
+implementar va a ser el truck. Entonces clas truck, va a heredar de vehículo, voy a definir el
+
+62
+00:05:09,880 --> 00:05:24,260
+constructor, entonces el atributo va a ser el modelo y de igual forma voy a implementar su método
+
+63
+00:05:24,260 --> 00:05:32,700
+delivery. Entonces aquí retrune, camión entregado de tal modelo. Entonces tú aquí puedes implementar
+
+64
+00:05:32,700 --> 00:05:37,860
+tantas subclases como tú quieras y en algunos proyectos lo que hacen es generar una
+
+65
+00:05:38,140 --> 00:05:44,420
+un directorio que se llaman Models y dentro de Models tienen la clase base, un archivo,
+
+66
+00:05:44,420 --> 00:05:50,820
+un feature específico para la clase base y tienen un feature único para cada su producto que se
+
+67
+00:05:50,820 --> 00:05:55,300
+tiene en el proyecto. En este caso los estoy implementando en un mismo archivo de Python,
+
+68
+00:05:55,300 --> 00:06:02,060
+pero cada uno de estos se puede repartir en archivos y hacer el código más segmentado y
+
+69
+00:06:02,060 --> 00:06:05,820
+más fácil de mantener. En este caso lo vamos a mantener simple, lo vamos a dejar así,
+
+70
+00:06:05,820 --> 00:06:12,880
+pero por ejemplo si este fuera un proyecto mucho más grande con muchísimas más cosas pues a lo
+
+71
+00:06:12,880 --> 00:06:17,880
+mejor si elegiría la opción de repartir en diferentes archivos. Uno vez que implementamos
+
+72
+00:06:17,880 --> 00:06:23,280
+todas nuestras op classes en producto lo que sigue es generar el creador. El creador es como tal la
+
+73
+00:06:23,280 --> 00:06:30,800
+fábrica que nos va a permitir generar una fábrica concreta para cada tipo de producto. En este
+
+74
+00:06:30,800 --> 00:06:36,840
+caso vamos a tener un vehicle factory y luego de vehicle factory vamos a crear subclases de esta
+
+75
+00:06:36,840 --> 00:06:42,760
+clase base de la fábrica como tal, pero vamos a tener una fábrica tanto de coches y tanto de
+
+76
+00:06:42,760 --> 00:06:48,960
+camiones, entonces vamos aquí a nuestro siguiente archivo creator y vamos a importar de igual forma
+
+77
+00:06:48,960 --> 00:06:57,600
+from abc import abc abstract method entonces vamos a importar también los productos,
+
+78
+00:06:57,600 --> 00:07:03,040
+esto es fromProduct, vamos a importar tanto el coche como el camión, entonces vamos a definir
+
+79
+00:07:03,040 --> 00:07:11,560
+la clase vehicleFactory y vamos a generar un método abstract, entonces abstractMethod vamos a
+
+80
+00:07:11,560 --> 00:07:22,080
+definir una función, un método abstracto que se llame getVacle, entonces getVacle va a recibir
+
+81
+00:07:22,080 --> 00:07:31,100
+los parámetros de vehicle type. No va a recibir el modelo, simplemente vehicle type y esto va a ser un
+
+82
+00:07:31,100 --> 00:07:38,980
+pass y aquí hemos definido como tal el modelo de fábrica para vehículo y vamos a definir el
+
+83
+00:07:38,980 --> 00:07:43,780
+modelo de fábrica ahora para cada producto, entonces vamos a generar, vamos a pasar a nuestro
+
+84
+00:07:43,780 --> 00:07:49,800
+archivo concrete factory y en concrete factory vamos a importar vehicle factory, vamos a importar
+
+85
+00:07:49,800 --> 00:07:54,600
+nuestros productos y vamos a generar una clase de fábrica para cada uno de
+
+86
+00:07:54,600 --> 00:07:59,980
+nuestros productos, entonces from creator import
+
+87
+00:07:59,980 --> 00:08:06,280
+vehicle factory from product importamos nuestros productos y vamos a generar
+
+88
+00:08:06,280 --> 00:08:11,400
+clas y bueno como prácticas de programación muchos personas utilizan
+
+89
+00:08:11,400 --> 00:08:17,000
+concrete vehicle factory como etiqueta de las clases en este caso yo lo voy a
+
+90
+00:08:17,000 --> 00:08:24,600
+poner car factory y en este car factory va a heredar de vehicle factory y lo único que va a
+
+91
+00:08:24,600 --> 00:08:31,840
+ser es retornar un objeto car con el tipo de vehículo instanciado. Si tú ya sabes que car factory
+
+92
+00:08:31,840 --> 00:08:38,560
+reciben únicamente ciertos tipos de strings o variables, incluso hasta un enum, aquí es donde
+
+93
+00:08:38,560 --> 00:08:44,000
+tú puedes implementar las excepciones para lanzar errores al cliente de decir que ese vehículo
+
+94
+00:08:44,000 --> 00:08:52,160
+o ese tipo de modelo no está permitido o no existe, pero en este caso, como nuestros casos son muy poquitos
+
+95
+00:08:52,160 --> 00:08:57,160
+y en general enviamos simplemente un string pues no vamos a poner ninguna excepción aquí,
+
+96
+00:08:57,160 --> 00:09:02,440
+para aquí las podrías implementar. Entonces voy a generar esta función que se llama GetBacol
+
+97
+00:09:03,440 --> 00:09:10,880
+y lo que va a recibir únicamente va a ser BacolType. Entonces aquí voy a retornar
+
+98
+00:09:10,880 --> 00:09:16,480
+simplemente un objeto car y lo voy a pasar vehicle type. Y lo mismo voy a hacer con la clase
+
+99
+00:09:16,480 --> 00:09:21,400
+truck factory que GitHub Copilot con los ejemplos ya aprendido y ya me ha ayudado a implementar esa
+
+100
+00:09:21,400 --> 00:09:27,440
+función de forma rápida. Entonces ya tenemos nuestras fábricas para generar coches y generar
+
+101
+00:09:27,440 --> 00:09:36,080
+cosas. Entonces ahora sí vamos a pasar a lo que es nuestro código cliente donde vamos a probar
+
+102
+00:09:36,080 --> 00:09:42,720
+nuestro código, entonces venimos aquí a client code y decimos from concrete factory vamos a importar
+
+103
+00:09:42,720 --> 00:09:48,800
+en la fábrica de coches y la fábrica de camiones y vamos a generar una función que se llama client
+
+104
+00:09:48,800 --> 00:09:58,590
+vehicle code. Entonces vamos a poner aquí factory, es decir qué fábrica queremos emplear para
+
+105
+00:09:58,590 --> 00:10:05,950
+generar un coche, para generar un coche o un cañón y vamos a también enviar vehicle type.
+
+106
+00:10:07,070 --> 00:10:14,750
+Entonces, de aquí simplemente sin, sin, sin especificar qué tipo de
+
+107
+00:10:14,750 --> 00:10:19,670
+fábricas vamos a utilizar, vamos a utilizar este código que es un general,
+
+108
+00:10:19,670 --> 00:10:32,990
+Bacool va a ser igual a factory.getBacool y vamos a pasarle únicamente BacoolType.
+
+109
+00:10:32,990 --> 00:10:41,280
+Entonces, vamos a ponerle printBacoolDirect. Bueno, no tenemos un método
+
+110
+00:10:41,280 --> 00:10:46,400
+direct implementado, pero sí tenemos el método Deliver. Entonces, esto ya lo
+
+111
+00:10:46,400 --> 00:10:57,280
+puedes pasar a tu main, entonces from client code import client vehicle code, bueno aquí no es from
+
+112
+00:10:57,280 --> 00:11:04,200
+client code sino más bien tengo que pasarle en la carpeta también, entonces vehicle factory
+
+113
+00:11:04,200 --> 00:11:13,240
+junto client code import client vehicle code entonces voy a generar a mi main if name es igual
+
+114
+00:11:13,240 --> 00:11:18,940
+igual a main. Entonces, y aquí ha podido hacer uso de esa función. Entonces, tengo que pasarle
+
+115
+00:11:18,940 --> 00:11:25,660
+también la facturía que voy a utilizar. Entonces, vamos a importar las facturías.
+
+116
+00:11:25,660 --> 00:11:34,820
+From vehicle factory, así es, in clean code, no utilizamos esto como tal. Esto no es una
+
+117
+00:11:34,820 --> 00:11:38,740
+función que nos permite interactuar con la interfaz, pero esto también lo podrás incluir
+
+118
+00:11:38,740 --> 00:11:45,740
+el main. Entonces, vamos a generar un producto de cada
+
+119
+00:11:45,740 --> 00:11:55,460
+momento. Entonces, client, vehicle code, vamos a pasarle, por ejemplo, car factory y como modelo
+
+120
+00:11:55,460 --> 00:12:04,440
+vamos a ponerle que es un modelo sedado. Y en los camiones, por ejemplo, vamos a ponerle que
+
+121
+00:12:04,440 --> 00:12:08,680
+sea True Factory, simplemente podemos decirle que es un
+
+122
+00:12:08,680 --> 00:12:12,200
+camión de remolque, por ejemplo.
+
+123
+00:12:12,200 --> 00:12:15,760
+Y bueno, corremos nuestro código y nos va a dar este error.
+
+124
+00:12:15,760 --> 00:12:20,320
+Y esto es porque en esta parte no estamos instanciando la
+
+125
+00:12:20,320 --> 00:12:22,760
+clase, tenemos que pasar la instancia,
+
+126
+00:12:22,760 --> 00:12:25,080
+no la referencia de la clase.
+
+127
+00:12:25,080 --> 00:12:26,400
+Entonces, lo corremos.
+
+128
+00:12:26,400 --> 00:12:29,080
+Y como podemos ver aquí, autos se dan entregado,
+
+129
+00:12:29,080 --> 00:12:31,480
+camión remolque entregado.
+
+130
+00:12:31,480 --> 00:12:34,640
+Y bueno, así es como funciona el factory method.
+
+131
+00:12:34,640 --> 00:12:38,200
+Esto ya depende de ti cómo lo abstraes y lo aplicas al mundo
+
+132
+00:12:38,200 --> 00:12:43,760
+de el diseño de patrones en el código y cómo lo aplicas a
+
+133
+00:12:43,760 --> 00:12:45,200
+tus proyectos.
+
+134
+00:12:45,200 --> 00:12:48,480
+No hay nada como practicar, no hay nada como resolver este
+
+135
+00:12:48,480 --> 00:12:51,280
+tipo de problemas y hacer patrones de diseño para
+
+136
+00:12:51,280 --> 00:12:55,120
+precisamente entender cómo funciona y el día de mañana
+
+137
+00:12:55,120 --> 00:12:57,120
+como te encuentras con un problema nuevo,
+
+138
+00:12:57,120 --> 00:12:59,320
+automáticamente de tu cabeza va a salir bueno,
+
+139
+00:12:59,320 --> 00:13:03,680
+Pues quizá esto se va a resolver aplicando un factory method.
+
+140
+00:13:03,680 --> 00:13:05,840
+Entonces, espero que te esté usando el curso.
+
+141
+00:13:05,840 --> 00:13:08,040
+Dale like, suscríbete y recuerda que siempre,
+
+142
+00:13:08,040 --> 00:13:11,280
+siempre vas a aprender un VitaLabs.
