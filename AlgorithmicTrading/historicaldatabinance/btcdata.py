@@ -1,10 +1,12 @@
+from pathlib import Path
+
 import pandas as pd
 import pandas_ta as TA
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv('btcprice.csv')
+df = pd.read_csv(Path(__file__).resolve().parent / 'btcprice.csv')
 rsi = TA.rsi(close = df['market-price'], length = 30)
 moving_rsi = TA.sma(close = rsi, length = 30)
 
