@@ -1,0 +1,30 @@
+titulo = "Algoritmo genético desde cero en Python: mira cómo evoluciona una recta"
+resumen = "Aprende qué es y cómo programar un algoritmo genético desde cero en Python con NumPy y Matplotlib. Vemos en tiempo real cómo una población de rectas evoluciona y converge para ajustar una nube de datos sin usar derivadas ni cálculo diferencial."
+
+capitulos = [
+  "0:00 La naturaleza como optimizador",
+  "1:30 Codificación del individuo (Genotipo y Fenotipo)",
+  "3:00 Función de Fitness y cálculo de error cuadrático",
+  "4:30 Operadores genéticos: Mutación y Cruce línea a línea",
+  "6:30 El bucle evolutivo y el elitismo estricto",
+  "8:00 Demo animada: Caos, convergencia y estabilidad en 3 subplots",
+  "10:15 Hiperparámetros, límites teóricos y cuándo usarlo",
+  "11:30 Código en el repo, recursos y reto en comentarios",
+]
+
+codigo_url = "https://github.com/Physicworld/Sunday-Tutorials/tree/main/Heuristics"
+herramientas = [
+  "Python 3.11+",
+  "NumPy",
+  "Matplotlib (animación interactiva con plt.ion)",
+]
+es_trading = false
+hashtags = [
+  "#Python",
+  "#AlgoritmosGeneticos",
+  "#Matplotlib",
+  "#InteligenciaArtificial",
+  "#Programacion",
+]
+
+pregunta = "¿Qué problema no lineal o complejo resolverías tú con un algoritmo genético en lugar de gradiente descendente? Deja tu respuesta abajo."
