@@ -1,0 +1,6 @@
+titulo = "El error de look-ahead que infla tu backtest #Shorts"
+gancho = "¿Tu estrategia da 1000% de retorno? Probablemente tienes un sesgo de anticipación invisible en tu código."
+video_largo_url = "TODO_LINK"
+codigo_url = "https://github.com/Physicworld/Sunday-Tutorials/tree/main/AlgorithmicTrading/Backtesting"
+es_trading = true
+hashtags = ["#Shorts", "#Trading", "#Python", "#Backtesting", "#Bitcoin"]

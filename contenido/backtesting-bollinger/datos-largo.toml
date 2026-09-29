@@ -1,0 +1,32 @@
+titulo = "El error que arruina tu backtest en Python (y cómo evitarlo)"
+resumen = "Analizamos una estrategia cuantitativa sobre Bitcoin aplicando Bandas de Bollinger sobre retornos logarítmicos. Optimizamos 200 combinaciones de Stop Loss y Take Profit en Python y destapamos las 3 trampas mortales: look-ahead bias, sobreajuste (overfitting) y costes de deslizamiento."
+
+capitulos = [
+  "0:00 Aviso legal y el mito del 1000% de rentabilidad",
+  "1:00 Retornos logarítmicos vs. precios brutos en finanzas",
+  "2:45 Descarga de datos con yfinance y cálculo de bandas",
+  "4:30 El motor del Backtester: órdenes, balance y comisiones",
+  "6:30 Grid Search: 200 combinaciones y 4 mapas de calor",
+  "8:30 Win Rate vs. Retorno Asimétrico: la paradoja del 71%",
+  "10:15 Las tres trampas mortales: Look-ahead bias, Overfitting y Slippage",
+  "12:30 Conclusiones, recursos en GitHub y debate",
+]
+
+codigo_url = "https://github.com/Physicworld/Sunday-Tutorials/tree/main/AlgorithmicTrading/Backtesting"
+herramientas = [
+  "Python 3.11+",
+  "pandas",
+  "pandas_ta",
+  "yfinance",
+  "matplotlib / seaborn",
+]
+es_trading = true
+hashtags = [
+  "#Bitcoin",
+  "#Backtesting",
+  "#TradingAlgoritmico",
+  "#Python",
+  "#FinanzasCuantitativas",
+]
+
+pregunta = "¿Qué filtro o métrica utilizas tú para evitar el sobreajuste (overfitting) al evaluar una estrategia de trading? Cuéntamelo en los comentarios."
