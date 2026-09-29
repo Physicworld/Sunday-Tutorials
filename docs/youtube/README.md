@@ -13,6 +13,7 @@ Plantillas y utilidad para publicar cada video o short con metadatos consistente
 | `checklist-publicacion.md` | Checklist antes/después de publicar |
 | `tags-y-hashtags.md` | Guía de tags y hashtags |
 | `enlaces.toml` | Enlaces oficiales; `TODO_OWNER` = pendiente del dueño (STQ-38) |
+| `calendario-editorial.md` / `calendario.csv` | Calendario de 12 semanas (desde 2026-10-05): cadencia, supuestos y re-planificación |
 | `ejemplo.toml` | Ejemplo completo que renderiza con exit 0 |
 
 ## Generar una descripción
