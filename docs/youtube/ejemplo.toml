@@ -1,0 +1,24 @@
+# Ejemplo completo para probar el renderizador (no es un video real).
+#   python tools/render_metadata.py --template docs/youtube/plantilla-descripcion-larga.md --data docs/youtube/ejemplo.toml
+# Enlaces repetidos de enlaces.toml para que este archivo funcione solo; canal_url y afiliados se omiten
+# a proposito (las secciones opcionales desaparecen). En un video real usa: --data enlaces.toml --data <video>.toml
+
+titulo = "Algoritmo genetico visual en Python: como evoluciona una recta (Matplotlib)"
+resumen = "Programamos un algoritmo genetico desde cero y vemos en tiempo real como una poblacion de rectas evoluciona hasta ajustar los datos."
+capitulos = [
+  "0:00 Intro: evolucion como optimizador",
+  "1:30 Codificacion del individuo",
+  "3:10 Funcion de fitness",
+  "5:00 Seleccion, cruce y mutacion",
+  "8:15 Demo con la animacion",
+  "11:00 Hiperparametros y limites",
+]
+repo_url = "https://github.com/Physicworld/Sunday-Tutorials"
+codigo_url = "https://github.com/Physicworld/Sunday-Tutorials/tree/main/Heuristics"
+udemy_url = "https://www.udemy.com/course/ciencia-de-datos-con-python-r/?referralCode=B9A5A600EEECE5E538C1"
+herramientas = ["Python 3.11", "NumPy", "Matplotlib"]
+es_trading = false
+hashtags = ["#Python", "#AlgoritmosGeneticos", "#Matplotlib", "#InteligenciaArtificial"]
+gancho = "Una poblacion de rectas que aprende sola, en 40 segundos."
+video_largo_url = "TODO_LINK"  # se conoce solo tras publicar el largo; el short renderiza con --allow-todo
+pregunta = "Que problema resolverias con un algoritmo genetico?"
