@@ -1,0 +1,31 @@
+titulo = "Cómo analizar los ciclos de Bitcoin en Python con tema oscuro y RSI"
+resumen = "Aprende a analizar cuantitativamente los ciclos cuatrienales de Bitcoin en Python. Descargamos datos históricos con yfinance, remuestreamos a velas mensuales, calculamos el RSI de 14 periodos y renderizamos un gráfico profesional en tema oscuro con las fechas exactas de halving y zonas macro de acumulación."
+
+capitulos = [
+  "0:00 Aviso legal y el misterio del reloj de 4 años",
+  "1:15 Matemática del Halving (shock de oferta) y el RSI mensual",
+  "3:00 Descarga de datos históricos con yfinance y remuestreo mensual",
+  "5:00 Configuración visual profesional: tema oscuro y escala logarítmica",
+  "7:30 Lectura cuantitativa: techos de ciclo en RSI 85 y suelos en RSI 47",
+  "9:30 Advertencias críticas: muestra pequeña N=4 y el impacto de los ETFs",
+  "11:45 Conclusiones, código en GitHub y debate en comentarios",
+]
+
+codigo_url = "https://github.com/Physicworld/Sunday-Tutorials/tree/main/AlgorithmicTrading/Backtesting"
+herramientas = [
+  "Python 3.11+",
+  "pandas",
+  "pandas_ta",
+  "yfinance",
+  "matplotlib",
+]
+es_trading = true
+hashtags = [
+  "#Bitcoin",
+  "#Cripto",
+  "#Python",
+  "#DataScience",
+  "#FinanzasCuantitativas",
+]
+
+pregunta = "¿Crees que los ciclos de 4 años seguirán dictando el ritmo de Bitcoin o los ETFs institucionales han cambiado la estructura del mercado? ¡Déjame tu opinión abajo!"
