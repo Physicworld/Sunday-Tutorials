@@ -1,0 +1,46 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile all tracked Python files
+        run: git ls-files -z '*.py' | xargs -0 python -m compileall -q
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r AgentMCP/requirements-dev.txt
+
+      - name: Run tests
+        run: |
+          set +e
+          pytest -q "Curso Patrones Diseno Python" AgentMCP NumericalMethods
+          rc=$?
+          # exit code 5 = no tests collected (allowed while folders have no tests yet)
+          if [ "$rc" -eq 5 ]; then rc=0; fi
+          exit "$rc"
+
+      - name: Scan for secrets (gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: "false"
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: "false"
