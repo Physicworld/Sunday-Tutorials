@@ -1,0 +1,4 @@
+# Python 3.11+ (versiones mínimas probadas: numpy 2.5.3, matplotlib 3.10.1)
+# No requiere variables de entorno (.env).
+numpy>=1.26
+matplotlib>=3.8

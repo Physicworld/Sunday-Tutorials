@@ -1,0 +1,8 @@
+# Python 3.11+ (versiones mínimas probadas: numpy 2.5.3, pandas 3.0.6, matplotlib 3.10.1, scipy 1.18.1)
+# No requiere variables de entorno (.env).
+# Para el notebook TestMarkovChi/test.ipynb
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+scipy>=1.14
+jupyter>=1.0

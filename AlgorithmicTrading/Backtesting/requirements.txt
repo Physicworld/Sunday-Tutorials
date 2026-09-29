@@ -1,0 +1,11 @@
+# Python 3.11+ (versiones mínimas probadas: pandas 3.0.6, numpy 2.5.3, matplotlib 3.10.1, yfinance 1.7.0)
+# No requiere variables de entorno (.env).
+# Para los notebooks Backtesting/bitcoin_cycles.ipynb y backtesting.ipynb
+# NOTA sobre pandas_ta: depende de numba y solo soporta Python >=3.10,<3.14.
+# En Python 3.14+ pip lo omite automáticamente mediante el marcador PEP 508.
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.8
+yfinance>=1.0
+jupyter>=1.0
+pandas_ta>=0.3.14b; python_version < "3.14"

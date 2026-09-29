@@ -1,0 +1,5 @@
+# Python 3.11+
+# No requiere variables de entorno (.env).
+# Bisection utiliza únicamente la biblioteca estándar de Python (ast, math, operator, argparse, sys).
+# Para ejecutar los tests unitarios (test_bisection.py):
+pytest>=8.0
