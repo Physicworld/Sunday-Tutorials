@@ -1,3 +1,7 @@
+import os
+
+from dotenv import load_dotenv
+
 from grid_bot import GridBot
 
 
@@ -8,8 +12,12 @@ from grid_bot import GridBot
 # -------------------------------------------------------------------------------------------------
 
 def main():
-    KEY = "3DM7tTuySNUyaHXcQq"
-    SECRET = "YyNse5prCs7CwDARrE4b8HwgKuhnWMAyRHWe"
+    load_dotenv()
+    KEY = os.getenv("BYBIT_API_KEY")
+    SECRET = os.getenv("BYBIT_API_SECRET")
+    missing = [name for name, value in (("BYBIT_API_KEY", KEY), ("BYBIT_API_SECRET", SECRET)) if not value]
+    if missing:
+        raise SystemExit(f"Faltan variables de entorno: {', '.join(missing)}. Defínelas en GridBot/.env (ver .env.example).")
     symbol = "LTC/USDT"
     grid_range = 0.01
     grid_levels = 2
