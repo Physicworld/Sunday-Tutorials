@@ -1,0 +1,11 @@
+# Enlaces oficiales del canal usados por las plantillas (docs/youtube/).
+# Solo se incluyen los enlaces que ya existen en el repositorio.
+# TODO_OWNER = valor que debe aportar el dueño (ticket STQ-38); el renderizador falla si se usa uno.
+# No inventes enlaces: si no existe, deja TODO_OWNER.
+
+repo_url = "https://github.com/Physicworld/Sunday-Tutorials"
+udemy_url = "https://www.udemy.com/course/ciencia-de-datos-con-python-r/?referralCode=B9A5A600EEECE5E538C1"
+
+canal_url = "TODO_OWNER"
+afiliado_vps = "TODO_OWNER"
+afiliado_exchange = "TODO_OWNER"
