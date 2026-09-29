@@ -1,0 +1,6 @@
+titulo = "Una población de rectas que aprende sola #Shorts"
+gancho = "Una población de 1000 rectas al azar aprende a ajustar datos por pura selección natural sin derivadas ni cálculo."
+video_largo_url = "TODO_LINK"
+codigo_url = "https://github.com/Physicworld/Sunday-Tutorials/tree/main/Heuristics"
+es_trading = false
+hashtags = ["#Shorts", "#Python", "#AlgoritmosGeneticos", "#Matplotlib", "#IA"]
