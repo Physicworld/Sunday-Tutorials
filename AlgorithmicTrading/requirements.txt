@@ -1,0 +1,6 @@
+# Python 3.11+ — Requisitos completos para AlgorithmicTrading
+# No requiere variables de entorno (.env).
+-r FinancialGraphs/requirements.txt
+-r historicaldatabinance/requirements.txt
+-r Backtesting/requirements.txt
+-r TestMarkovChi/requirements.txt
