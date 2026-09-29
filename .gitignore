@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+env/
+venv/
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+build/
+*.so
+*.o
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Video masters live outside the repo (see TUTORIALS_MEDIA_DIR)
+*.mkv
+*.mp4
+*.mov
