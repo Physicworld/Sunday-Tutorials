@@ -1,6 +1,6 @@
 # Hallazgos técnicos y discrepancias: Guía de n8n con Docker
 
-Revisión técnica de `N8N Tutorial/intructions.md` frente a las versiones y recomendaciones oficiales actuales (n8n v1.x / v2.x, Docker Engine 26+, Docker Compose v2).
+Revisión técnica de `N8N Tutorial/instructions.md` frente a las versiones y recomendaciones oficiales actuales (n8n v1.x / v2.x, Docker Engine 26+, Docker Compose v2).
 
 > **Nota:** La guía original no se ha modificado directamente (tarea asignada a STQ-7). Este documento detalla cada discrepancia encontrada, su impacto práctico y la recomendación oficial con enlaces verificables.
 

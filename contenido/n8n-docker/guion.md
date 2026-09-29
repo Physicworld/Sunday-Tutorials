@@ -3,7 +3,7 @@
 - **Duración estimada:** 9 minutos 30 segundos (rango objetivo: 7 - 12 minutos).
 - **Tema:** Instalación y configuración limpia de n8n usando Docker y Docker Compose moderno, persistencia de datos y creación del primer flujo.
 - **Público objetivo:** Desarrolladores, analistas y entusiastas de la automatización que no quieren pagar suscripciones mensuales de Make/Zapier y buscan privacidad total.
-- **Material de apoyo en repo:** `N8N Tutorial/intructions.md` y carpeta `contenido/n8n-docker/hallazgos.md`.
+- **Material de apoyo en repo:** `N8N Tutorial/instructions.md` y carpeta `contenido/n8n-docker/hallazgos.md`.
 
 ---
 
